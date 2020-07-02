@@ -9,7 +9,7 @@ export default {
 		return {
 			board: 'duetwifi10',
 			expansion_boards: [],
-			firmware: 2.03,
+			firmware: 3.00,
 			standalone: true,
 			nvram: false,
 			auto_save: {
@@ -25,6 +25,7 @@ export default {
 				menus: [{ name: 'main', value: '' }],
 				images: []
 			},
+			panelDue: false,
 			geometry: {
 				type: 'cartesian',
 
@@ -125,7 +126,7 @@ export default {
 				pwm_inverted: true,				// v1-2 only
 				pwm_pin: null,					// v3+
 				input_pin: 'zprobe.in',			// v3+
-				modulation_pin: 'zprobe.mod'	// v3+
+				modulation_pin: null			// v3+
 			},
 			bed_is_nozzle: false,
 			bed: {
@@ -292,27 +293,34 @@ export default {
 
 		let index = 0;
 		for (let i = 0; i < items.length; i++) {
-			if (inputMode == undefined || template.board !== 'duet3' || board.gpioPorts[i].indexOf(inputMode ? 'in' : 'out') !== -1) {
+			if ((template.board !== 'duet3' || inputMode == undefined || items[i].indexOf(inputMode ? 'in' : 'out') !== -1) &&
+				(name !== 'pwmPorts' || items[i].indexOf('exp') === -1 || template.expansion_boards.length === 0)) {
 				const disabled = !this.isSamePin(selectedPin, items[i]) && this.isPinBlocked(template, items[i]);
 				options.push({
 					text: items[i],
 					value: items[i],
 					disabled
 				});
-				options.push({
-					text: items[i] + ' (inverted)',
-					value: '!' + items[i],
-					disabled
-				});
 				if (inputMode) {
+					options.push({
+						text: items[i] + ' (active-low)',
+						value: '!' + items[i],
+						disabled
+					});
 					options.push({
 						text: items[i] + ' (pull-up)',
 						value: '^' + items[i],
 						disabled
 					});
 					options.push({
-						text: items[i] + ' (inverted, pull-up)',
+						text: items[i] + ' (active-low, pull-up)',
 						value: '!^' + items[i],
+						disabled
+					});
+				} else if (name !== 'pwmPorts') {
+					options.push({
+						text: items[i] + ' (inverted)',
+						value: '!' + items[i],
 						disabled
 					});
 				}
@@ -485,7 +493,7 @@ export default {
 				obj[key] = parseFloat(obj[key]);
 			} else if (obj.hasOwnProperty(key) && preset[key] instanceof String && obj[key] instanceof Number) {
 				obj[key] = obj[key].toString();
-			} else if (!obj.hasOwnProperty(key) || typeof preset[key] !== typeof obj[key]) {
+			} else if (!obj.hasOwnProperty(key) || (typeof preset[key] !== typeof obj[key] && preset[key] !== null)) {
 				obj[key] = preset[key];
 			}
 		}
@@ -544,8 +552,16 @@ export default {
 		template.probe.deploy = template.probe.deploy || (template.probe.type === 'bltouch');
 
 		template.drives.forEach(function(drive, index) {
-			if ((drive.endstop_type == 3 && template.probe.type === 'noprobe') ||
-				(drive.endstop_type == 4 && !board.hasMotorLoadDetection)) {
+			if ((drive.endstop_type === 3 && template.probe.type === 'noprobe') ||
+				(drive.endstop_type === 4 && !board.hasMotorLoadDetection)) {
+				drive.endstop_type = 2;
+			}
+			if (template.firmware >= 3 && drive.endstop_type === 2) {
+				drive.endstop_type = 1;
+				if (drive.endstop_pin && !drive.endstop_pin.startsWith('!')) {
+					drive.endstop_pin = '!' + drive.endstop_pin;
+				}
+			} else if (template.firmware < 3 && drive.endstop_type === 1 && drive.endstop_pin && drive.endstop_pin.startsWith('!')) {
 				drive.endstop_type = 2;
 			}
 		});
@@ -674,7 +690,7 @@ export default {
 				}
 			} else if (template.hasOwnProperty(key) && typeof preset[key] === typeof template[key]) {
 				obj[key] = template[key];
-			} else if (template.hasOwnProperty(key) && preset[key].constructor instanceof Number && template[key].constructor instanceof String) {
+			} else if (template.hasOwnProperty(key) && typeof preset[key] === Number && typeof template[key] === String) {
 				obj[key] = parseFloat(template[key]);
 			} else {
 				obj[key] = preset[key];

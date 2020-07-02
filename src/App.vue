@@ -205,7 +205,7 @@ export default {
 			if (this.addRRF && this.template.standalone) {
 				try {
 					// Get GitHub list of releases and assets. Do NOT get drafts and prereleases
-					const releaseInfo = await Compiler.downloadFile('https://api.github.com/repos/dc42/RepRapFirmware/releases', 'json');
+					const releaseInfo = await Compiler.downloadFile('https://api.github.com/repos/gloomyandy/RepRapFirmware/releases', 'json');
 					const firmware = this.template.firmware;
 					let latestRelease = null;
 					releaseInfo.forEach(function(item) {

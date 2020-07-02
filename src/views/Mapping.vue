@@ -271,6 +271,12 @@ export default {
 		getPins(name, selectedPin, mandatory, inputMode) {
 			return Template.getPins(this.template, this.board, name, selectedPin, mandatory, inputMode);
 		},
+		getPwmPins(pin, mandatory, inputMode) {
+			const heaterPins = Template.getPins(this.template, this.board, 'heaterPorts', pin, mandatory, inputMode);
+			const fanPorts = Template.getPins(this.template, this.board, 'fanPorts', pin, true, inputMode);
+			const pwmPorts = Template.getPins(this.template, this.board, 'pwmPorts', pin, true, inputMode);
+			return heaterPins.concat(fanPorts).concat(pwmPorts);
+		},
 		getDriveCaption(drive) {
 			switch (drive) {
 				case 0: return 'X';

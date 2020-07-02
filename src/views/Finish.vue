@@ -9,10 +9,10 @@ textarea {
 
 <template>
 	<b-container>
-		<b-card v-show="standalone" header="Extra Files" class="mt-3">
+		<!--b-card v-show="standalone" header="Extra Files" class="mt-3">
 			<b-checkbox v-model="addDWC">Get the latest stable Duet Web Control version</b-checkbox>
 			<b-checkbox v-model="addRRF">Get the latest stable RepRapFirmware version</b-checkbox>
-		</b-card>
+		</b-card-->
 
 		<b-card header="Miscellaneous" class="mt-3">
 			<b-checkbox v-model="panelDue" class="mb-3">Enable support for PanelDue</b-checkbox>

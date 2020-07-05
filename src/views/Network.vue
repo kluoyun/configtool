@@ -1,7 +1,7 @@
 <template>
 	<b-container>
 		<b-card v-if="template.standalone && (board.hasESP || board.hasEthernet)" header="Network Settings">
-			<b-form-checkbox v-model="networkEnabled" v-preset.left="preset.network.enabled" title="Check this to enable networking features (M552 S1)">Enable Network</b-form-checkbox>
+			<b-form-checkbox v-model="networkEnabled" v-preset.left="preset.network.enabled" title="Check this to enable networking features (M552 S1)">Enable Network via Ethernet or ESP8266</b-form-checkbox>
 			<div v-show="networkEnabled" class="pl-4">
 				<b-form-row class="mt-3">
 					<b-col>

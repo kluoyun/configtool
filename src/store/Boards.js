@@ -32,6 +32,7 @@ export default {
 			maxExpansionBoards: 0,
             stepperDriver: "A5984",
             stepperDriverTimings: "1.0:1.0:0.4:0.4",
+            stepperDriverSmart: false,
             lpc: {
                   externalSDCard:{
                       csPin: "0.28",
@@ -81,6 +82,7 @@ export default {
           maxExpansionBoards: 0,
           stepperDriver: "", // no built in drivers.
           stepperDriverTimings: "",
+          stepperDriverSmart: false,
           lpc: {
                 externalSDCard:{
                     csPin: "1.23",
@@ -133,6 +135,7 @@ export default {
           maxExpansionBoards: 0,
           stepperDriver: "", // no built in drivers.
           stepperDriverTimings: "",
+          stepperDriverSmart: true,
           lpc: {
                 externalSDCard:{
                     csPin: "0.16",
@@ -185,6 +188,7 @@ export default {
           maxExpansionBoards: 0,
           stepperDriver: "", // no built in drivers.
           stepperDriverTimings: "",
+          stepperDriverSmart: true,
           lpc: {
                 externalSDCard:{
                     csPin: "0.16",
@@ -237,6 +241,7 @@ export default {
           maxExpansionBoards: 0,
           stepperDriver: "", // no built in drivers.
           stepperDriverTimings: "",
+          stepperDriverSmart: false,
           lpc: {
                 externalSDCard:{
                     csPin: "0.16",
@@ -289,6 +294,7 @@ export default {
           maxExpansionBoards: 0,
           stepperDriver: "", // no built in drivers.
           stepperDriverTimings: "",
+          stepperDriverSmart: false,
           lpc: {
                 externalSDCard:{
                     csPin: "1.23",
@@ -341,6 +347,7 @@ export default {
           maxExpansionBoards: 0,
           stepperDriver: "", // no built in drivers.
           stepperDriverTimings: "",
+          stepperDriverSmart: false,
           lpc: {
                 externalSDCard:{
                     csPin: "1.23",
@@ -390,6 +397,7 @@ export default {
           maxExpansionBoards: 0,
           stepperDriver: "DRV8825",
           stepperDriverTimings: "1.9:1.9:0.65:0.65",
+          stepperDriverSmart: false,
           lpc: {
                 externalSDCard:{
                     csPin: "0.28",
@@ -411,6 +419,59 @@ export default {
                 diagnosticPin: "1.18",
           }
       },
+      {
+        name: 'mkssgenl_1.0',
+        caption: 'MKS SGen L v1.0',
+        motorWarningCurrent: 1200,
+        motorLimitCurrent: 2000,
+        seriesResistor: 4700,
+        microstepping: true,
+        microsteppingInterpolation: false,
+        numDrives: 5,
+        heaterPorts: ['bed', 'e0heat', 'e1heat'],
+        fanPorts: ['fan0'],
+        pwmPorts: ['bed', 'e0heat', 'e1heat', 'fan0'],
+        gpioPorts: ['xstop', 'xstopmax', 'ystop', 'ystopmax', 'zstop', 'zstopmax'],
+        analogPorts: ['bedtemp', 'e0temp', 'e1temp'],
+        spiCsPorts: [],
+        hasEthernet: false,
+        hasWiFi: false,
+        hasESP: true,
+        hasPowerFailureDetection: false,
+        hasMotorLoadDetection: false,
+        supportsDisplay: true,
+        supports12864: true,
+        firmwareFile: 'firmware.bin',
+        iapFile: '',
+        expansionBoards: [],
+        maxExpansionBoards: 0,
+        stepperDriver: "",
+        stepperDriverTimings: "",
+        stepperDriverSmart: true,
+        lpc: {
+            externalSDCard:{
+                csPin: "0.16",
+                cardDetectPin: "1.31",
+                spiFrequencyHz: 4000000,
+                spiChannel: 0,
+            },
+            internalSDCardSPIFrequencyHz: 25000000,
+            softwareSPI:{
+                pins: ["1.20", "NoPin", "1.18"],
+            },
+            lcd:{
+                lcdCSPin:       "1.19",
+                lcdBeepPin:     "1.30",
+                encoderPinA:    "3.26",
+                encoderPinB:    "3.25",
+                encoderPinSw:   "0.28",
+                lcdDCPin:       "NoPin",
+                panelButtonPin: "NoPin",
+                spiChannel: 2, //Software SPI
+            },
+            diagnosticPin: "NoPin",
+        }
+    },
 	],
 
 	getBoard(boardType) {

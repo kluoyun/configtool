@@ -85,14 +85,14 @@ export default {
 					direction: 1,
 					microstepping: 16,
 					microstepping_interpolation: true,
-					steps_per_mm: 4000,
+					steps_per_mm: 400,
 					instant_dv: 0.2,
 					max_speed: 3,
 					acceleration: 20,
 					current: 800,
 					driver: 2,					// v1-2 only
 					driver_v3: '0.2',			// v3+
-					endstop_pin: null,			// v3+
+					endstop_pin: 'zstop',			// v3+
 					endstop: null,
 					endstop_type: 3,
 					endstop_location: 1,
@@ -139,13 +139,13 @@ export default {
 				pwm_channel: 3,					// v1-2 only
 				pwm_inverted: true,				// v1-2 only
 				pwm_pin: null,					// v3+
-				input_pin: 'zprobe.in',			// v3+
-				modulation_pin: 'zprobe.mod'	// v3+
+				input_pin: null,			// v3+
+				modulation_pin: null	// v3+
 			},
 			bed_is_nozzle: false,
 			bed: {
 				present: true,
-				use_pid: false,
+				use_pid: true,
 				heater: 0
 			},
 			chamber: {
@@ -165,7 +165,7 @@ export default {
 					c: 0,
 					channel: 0,					// v1-2 only
 					sensor: 0,					// v1-2 only
-					output_pin: 'bedheat',		// v3+
+					output_pin: 'bed',		// v3+
 					sensor_type: 'thermistor',	// v3+
 					sensor_pin: 'bedtemp'		// v3+
 				},
@@ -240,7 +240,13 @@ export default {
 					http: true,
 					ftp: false,
 					telnet: false
-				}
+				},
+				espDataReadyPin: '0.28',
+				lpcTfrReadyPin: '1.30',
+				espResetPin: '1.31',
+				espRXTX: false,
+				serialRxPin: '4.29',
+				serialTxPin: '4.28'
 			},
 			fans: [
 				{

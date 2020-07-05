@@ -1,7 +1,7 @@
 <template>
 	<b-container>
-		<b-card v-if="template.standalone && board.hasEthernet" header="Network Settings">
-			<b-form-checkbox v-model="networkEnabled" v-preset.left="preset.network.enabled" title="Check this to enable networking features (M552 S1)">Enable Network</b-form-checkbox>
+		<b-card v-if="template.standalone && (board.hasESP || board.hasEthernet)" header="Network Settings">
+			<b-form-checkbox v-model="networkEnabled" v-preset.left="preset.network.enabled" title="Check this to enable networking features (M552 S1)">Enable Network via Ethernet or ESP8266</b-form-checkbox>
 			<div v-show="networkEnabled" class="pl-4">
 				<b-form-row class="mt-3">
 					<b-col>
@@ -10,7 +10,7 @@
 						</b-form-group>
 					</b-col>
 
-					<template v-if="board.hasWiFi && template.firmware >= 3">
+					<template v-if="board.hasESP && template.firmware >= 3">
 						<b-col cols="auto">
 							<b-form-group label="WiFi Access Point Name:">
 								<b-form-input v-model.trim="ssid" v-b-tooltip.hover title="Name of the SSID to connect to. Alternatively, you can connect manually via M587" maxlength="32" placeholder="configure manually" type="text"></b-form-input>
@@ -22,13 +22,46 @@
 							</b-form-group>
 						</b-col>
 					</template>
+				</b-form-row>
+				<b-form-row class="mt-3">
+					<template v-if="board.hasESP && template.firmware >= 3">
+						<b-col cols="auto">
+							<b-form-group label="espDataReadyPin:">
+								<b-form-input v-model.trim="espDataReadyPin" v-preset="preset.network.espDataReadyPin" v-b-tooltip.hover title="This is the pin to be used in board.txt for 8266wifi.espDataReadyPin" maxlength="4" type="text" required></b-form-input>
+							</b-form-group>
+						</b-col>
+						<b-col cols="auto">
+							<b-form-group label="lpcTfrReadyPin:">
+								<b-form-input v-model.trim="lpcTfrReadyPin" v-preset="preset.network.lpcTfrReadyPin" v-b-tooltip.hover title="This is the pin to be used in board.txt for 8266wifi.lpcTfrReadyPin" maxlength="4" type="text" required></b-form-input>
+							</b-form-group>
+						</b-col>
+						<b-col cols="auto">
+							<b-form-group label="espResetPin:">
+								<b-form-input v-model.trim="espResetPin" v-preset="preset.network.espResetPin" v-b-tooltip.hover title="This is the pin to be used in board.txt for 8266wifi.espResetPin" maxlength="4" type="text" required></b-form-input>
+							</b-form-group>
+						</b-col>
+					</template>
+				</b-form-row>
+				<b-checkbox v-if="board.hasESP && template.firmware" v-model="espRXTX" v-preset.left="preset.network.espRXTX" title="Use RX/TX to update ESP8266 via DWC">Use RX/TX to update ESP8266 via DWC</b-checkbox>
+				<b-form-row v-show="espRXTX" class="mt-3">
+					<b-col cols="auto">
+						<b-form-group label="serialRxPin:">
+							<b-form-input v-model.trim="serialRxPin" v-preset="preset.network.serialRxPin" v-b-tooltip.hover title="This is the pin to be used in board.txt for 8266wifi.serialRxPin" maxlength="4" type="text" required></b-form-input>
+						</b-form-group>
+					</b-col>
+					<b-col cols="auto">
+						<b-form-group label="serialTxPin:">
+							<b-form-input v-model.trim="serialTxPin" v-preset="preset.network.serialTxPin" v-b-tooltip.hover title="This is the pin to be used in board.txt for 8266wifi.serialTxPin" maxlength="4" type="text" required></b-form-input>
+						</b-form-group>
+					</b-col>
+				</b-form-row>
 
 					<b-col v-if="board.hasEthernet">
 						<b-form-group label="MAC Address:">
 							<b-form-input v-model.trim="macAddress" v-preset="preset.network.mac_address" title="MAC address of your machine. This is normally auto-generated" :formatter="formatMAC" :state="isValidMAC(template.network.mac_address)" maxlength="17" placeholder="automatically generated" type="text"></b-form-input>
 						</b-form-group>
 					</b-col>
-				</b-form-row>
+				
 
 				<b-checkbox v-model="dhcp" v-preset.left="preset.network.dhcp" title="Use DHCP to acquire a dynamic IP configuration from your router (M552)">Acquire Dynamic IP Address via DHCP</b-checkbox>
 				<b-form-row v-show="!dhcp" class="pl-4 mt-3">
@@ -52,6 +85,7 @@
 				<b-checkbox v-model="http" v-preset.left="preset.network.protocols.http" title="Enable HyperText Transmission Protocol to provide access to the web interface" class="mt-3">Enable HTTP (required for the web interface)</b-checkbox>
 				<!--b-checkbox v-model="ftp" v-preset.left="preset.network.protocols.ftp" title="Enable File Transmission Protocol. Be aware that RepRapFirmware only supports one concurrent connection!">Enable FTP</b-checkbox>
 				<b-checkbox v-model="telnet" v-preset.left="preset.network.protocols.telnet" title="Enable Telnet. Be aware that RepRapFirmware only supports one concurrent connection!">Enable Telnet</b-checkbox-->
+
 			</div>
 		</b-card>
 	</b-container>
@@ -78,7 +112,14 @@ export default {
 			gateway: 'template.network.gateway',
 			http: 'template.network.protocols.http',
 			ftp: 'template.network.protocols.ftp',
-			telnet: 'template.network.protocols.telnet'
+			telnet: 'template.network.protocols.telnet',
+			espDataReadyPin: 'template.network.espDataReadyPin',
+			lpcTfrReadyPin: 'template.network.lpcTfrReadyPin',
+			espResetPin: 'template.network.espResetPin',
+			espRXTX: 'template.network.espRXTX',
+			serialRxPin: 'template.network.serialRxPin',
+			serialTxPin: 'template.network.serialTxPin'
+			
 		})
 	},
 	methods: {

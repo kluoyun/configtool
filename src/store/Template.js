@@ -245,8 +245,8 @@ export default {
 				lpcTfrReadyPin: '1.30',
 				espResetPin: '1.31',
 				espRXTX: false,
-				serialRxPin: '4.29',
-				serialTxPin: '4.28'
+				serialRxPin: '0.3',
+				serialTxPin: '0.2'
 			},
 			fans: [
 				{

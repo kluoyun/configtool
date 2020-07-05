@@ -240,10 +240,7 @@ export default {
 					http: true,
 					ftp: false,
 					telnet: false
-				}
-			},
-			wifi: {
-				enabled: false,
+				},
 				espDataReadyPin: '0.28',
 				lpcTfrReadyPin: '1.30',
 				espResetPin: '1.31'

@@ -42,8 +42,8 @@
 						</b-col>
 					</template>
 				</b-form-row>
-				<b-checkbox v-if="board.hasESP && template.firmware" v-model="espRXTX" v-preset.left="preset.network.espRXTX" title="Use RX/TX to update ESP8266 via DWC">Use RX/TX to update ESP8266 via DWC</b-checkbox>
-				<b-form-row v-show="espRXTX" class="mt-3">
+				<b-checkbox v-if="board.hasESP && template.firmware && template.board !== 'biquskr_1.4'" v-model="espRXTX" v-preset.left="preset.network.espRXTX" title="Use RX/TX to update ESP8266 via DWC">Use RX/TX to update ESP8266 via DWC</b-checkbox>
+				<b-form-row v-show="espRXTX && template.board !== 'biquskr_1.4'" class="mt-3">
 					<b-col cols="auto">
 						<b-form-group label="serialRxPin:">
 							<b-form-input v-model.trim="serialRxPin" v-preset="preset.network.serialRxPin" v-b-tooltip.hover title="This is the pin to be used in board.txt for 8266wifi.serialRxPin" maxlength="4" type="text" required></b-form-input>
@@ -55,7 +55,19 @@
 						</b-form-group>
 					</b-col>
 				</b-form-row>
-
+				<b-checkbox v-if="board.hasESP && template.firmware && template.board === 'biquskr_1.4'" v-model="espRXTX" v-preset.left="preset.network.espRXTX" title="Use RX/TX to update ESP8266 via DWC">Use RX/TX to update ESP8266 via DWC</b-checkbox>
+				<b-form-row v-show="espRXTX && template.board === 'biquskr_1.4'" class="mt-3">
+					<b-col cols="auto">
+						<b-form-group label="serialRxPin:">
+							<b-form-input v-model.trim="serialRxPinalt" v-preset="preset.network.serialRxPinalt" v-b-tooltip.hover title="This is the pin to be used in board.txt for 8266wifi.serialRxPin" maxlength="4" type="text" required></b-form-input>
+						</b-form-group>
+					</b-col>
+					<b-col cols="auto">
+						<b-form-group label="serialTxPin:">
+							<b-form-input v-model.trim="serialTxPinalt" v-preset="preset.network.serialTxPinalt" v-b-tooltip.hover title="This is the pin to be used in board.txt for 8266wifi.serialTxPin" maxlength="4" type="text" required></b-form-input>
+						</b-form-group>
+					</b-col>
+				</b-form-row>
 					<b-col v-if="board.hasEthernet">
 						<b-form-group label="MAC Address:">
 							<b-form-input v-model.trim="macAddress" v-preset="preset.network.mac_address" title="MAC address of your machine. This is normally auto-generated" :formatter="formatMAC" :state="isValidMAC(template.network.mac_address)" maxlength="17" placeholder="automatically generated" type="text"></b-form-input>
@@ -118,7 +130,9 @@ export default {
 			espResetPin: 'template.network.espResetPin',
 			espRXTX: 'template.network.espRXTX',
 			serialRxPin: 'template.network.serialRxPin',
-			serialTxPin: 'template.network.serialTxPin'
+			serialTxPin: 'template.network.serialTxPin',
+			serialRxPinalt: 'template.network.serialRxPinalt',
+			serialTxPinalt: 'template.network.serialTxPinalt'
 			
 		})
 	},

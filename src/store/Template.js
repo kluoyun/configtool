@@ -246,7 +246,9 @@ export default {
 				espResetPin: '1.31',
 				espRXTX: false,
 				serialRxPin: '0.3',
-				serialTxPin: '0.2'
+				serialTxPin: '0.2',
+				serialRxPinalt: '4.29',
+				serialTxPinalt: '4.28',
 			},
 			fans: [
 				{

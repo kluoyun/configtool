@@ -53,3 +53,12 @@ heat.tempSensePins = {<%- util.makePlainArrayString(tempSensePins) %>}; //Max of
 	 
 //Analogue to Digital prefilter
 adc.prefilter.enable = true
+
+<% if (board.hasESP)  { %>
+	<% if (template.network.enabled) { %>
+//ESP Settings
+8266wifi.espDataReadyPin = <%- template.network.espDataReadyPin %>;
+8266wifi.lpcTfrReadyPin = <%- template.network.lpcTfrReadyPin %>;
+8266wifi.espResetPin = <%- template.network.espResetPin %>;
+<% } %>
+<% } %>

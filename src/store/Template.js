@@ -243,7 +243,10 @@ export default {
 				},
 				espDataReadyPin: '0.28',
 				lpcTfrReadyPin: '1.30',
-				espResetPin: '1.31'
+				espResetPin: '1.31',
+				espRXTX: false,
+				serialRxPin: '4.29',
+				serialTxPin: '4.28'
 			},
 			fans: [
 				{

@@ -210,7 +210,7 @@ export default {
                     panelButtonPin: "NoPin",
                     spiChannel: 2, //Software SPI
                 },
-                diagnosticPin: "1.18",
+                diagnosticPin: "NoPin",
           }
       },
 	  {

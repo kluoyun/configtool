@@ -50,7 +50,7 @@ tr > td:last-child > select {
 				<timing-input :drive="drive" :index="index"/>
 			</b-form-group>
 		</td>
-		<td :class="{ 'reduce-padding' : drive.microstepping_interpolation }">
+		<td :class="{ 'reduce-padding' : drive.microstepping_interpolation }" v-show="board.microstepping">
 			<b-select v-model="microsteppingOption" v-preset="presetMicrosteppingOption" title="Microstepping value (M350)" :disabled="!board.microstepping">
 				<option value="1">x1</option>
 				<option v-if="board.microsteppingInterpolation" value="1_i" class="hidden">x1 (on)</option>

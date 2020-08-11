@@ -50,7 +50,7 @@ tr > td:last-child > select {
 				<timing-input :drive="drive" :index="index"/>
 			</b-form-group>
 		</td>
-		<!--td :class="{ 'reduce-padding' : drive.microstepping_interpolation }">
+		<td :class="{ 'reduce-padding' : drive.microstepping_interpolation }" v-show="board.microstepping">
 			<b-select v-model="microsteppingOption" v-preset="presetMicrosteppingOption" title="Microstepping value (M350)" :disabled="!board.microstepping">
 				<option value="1">x1</option>
 				<option v-if="board.microsteppingInterpolation" value="1_i" class="hidden">x1 (on)</option>
@@ -72,7 +72,7 @@ tr > td:last-child > select {
 			</b-select>
 			<br>
 			<span v-if="drive.microstepping_interpolation" class="small-text">interpolated to x256</span>
-		</td-->
+		</td>
 		<td>
 			<steps-per-mm-input :index="index" :drive="drive" :preset-drive="presetDrive"></steps-per-mm-input>
 		</td>
@@ -113,8 +113,9 @@ export default {
 				"A4988": "1.0:1.0:0.2:0.2",
 				"A4982": "1.0:1.0:0.2:0.2",
 				"A5984": "1.0:1.0:0.4:0.4",
-				"TMC220x": "0.1:0.1:0.02:0.02",
-				"TMC222x": "0.1:0.1:0.02:0.02",
+				"TMC2208": "",
+				"TMC2209": "",
+				"TMC222x": "",
 				"THB6128": "0.5:0.5:0.5:0.5",
 				"LV8729" : "0.5:0.5:0.5:0.5",
 				"Custom": "1.0:1.0:0.4:0.4",

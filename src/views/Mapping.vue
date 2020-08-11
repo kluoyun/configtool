@@ -199,20 +199,20 @@
 									<b-select :value="template.probe.input_pin" @change="setProbePin({ inputPin: $event })" size="sm" :options="getPins('gpioPorts', template.probe.input_pin, false)"></b-select>
 								</b-td>
 							</b-tr>
-							<b-tr>
+							<!--b-tr>
 								<b-td>
 									Modulation Pin
 								</b-td>
 								<b-td>
 									<b-select :value="template.probe.modulation_pin" @change="setProbePin({ modulationPin: $event })" size="sm" :options="getPins('gpioPorts', template.probe.modulation_pin, false, false)"></b-select>
 								</b-td>
-							</b-tr>
+							</b-tr-->
 							<b-tr>
 								<b-td>
 									PWM Control Channel (BLTouch only)
 								</b-td>
 								<b-td>
-									<b-select :value="template.probe.pwm_pin" @change="setProbePin({ pwmPin: $event })" size="sm" :options="getPins('pwmPorts', template.probe.pwm_pin, false)"></b-select>
+									<b-select :value="template.probe.pwm_pin" @change="setProbePin({ pwmPin: $event })" size="sm" :options="getPins('blPorts', template.probe.pwm_pin, false)"></b-select>
 								</b-td>
 							</b-tr>
 						</b-tbody>
@@ -275,6 +275,7 @@ export default {
 			const heaterPins = Template.getPins(this.template, this.board, 'heaterPorts', pin, mandatory, inputMode);
 			const fanPorts = Template.getPins(this.template, this.board, 'fanPorts', pin, true, inputMode);
 			const pwmPorts = Template.getPins(this.template, this.board, 'pwmPorts', pin, true, inputMode);
+			const blPorts = Template.getPins(this.template, this.board, 'blPorts', pin, true, inputMode);
 			return heaterPins.concat(fanPorts).concat(pwmPorts);
 		},
 		getDriveCaption(drive) {

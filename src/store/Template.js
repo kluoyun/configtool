@@ -425,7 +425,7 @@ export default {
 		}
 		if (!isValidPin(template, template.probe.pwm_pin, template.probe.type !== 'bltouch')) {
 			template.probe.pwm_pin = null;
-			isValid = false;
+			isValid = true;
 		}
 
 		if ((template.probe.input_pin === null) ||

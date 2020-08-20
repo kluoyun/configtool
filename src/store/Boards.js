@@ -34,6 +34,11 @@ export default {
             stepperDriver: "A5984",
             stepperDriverTimings: "1.0:1.0:0.4:0.4",
             stepperDriverSmart: false,
+            serialRxPin:"",
+            serialTxPin:"",
+            espDataReadyPin:"",
+            lpcTfrReadyPin:"",
+            espResetPin:"",
             lpc: {
                   externalSDCard:{
                       csPin: "0.28",
@@ -85,6 +90,11 @@ export default {
           stepperDriver: "", // no built in drivers.
           stepperDriverTimings: "",
           stepperDriverSmart: false,
+          serialRxPin:'0.3',
+          serialTxPin:'0.2',
+          espDataReadyPin:'0.28',
+          lpcTfrReadyPin:'1.30',
+          espResetPin:'1.31',
           lpc: {
                 externalSDCard:{
                     csPin: "1.23",
@@ -139,6 +149,11 @@ export default {
           stepperDriver: "", // no built in drivers.
           stepperDriverTimings: "",
           stepperDriverSmart: true,
+          serialRxPin:'0.3',
+          serialTxPin:'0.2',
+          espDataReadyPin:'0.28',
+          lpcTfrReadyPin:'1.30',
+          espResetPin:'1.31',
           lpc: {
                 externalSDCard:{
                     csPin: "0.16",
@@ -193,6 +208,11 @@ export default {
           stepperDriver: "", // no built in drivers.
           stepperDriverTimings: "",
           stepperDriverSmart: true,
+          serialRxPin:'0.3',
+          serialTxPin:'0.2',
+          espDataReadyPin:'0.28',
+          lpcTfrReadyPin:'1.30',
+          espResetPin:'1.31',
           lpc: {
                 externalSDCard:{
                     csPin: "0.16",
@@ -247,6 +267,11 @@ export default {
           stepperDriver: "", // no built in drivers.
           stepperDriverTimings: "",
           stepperDriverSmart: false,
+          serialRxPin:'0.3',
+          serialTxPin:'0.2',
+          espDataReadyPin:'0.28',
+          lpcTfrReadyPin:'1.30',
+          espResetPin:'1.31',
           lpc: {
                 externalSDCard:{
                     csPin: "0.16",
@@ -301,6 +326,11 @@ export default {
           stepperDriver: "", // no built in drivers.
           stepperDriverTimings: "",
           stepperDriverSmart: false,
+          serialRxPin:"",
+          serialTxPin:"",
+          espDataReadyPin:"",
+          lpcTfrReadyPin:"",
+          espResetPin:"",
           lpc: {
                 externalSDCard:{
                     csPin: "1.23",
@@ -355,6 +385,11 @@ export default {
           stepperDriver: "", // no built in drivers.
           stepperDriverTimings: "",
           stepperDriverSmart: false,
+          serialRxPin:"",
+          serialTxPin:"",
+          espDataReadyPin:"",
+          lpcTfrReadyPin:"",
+          espResetPin:"",
           lpc: {
                 externalSDCard:{
                     csPin: "1.23",
@@ -406,6 +441,11 @@ export default {
           stepperDriver: "DRV8825",
           stepperDriverTimings: "1.9:1.9:0.65:0.65",
           stepperDriverSmart: false,
+          serialRxPin:"",
+          serialTxPin:"",
+          espDataReadyPin:"",
+          lpcTfrReadyPin:"",
+          espResetPin:"",
           lpc: {
                 externalSDCard:{
                     csPin: "0.28",
@@ -457,6 +497,11 @@ export default {
         stepperDriver: "",
         stepperDriverTimings: "",
         stepperDriverSmart: true,
+        serialRxPin:'0.3',
+        serialTxPin:'0.2',
+        espDataReadyPin:'0.28',
+        lpcTfrReadyPin:'1.30',
+        espResetPin:'1.31',
         lpc: {
             externalSDCard:{
                 csPin: "0.16",
@@ -511,6 +556,129 @@ export default {
         stepperDriver: "",
         stepperDriverTimings: "",
         stepperDriverSmart: true,
+        serialRxPin:'0.3',
+        serialTxPin:'0.2',
+        espDataReadyPin:'0.28',
+        lpcTfrReadyPin:'1.30',
+        espResetPin:'1.31',
+        lpc: {
+            externalSDCard:{
+                csPin: "0.16",
+                cardDetectPin: "1.31",
+                spiFrequencyHz: 4000000,
+                spiChannel: 0,
+            },
+            internalSDCardSPIFrequencyHz: 25000000,
+            softwareSPI:{
+                pins: ["1.20", "NoPin", "1.18"],
+            },
+            lcd:{
+                lcdCSPin:       "1.19",
+                lcdBeepPin:     "1.30",
+                encoderPinA:    "3.26",
+                encoderPinB:    "3.25",
+                encoderPinSw:   "0.28",
+                lcdDCPin:       "NoPin",
+                panelButtonPin: "NoPin",
+                spiChannel: 2, //Software SPI
+            },
+            diagnosticPin: "NoPin",
+        }
+    },
+    {
+        name: 'skrpro',
+        caption: 'SKR Pro',
+        motorWarningCurrent: 1200,
+        motorLimitCurrent: 2000,
+        seriesResistor: 4700,
+        microstepping: true,
+        microsteppingInterpolation: true,
+        numDrives: 6,
+        heaterPorts: ['bed', 'e0heat', 'e1heat','e2heat'],
+        fanPorts: ['fan0','fan1','fan2'],
+        pwmPorts: ['bed', 'e0heat', 'e1heat','e2heat','fan0','fan1','fan2'],
+        gpioPorts: ['xstop','ystop','zstop', 'e0stop','e1stop','e2stop','probe'],
+        analogPorts: ['bedtemp', 'e0temp', 'e1temp','e2temp'],
+        blPorts: ['servo0'],
+        spiCsPorts: [],
+        hasEthernet: false,
+        hasWiFi: false,
+        hasESP: true,
+        hasPowerFailureDetection: false,
+        hasMotorLoadDetection: false,
+        supportsDisplay: true,
+        supports12864: true,
+        firmwareFile: 'firmware.bin',
+        iapFile: '',
+        expansionBoards: [],
+        maxExpansionBoards: 0,
+        stepperDriver: "",
+        stepperDriverTimings: "",
+        stepperDriverSmart: true,
+        serialRxPin:'PD9',
+        serialTxPin:'PD8',
+        espDataReadyPin:'A.8',
+        lpcTfrReadyPin:'G.4',
+        espResetPin:'F.12',
+        lpc: {
+            externalSDCard:{
+                csPin: "0.16",
+                cardDetectPin: "1.31",
+                spiFrequencyHz: 4000000,
+                spiChannel: 0,
+            },
+            internalSDCardSPIFrequencyHz: 25000000,
+            softwareSPI:{
+                pins: ["1.20", "NoPin", "1.18"],
+            },
+            lcd:{
+                lcdCSPin:       "1.19",
+                lcdBeepPin:     "1.30",
+                encoderPinA:    "3.26",
+                encoderPinB:    "3.25",
+                encoderPinSw:   "0.28",
+                lcdDCPin:       "NoPin",
+                panelButtonPin: "NoPin",
+                spiChannel: 2, //Software SPI
+            },
+            diagnosticPin: "NoPin",
+        }
+    },
+    {
+        name: 'skrgtr_1.0',
+        caption: 'SKR GTR v1.0',
+        motorWarningCurrent: 1200,
+        motorLimitCurrent: 2000,
+        seriesResistor: 4700,
+        microstepping: true,
+        microsteppingInterpolation: true,
+        numDrives: 6,
+        heaterPorts: ['bed', 'e0heat', 'e1heat','e2heat'],
+        fanPorts: ['fan0','fan1','fan2'],
+        pwmPorts: ['bed', 'e0heat', 'e1heat','e2heat','fan0','fan1','fan2'],
+        gpioPorts: ['xstop','ystop','zstop', 'e0stop','e1stop','e2stop','probe'],
+        analogPorts: ['bedtemp', 'e0temp', 'e1temp','e2temp'],
+        blPorts: ['servo0'],
+        spiCsPorts: [],
+        hasEthernet: false,
+        hasWiFi: false,
+        hasESP: true,
+        hasPowerFailureDetection: false,
+        hasMotorLoadDetection: false,
+        supportsDisplay: true,
+        supports12864: true,
+        firmwareFile: 'firmware.bin',
+        iapFile: '',
+        expansionBoards: [],
+        maxExpansionBoards: 0,
+        stepperDriver: "",
+        stepperDriverTimings: "",
+        stepperDriverSmart: true,
+        serialRxPin:'PC7',
+        serialTxPin:'PC6',
+        espDataReadyPin:'A.15',
+        lpcTfrReadyPin:'C.11',
+        espResetPin:'B.10',
         lpc: {
             externalSDCard:{
                 csPin: "0.16",

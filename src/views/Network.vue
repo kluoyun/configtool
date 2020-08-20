@@ -125,14 +125,15 @@ export default {
 			http: 'template.network.protocols.http',
 			ftp: 'template.network.protocols.ftp',
 			telnet: 'template.network.protocols.telnet',
-			espDataReadyPin: 'template.network.espDataReadyPin',
-			lpcTfrReadyPin: 'template.network.lpcTfrReadyPin',
-			espResetPin: 'template.network.espResetPin',
+			espDataReadyPin: 'board.espDataReadyPin',
+			lpcTfrReadyPin: 'board.lpcTfrReadyPin',
+			espResetPin: 'board.espResetPin',
 			espRXTX: 'template.network.espRXTX',
-			serialRxPin: 'template.network.serialRxPin',
-			serialTxPin: 'template.network.serialTxPin',
+			serialRxPin: 'board.serialRxPin',
+			serialTxPin: 'board.serialTxPin',
 			serialRxPinalt: 'template.network.serialRxPinalt',
-			serialTxPinalt: 'template.network.serialTxPinalt'
+			serialTxPinalt: 'template.network.serialTxPinalt',
+				
 			
 		})
 	},

@@ -586,7 +586,7 @@ export default {
         }
     },
     {
-        name: 'skrpro',
+        name: 'biquskrpro_1.1',
         caption: 'SKR Pro',
         motorWarningCurrent: 1200,
         motorLimitCurrent: 2000,

@@ -345,7 +345,7 @@ export default {
 						disabled
 					});
 					options.push({
-						text: text + ' (inverted)',
+						text: text + ' (active-low)',
 						value: '!' + value,
 						disabled
 					});
@@ -356,7 +356,7 @@ export default {
 							disabled
 						});
 						options.push({
-							text: text + ' (inverted, pull-up)',
+							text: text + ' (active-low, pull-up)',
 							value: '!^' + value,
 							disabled
 						});

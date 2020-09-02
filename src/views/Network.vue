@@ -12,7 +12,7 @@
 
 					<template v-if="board.hasESP && template.firmware >= 3">
 						<b-col cols="auto">
-							<b-form-group label="WiFi Access Point Name:">
+							<b-form-group label="Your WiFi Network Name:">
 								<b-form-input v-model.trim="ssid" v-b-tooltip.hover title="Name of the SSID to connect to. Alternatively, you can connect manually via M587" maxlength="32" placeholder="configure manually" type="text"></b-form-input>
 							</b-form-group>
 						</b-col>

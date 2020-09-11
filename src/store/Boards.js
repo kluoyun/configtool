@@ -645,7 +645,7 @@ export default {
         }
     },
     {
-        name: 'skrgtr_1.0',
+        name: 'biqugtr_1.0',
         caption: 'SKR GTR v1.0',
         motorWarningCurrent: 1200,
         motorLimitCurrent: 2000,

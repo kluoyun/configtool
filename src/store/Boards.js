@@ -34,11 +34,11 @@ export default {
             stepperDriver: "A5984",
             stepperDriverTimings: "1.0:1.0:0.4:0.4",
             stepperDriverSmart: false,
-            serialRxPin:"",
-            serialTxPin:"",
-            espDataReadyPin:"",
-            lpcTfrReadyPin:"",
-            espResetPin:"",
+            serialRxPin:'',
+            serialTxPin:'',
+            espDataReadyPin:'',
+            lpcTfrReadyPin:'',
+            espResetPin:'',
             lpc: {
                   externalSDCard:{
                       csPin: "0.28",
@@ -208,8 +208,8 @@ export default {
           stepperDriver: "", // no built in drivers.
           stepperDriverTimings: "",
           stepperDriverSmart: true,
-          serialRxPin:'0.3',
-          serialTxPin:'0.2',
+          serialRxPin:'4.29',
+          serialTxPin:'4.28',
           espDataReadyPin:'0.28',
           lpcTfrReadyPin:'1.30',
           espResetPin:'1.31',
@@ -326,11 +326,11 @@ export default {
           stepperDriver: "", // no built in drivers.
           stepperDriverTimings: "",
           stepperDriverSmart: false,
-          serialRxPin:"",
-          serialTxPin:"",
-          espDataReadyPin:"",
-          lpcTfrReadyPin:"",
-          espResetPin:"",
+          serialRxPin:'',
+          serialTxPin:'',
+          espDataReadyPin:'',
+          lpcTfrReadyPin:'',
+          espResetPin:'',
           lpc: {
                 externalSDCard:{
                     csPin: "1.23",
@@ -385,11 +385,11 @@ export default {
           stepperDriver: "", // no built in drivers.
           stepperDriverTimings: "",
           stepperDriverSmart: false,
-          serialRxPin:"",
-          serialTxPin:"",
-          espDataReadyPin:"",
-          lpcTfrReadyPin:"",
-          espResetPin:"",
+          serialRxPin:'',
+          serialTxPin:'',
+          espDataReadyPin:'',
+          lpcTfrReadyPin:'',
+          espResetPin:'',
           lpc: {
                 externalSDCard:{
                     csPin: "1.23",
@@ -441,11 +441,11 @@ export default {
           stepperDriver: "DRV8825",
           stepperDriverTimings: "1.9:1.9:0.65:0.65",
           stepperDriverSmart: false,
-          serialRxPin:"",
-          serialTxPin:"",
-          espDataReadyPin:"",
-          lpcTfrReadyPin:"",
-          espResetPin:"",
+          serialRxPin:'',
+          serialTxPin:'',
+          espDataReadyPin:'',
+          lpcTfrReadyPin:'',
+          espResetPin:'',
           lpc: {
                 externalSDCard:{
                     csPin: "0.28",

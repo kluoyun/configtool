@@ -227,7 +227,7 @@ export default {
 			},
 			network: {
 				enabled: false,
-				mac_address: '00:1F:11:02:04:20',
+				mac_address: '',
 				name: 'My Printer',
 				password: '',
 				ssid: '',
@@ -235,7 +235,7 @@ export default {
 				dhcp: true,
 				ip: '192.168.1.20',
 				netmask: '255.255.255.0',
-				gateway: '192.168.1.254',
+				gateway: '192.168.1.1',
 				protocols: {
 					http: true,
 					ftp: false,

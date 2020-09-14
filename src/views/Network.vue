@@ -43,7 +43,7 @@
 					</template>
 				</b-form-row>
 				<b-checkbox v-if="board.hasESP && template.firmware" v-model="espRXTX" v-preset.left="preset.network.espRXTX" title="Use RX/TX to update ESP8266 via DWC">Use RX/TX to update ESP8266 via DWC</b-checkbox>
-				<b-form-row v-show="espRXTX" class="mt-3">
+				<b-form-row v-if="espRXTX" class="mt-3">
 					<b-col cols="auto">
 						<b-form-group label="serialRxPin:">
 							<b-form-input v-model.trim="serialRxPin" v-preset="preset.network.serialRxPin" v-b-tooltip.hover title="This is the pin to be used in board.txt for 8266wifi.serialRxPin" maxlength="4" type="text" required></b-form-input>

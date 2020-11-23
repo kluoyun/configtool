@@ -774,12 +774,12 @@ export default {
 		throw 'Invalid board';
 	},
 
-	isValidPin(board, pin, boardId) {
+	isValidPin(board, pin, canAddress) {
 		const pinTypes = ['heaterPorts', 'fanPorts', 'pwmPorts', 'gpioPorts', 'analogPorts', 'spiCsPorts'];
 		return pinTypes.some(function(pinType) {
 			return board[pinType].some(function(boardPort) {
-				return ((!boardId && Template.isSamePin(pin, boardPort)) ||
-						(boardId !== undefined && Template.isSamePin(pin, `${boardId}.${boardPort}`)));
+				return ((!canAddress && Template.isSamePin(pin, boardPort)) ||
+						(canAddress !== undefined && Template.isSamePin(pin, `${canAddress}.${boardPort}`)));
 			});
 		});
 	}

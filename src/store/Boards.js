@@ -775,7 +775,7 @@ export default {
 	},
 
 	isValidPin(board, pin, canAddress) {
-		const pinTypes = ['heaterPorts', 'fanPorts', 'pwmPorts', 'gpioPorts', 'analogPorts', 'spiCsPorts'];
+		const pinTypes = ['heaterPorts', 'fanPorts', 'pwmPorts', 'gpioPorts', 'analogPorts', 'spiCsPorts', 'blPorts'];
 		return pinTypes.some(function(pinType) {
 			return board[pinType].some(function(boardPort) {
 				return ((!canAddress && Template.isSamePin(pin, boardPort)) ||

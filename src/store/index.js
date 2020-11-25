@@ -304,16 +304,10 @@ export default new Vuex.Store({
 
 			state.template.probe.type = type;
 		},
-		setProbePin(state, { inputPin, modulationPin, pwmPin }) {
+		setProbePin(state, { inputPin, pwmPin }) {
 			if (inputPin !== undefined) {
 				state.template.probe.input_pin = inputPin;
 				if (inputPin === null) {
-					state.template.probe.type = 'noprobe';
-				}
-			}
-			if (modulationPin !== undefined) {
-				state.template.probe.modulation_pin = modulationPin;
-				if (modulationPin === null && state.template.probe.type === 'modulated') {
 					state.template.probe.type = 'noprobe';
 				}
 			}

@@ -140,7 +140,6 @@ export default {
 				pwm_inverted: true,				// v1-2 only
 				pwm_pin: null,					// v3+
 				input_pin: null,			// v3+
-				modulation_pin: null	// v3+
 			},
 			bed_is_nozzle: false,
 			bed: {
@@ -290,7 +289,6 @@ export default {
 			template.fans.some(fan => isSamePin(fan.output_pin, pin)) ||
 			template.heaters.some(heater => isSamePin(heater.output_pin, pin) || isSamePin(heater.sensor_pin, pin)) ||
 			isSamePin(template.probe.input_pin, pin) ||
-			isSamePin(template.probe.modulation_pin, pin) ||
 			isSamePin(template.probe.pwm_pin, pin));
 	},
 	getPins(template, board, name, selectedPin, mandatory, inputMode) {
@@ -433,17 +431,12 @@ export default {
 			template.probe.input_pin = null;
 			isValid = false;
 		}
-		if (!isValidPin(template, template.probe.modulation_pin, template.probe.type !== 'modulated')) {
-			template.probe.modulation_pin = null;
-			isValid = false;
-		}
 		if (!isValidPin(template, template.probe.pwm_pin, template.probe.type !== 'bltouch')) {
 			template.probe.pwm_pin = null;
 			isValid = true;
 		}
 
 		if ((template.probe.input_pin === null) ||
-			(template.probe.modulation_pin === null && template.probe.type === 'modulated') ||
 			(template.probe.pwm_pin === null && template.probe.type === 'bltouch')) {
 			template.probe.type = 'noprobe';
 			template.drives.forEach(function(drive) {

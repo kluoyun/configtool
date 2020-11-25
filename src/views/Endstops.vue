@@ -109,11 +109,11 @@ label.btn {
 						<z-probe-values></z-probe-values>
 						An umodulated Z-probe is used to determine the distance between nozzle and bed (without trigger signal)
 					</b-tab>
-					<b-tab title="Simple Modulated IR Probe" :disabled="template.firmware >= 3 && (!template.probe.input_pin || !template.probe.modulation_pin)" :title-link-class="{ 'font-weight-bold' : preset.probe.type === 'modulated' }" value="modulated">
+					<b-tab title="Simple Modulated IR Probe" :disabled="template.firmware >= 3 && (!template.probe.input_pin)" :title-link-class="{ 'font-weight-bold' : preset.probe.type === 'modulated' }" value="modulated">
 						<z-probe-values></z-probe-values>
 						A modulated Z-probe is used to determine the distance between nozzle and bed (with trigger signal)
 					</b-tab>
-					<b-tab title="Smart Effector or Piezo" :disabled="template.firmware >= 3 && (!template.probe.input_pin || !template.probe.modulation_pin)" :title-link-class="{ 'font-weight-bold' : preset.probe.type === 'effector' }" value="effector">
+					<b-tab title="Smart Effector or Piezo" :disabled="template.firmware >= 3 && (!template.probe.input_pin)" :title-link-class="{ 'font-weight-bold' : preset.probe.type === 'effector' }" value="effector">
 						<z-probe-values>
 							<b-col>
 								<b-form-group label="Recovery Time">

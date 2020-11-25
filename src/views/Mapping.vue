@@ -202,15 +202,7 @@
 									Input Pin
 								</b-td>
 								<b-td>
-									<b-select :value="template.probe.input_pin" @change="setProbePin({ inputPin: $event })" :state="isValidPin(template.probe.input_pin, true) && undefined" size="sm" :options="getPins('analogPorts', template.probe.input_pin, false)"></b-select>
-								</b-td>
-							</b-tr>
-							<b-tr>
-								<b-td>
-									Modulation Pin
-								</b-td>
-								<b-td>
-									<b-select :value="template.probe.modulation_pin" @change="setProbePin({ modulationPin: $event })" :state="isValidPin(template.probe.modulationPin, true) && undefined" size="sm" :options="getPins('gpioPorts', template.probe.modulation_pin, false, false)"></b-select>
+									<b-select :value="template.probe.input_pin" @change="setProbePin({ inputPin: $event })" :state="isValidPin(template.probe.input_pin, true) && undefined" size="sm" :options="getPins('gpioPorts', template.probe.input_pin, false)"></b-select>
 								</b-td>
 							</b-tr>
 							<b-tr>
@@ -218,7 +210,7 @@
 									PWM Control Channel (BLTouch only)
 								</b-td>
 								<b-td>
-									<b-select :value="template.probe.pwm_pin" @change="setProbePin({ pwmPin: $event })" :state="isValidPin(template.probe.pwm_pin, true) && undefined" size="sm" :options="getPins('pwmPorts', template.probe.pwm_pin, false)"></b-select>
+									<b-select :value="template.probe.pwm_pin" @change="setProbePin({ pwmPin: $event })" :state="isValidPin(template.probe.pwm_pin, true) && undefined" size="sm" :options="getPins('blPorts', template.probe.pwm_pin, false)"></b-select>
 								</b-td>
 							</b-tr>
 						</b-tbody>

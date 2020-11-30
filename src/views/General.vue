@@ -18,6 +18,7 @@
 							<option value="biquskrpro_1.1">SKR Pro v1.1 and 1.2</option>
 							<option value="biqugtr_1.0">SKR GTR v1.0</option>
 							<option value="fly_cdy">Fly-CDY</option>
+							<option value="skr_e3t">SKR E3 Turbo</option>
 							<!--option value="duet085">Duet 0.8.5</option>
 							<option value="duetwifi10">Duet 2 WiFi</option>
 							<option value="duetethernet10">Duet 2 Ethernet</option>

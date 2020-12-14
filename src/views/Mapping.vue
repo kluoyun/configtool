@@ -296,26 +296,14 @@ export default {
 				default: return 'E' + (drive - 3);
 			}
 		},
-		getDriverCaption(drive) {
+		getDriverCaption(board, driver) {
 			if (this.template.board.startsWith('duet3')) {
-				if (drive < this.board.numDrives) {
-					return `Driver ${drive}`;
+				if (board === 0) {
+					return `Driver ${driver}`;
 				}
-
-				let port = drive - this.board.numDrives, boardIndex = 1;
-				for (let i = 0; i < this.template.expansion_boards.length; i++) {
-					const expansionBoard = ExpansionBoards[this.template.expansion_boards[i]];
-					const numExpansionDrives = expansionBoard.numDrives;
-					if (port < numExpansionDrives) {
-						break;
-					}
-					boardIndex++;
-					port -= numExpansionDrives;
-				}
-
-				return `Board ${boardIndex} - Driver ${port}`;
+				return `Board ${board} - Driver ${driver}`;
 			}
-			return this.getDriveCaption(drive);
+			return this.getDriveCaption(driver);
 		},
 		getDrivers(drive) {
 			const options = [];
@@ -324,7 +312,7 @@ export default {
 			for (let i = 0; i < this.board.numDrives; i++) {
 				const driver = `0.${index}`;
 				options.push({
-					text: this.getDriverCaption(index),
+					text: this.getDriverCaption(0, index),
 					value: driver,
 					disabled: index !== drive && this.drives.some(item => item.driver_v3 === driver)
 				});
@@ -333,9 +321,9 @@ export default {
 			for (let i = 0; i < this.template.expansion_boards.length; i++) {
 				const expansionBoard = ExpansionBoards[this.template.expansion_boards[i]];
 				for (let k = 0; k < expansionBoard.numDrives; k++) {
-					const driver = `${i + 1}.${k}`;
+					const canAddress = this.getCanAddress(i), driver = `${canAddress}.${k}`;
 					options.push({
-						text: this.getDriverCaption(index),
+						text: this.getDriverCaption(canAddress, k),
 						value: driver,
 						disabled: index !== drive && this.drives.some(item => item.driver_v3 === driver)
 					});
@@ -355,6 +343,10 @@ export default {
 						seen = true;
 					}
 				}
+			}
+
+			if (this.getDrivers(driver).findIndex(option => option.value === driver) === -1) {
+				return false;
 			}
 		},
 

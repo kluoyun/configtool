@@ -32,10 +32,10 @@ M918 P<%- template.display.type %> E<%- template.display.encoder_steps + ((templ
 <%			if (template.network.password !== '') { -%>
 M551 P"<%- template.network.password %>" ; set password
 <%			}
-			if (template.network.hasOwnProperty('mac_address') && template.network.mac_address !== '') { -%>
+			if (template.network.hasOwnProperty('mac_address') && template.network.mac_address !== '' && !board.hasESP) { -%>
 M540 P<%- template.network.mac_address %> ; set custom MAC address
 <%			}
-			if (template.board.startsWith('duetwifi')) { -%>
+			if (board.hasESP) { -%>
 M552 S1 ; enable network
 <%			} else if (template.network.dhcp) { -%>
 M552 P0.0.0.0 S1 ; enable network and acquire dynamic address via DHCP
@@ -60,6 +60,10 @@ M552 S0 ; disable network
 		var stepperDriver = "";
 		var stepperDriverTimings = "";
 		if(board.stepperDriver == undefined || board.stepperDriver != ""){
+			//has built in drivers, use presets
+			stepperDriver = board.stepperDriver;
+			stepperDriverTimings = board.stepperDriverTimings;
+		} else if (drive.stepperDriver == "TMC2208" || drive.stepperDriver == "TMC2209" || drive.stepperDriver == "TMC2225" || drive.stepperDriver == "TMC2226") {
 			//has built in drivers, use presets
 			stepperDriver = board.stepperDriver;
 			stepperDriverTimings = board.stepperDriverTimings;
@@ -204,10 +208,10 @@ M950 S0 C"<%- template.probe.pwm_pin %>" ; create servo pin 0 for BLTouch
 				break;
 		}
 		if (template.firmware >= 3 && template.probe.input_pin) {
-			if (template.probe.modulation_pin) {
-				cArg = ` C"${template.probe.input_pin}+${template.probe.modulation_pin}"`;
-			} else if (template.probe.type === 'bltouch') {
+			if (template.probe.type === 'switch' || template.probe.type === 'bltouch') {
 				cArg = ` C"^${template.probe.input_pin}"`;
+			} else if (template.probe.modulation_pin) {
+				cArg = ` C"${template.probe.input_pin}+${template.probe.modulation_pin}"`;
 			} else {
 				cArg = ` C"${template.probe.input_pin}"`;
 			}
@@ -273,8 +277,9 @@ M307 H<%- i %> B<%- template.chamber.use_pid ? 0 : 1 %> S<%- (heater.scale_facto
 M141 H<%- i %> ; map chamber to heater <%- template.chamber.heater %>
 <%			} else { -%>
 M307 H<%- i %> B0 S<%- (heater.scale_factor / 100).toFixed(2) %> ; disable bang-bang mode for heater <% i -%> and set PWM limit
-<%			}
-		});
+<%			} -%>
+M143 H<%- i %> S<%- heater.temp_limit %> ; set temperature limit for heater <%- i %> to <%- heater.temp_limit %>C
+<%		});
 	} else {
 		if (!template.bed.present) { -%>
 M140 H-1 ; disable heated bed

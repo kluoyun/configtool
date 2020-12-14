@@ -1,3 +1,9 @@
+<, truestyle scoped>
+.no-wrap {
+	white-space: nowrap;
+}
+</style>
+
 <template>
 	<b-container>
 		<b-card no-body>
@@ -12,18 +18,18 @@
 
 			<b-table-simple v-show="template.expansion_boards.length > 0" striped hover class="mb-0">
 				<b-thead>
-					<b-th v-if="template.board === 'duet3'" width="9%">ID</b-th>
-					<b-th width="18%">Board Name</b-th>
-					<b-th width="18%">Drives</b-th>
-					<b-th width="18%">Heaters</b-th>
-					<b-th width="18%">Fans</b-th>
-					<b-th width="18%">GPIO Pins</b-th>
+					<b-th v-if="template.board.startsWith('duet3')" class="no-wrap">CAN Address</b-th>
+					<b-th>Board Name</b-th>
+					<b-th>Drives</b-th>
+					<b-th>Heaters</b-th>
+					<b-th>Fans</b-th>
+					<b-th>GPIO Pins</b-th>
 					<b-th width="1%"></b-th>
 				</b-thead>
 				<b-tbody>
 					<b-tr v-for="(expBoard, index) in template.expansion_boards" :key="index">
-						<b-td v-if="template.board === 'duet3'" width="9%">
-							{{ index + 1 }}
+						<b-td v-if="template.board.startsWith('duet3')" width="9%">
+							{{ getCanAddress(index) }}
 						</b-td>
 						<b-td width="18%">
 							{{ expBoard }}
@@ -89,7 +95,7 @@
 									<b-select v-model="drive.driver_v3" :state="validateDriver(drive.driver_v3)" size="sm" :options="getDrivers(drive.driver_v3)"></b-select>
 								</b-td>
 								<b-td>
-									<b-select v-if="index < 3" :value="drive.endstop_pin" @change="updateDrive({ drive: index, ep: $event })" size="sm" :options="getPins('gpioPorts', drive.endstop_pin, false, true)"></b-select>
+									<b-select v-if="index < 3" :value="drive.endstop_pin" @change="updateDrive({ drive: index, ep: $event })" :state="isValidPin(drive.endstop_pin, true) && undefined" size="sm" :options="getPins('gpioPorts', drive.endstop_pin, false, true)"></b-select>
 								</b-td>
 							</b-tr>
 						</b-tbody>
@@ -140,7 +146,7 @@
 							<b-button size="sm" variant="success" :disabled="!canAddNozzle" @click="addNozzle()">
 								<font-awesome-icon icon="plus"></font-awesome-icon>
 							</b-button>
-							<b-button size="sm" variant="danger" :disabled="!canRemoveNozzle" @click="removeNozzle()">
+							<b-button size="sm" variant="danger" :disabled="!canRemoveHeater" @click="removeHeater()">
 								<font-awesome-icon icon="minus"></font-awesome-icon>
 							</b-button>
 						</b-button-group>
@@ -196,15 +202,7 @@
 									Input Pin
 								</b-td>
 								<b-td>
-									<b-select :value="template.probe.input_pin" @change="setProbePin({ inputPin: $event })" size="sm" :options="getPins('analogPorts', template.probe.input_pin, false)"></b-select>
-								</b-td>
-							</b-tr>
-							<b-tr>
-								<b-td>
-									Modulation Pin
-								</b-td>
-								<b-td>
-									<b-select :value="template.probe.modulation_pin" @change="setProbePin({ modulationPin: $event })" size="sm" :options="getPins('gpioPorts', template.probe.modulation_pin, false, false)"></b-select>
+									<b-select :value="template.probe.input_pin" @change="setProbePin({ inputPin: $event })" :state="isValidPin(template.probe.input_pin, true) && undefined" size="sm" :options="getPins('gpioPorts', template.probe.input_pin, false)"></b-select>
 								</b-td>
 							</b-tr>
 							<b-tr>
@@ -212,7 +210,7 @@
 									PWM Control Channel (BLTouch only)
 								</b-td>
 								<b-td>
-									<b-select :value="template.probe.pwm_pin" @change="setProbePin({ pwmPin: $event })" size="sm" :options="getPins('pwmPorts', template.probe.pwm_pin, false)"></b-select>
+									<b-select :value="template.probe.pwm_pin" @change="setProbePin({ pwmPin: $event })" :state="isValidPin(template.probe.pwm_pin, true) && undefined" size="sm" :options="getPins('blPorts', template.probe.pwm_pin, false)"></b-select>
 								</b-td>
 							</b-tr>
 						</b-tbody>
@@ -245,6 +243,9 @@ export default {
 		}),
 		...mapGetters(['canAddExpansionBoard', 'canAddExtruder', 'canRemoveExtruder', 'canAddNozzle', 'canRemoveNozzle', 'canAddFan', 'canRemoveFan']),
 		...mapMultiRowFields(['template.drives', 'template.heaters', 'template.fans']),
+		canRemoveHeater() {
+			return this.canRemoveNozzle || this.template.bed.present || this.template.chamber.present;
+		},
 		heaterTypes() {
 			return [
 				{ text: 'Bed', value: 0 },
@@ -261,6 +262,17 @@ export default {
 			'addFan', 'removeFan', 'updateFan',
 			'setProbePin'
 		]),
+		getCanAddress(index) {
+			let expIndex = 1, toolIndex = 121;
+			for (let i = 0; i <= index; i++) {
+				const expansionBoard = ExpansionBoards[this.template.expansion_boards[i]];
+				const canAddress = expansionBoard.isToolBoard ? toolIndex++ : expIndex++;
+				if (i === index) {
+					return canAddress;
+				}
+			}
+			return 'n/a';
+		},
 		getBoardProp(boardName, propName) {
 			const board = ExpansionBoards[boardName];
 			if (board[propName] instanceof Array) {
@@ -268,15 +280,14 @@ export default {
 			}
 			return board[propName];
 		},
+
 		getPins(name, selectedPin, mandatory, inputMode) {
 			return Template.getPins(this.template, this.board, name, selectedPin, mandatory, inputMode);
 		},
-		getPwmPins(pin, mandatory, inputMode) {
-			const heaterPins = Template.getPins(this.template, this.board, 'heaterPorts', pin, mandatory, inputMode);
-			const fanPorts = Template.getPins(this.template, this.board, 'fanPorts', pin, true, inputMode);
-			const pwmPorts = Template.getPins(this.template, this.board, 'pwmPorts', pin, true, inputMode);
-			return heaterPins.concat(fanPorts).concat(pwmPorts);
+		isValidPin(pinName, optional) {
+			return Template.isValidPin(this.template, pinName, optional);
 		},
+
 		getDriveCaption(drive) {
 			switch (drive) {
 				case 0: return 'X';
@@ -285,26 +296,14 @@ export default {
 				default: return 'E' + (drive - 3);
 			}
 		},
-		getDriverCaption(drive) {
-			if (this.template.board === 'duet3') {
-				if (drive < this.board.numDrives) {
-					return `Driver ${drive}`;
+		getDriverCaption(board, driver) {
+			if (this.template.board.startsWith('duet3')) {
+				if (board === 0) {
+					return `Driver ${driver}`;
 				}
-
-				let port = drive - this.board.numDrives, boardIndex = 1;
-				for (let i = 0; i < this.template.expansion_boards.length; i++) {
-					const expansionBoard = ExpansionBoards[this.template.expansion_boards[i]];
-					const numExpansionDrives = expansionBoard.numDrives;
-					if (port < numExpansionDrives) {
-						break;
-					}
-					boardIndex++;
-					port -= numExpansionDrives;
-				}
-
-				return `Board ${boardIndex} - Driver ${port}`;
+				return `Board ${board} - Driver ${driver}`;
 			}
-			return this.getDriveCaption(drive);
+			return this.getDriveCaption(driver);
 		},
 		getDrivers(drive) {
 			const options = [];
@@ -313,7 +312,7 @@ export default {
 			for (let i = 0; i < this.board.numDrives; i++) {
 				const driver = `0.${index}`;
 				options.push({
-					text: this.getDriverCaption(index),
+					text: this.getDriverCaption(0, index),
 					value: driver,
 					disabled: index !== drive && this.drives.some(item => item.driver_v3 === driver)
 				});
@@ -322,9 +321,9 @@ export default {
 			for (let i = 0; i < this.template.expansion_boards.length; i++) {
 				const expansionBoard = ExpansionBoards[this.template.expansion_boards[i]];
 				for (let k = 0; k < expansionBoard.numDrives; k++) {
-					const driver = `${i + 1}.${k}`;
+					const canAddress = this.getCanAddress(i), driver = `${canAddress}.${k}`;
 					options.push({
-						text: this.getDriverCaption(index),
+						text: this.getDriverCaption(canAddress, k),
 						value: driver,
 						disabled: index !== drive && this.drives.some(item => item.driver_v3 === driver)
 					});
@@ -345,8 +344,21 @@ export default {
 					}
 				}
 			}
+
+			if (this.getDrivers(driver).findIndex(option => option.value === driver) === -1) {
+				return false;
+			}
 		},
 
+		removeHeater() {
+			if (this.template.bed.present && this.template.bed.heater === this.template.heaters.length - 1) {
+				this.updateBed({ present: false });
+			} else if (this.template.chamber.present && this.template.chamber.heater === this.template.heaters.length - 1) {
+				this.updateChamber({ present: false });
+			} else {
+				this.removeNozzle();
+			}
+		},
 		getHeaterType(index) {
 			if (this.template.bed.present && this.template.bed.heater === index) {
 				return 0;

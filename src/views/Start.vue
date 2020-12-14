@@ -9,7 +9,7 @@
 			<p>If you are using a printer that was originally shipped with RepRapFirmware, you can select a predefined template here:</p>
 
 			<b-form-group>
-				<b-form-radio-group v-model="selectedMachine" name="machine" stacked class="mb-2">
+				<!--b-form-radio-group v-model="selectedMachine" name="machine" stacked class="mb-2">
 					<b-form-radio value="minikossel">T3P3 Mini Kossel</b-form-radio>
 				</b-form-radio-group>
 
@@ -30,9 +30,9 @@
 					<b-form-radio value="distech-prometheus-system">Distech Prometheus System</b-form-radio>
 					<b-form-radio value="reach3d">Reach3D Printer</b-form-radio>
 					<b-form-radio value="wanhao-di3">Wanhao Duplicator i3</b-form-radio>
-				</b-form-radio-group>
+				</b-form-radio-group-->
 
-				<p>Alternatively, you can create your own individual configuration by creating a new one from scratch or by loading an existing JSON template:</p>
+				<p>You can create your own individual configuration by creating a new one from scratch or by loading an existing JSON template:</p>
 
 				<b-form-radio-group v-model="selectedMachine" name="machine" stacked>
 					<b-form-radio value="custom">Custom configuration</b-form-radio>

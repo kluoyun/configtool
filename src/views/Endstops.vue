@@ -37,7 +37,7 @@ label.btn {
 								</b-form-radio>
 								<b-form-radio v-show="template.firmware < 3" :value="2" class="w-100" v-b-tooltip.bottom title="Endstop switch pulls signal from +3.3V to GND when triggered (normally-open switch)">Active&nbsp;low&nbsp;(NO)</b-form-radio>
 								<b-form-radio :value="3" class="w-100" :disabled="template.probe.type === 'noprobe'" v-b-tooltip.bottom title="Z-Probe is used">Z-Probe</b-form-radio>
-								<b-form-radio :value="4" class="w-100" :disabled="!board.hasMotorLoadDetection" v-b-tooltip.bottom title="Motor stall detection of the stepper drivers">Sensorless</b-form-radio>
+								<b-form-radio :value="4" class="w-100" :disabled="!board.hasMotorLoadDetection || (template.drives[i].stepperDriver !== 'TMC2209' && template.drives[i].stepperDriver !== 'TMC2226' ) " v-b-tooltip.bottom title="Motor stall detection of the stepper drivers">Sensorless</b-form-radio>
 							</b-form-radio-group>
 						</td>
 						<td>
@@ -91,6 +91,10 @@ label.btn {
 					<b-tab title="Switch" :disabled="template.firmware >= 3 && !template.probe.input_pin" :title-link-class="{ 'font-weight-bold' : preset.probe.type === 'switch' }" value="switch">
 						<z-probe-values></z-probe-values>
 						A switch is used to determine the distance between nozzle and bed.
+						<template v-if="template.firmware >= 3">
+							<br>
+							If you are not using an active-high switch, you have to invert the Z-probe port on the <router-link to="Mapping">I/O Mapping</router-link> page.
+						</template>
 
 						<template v-if="template.geometry.type === 'delta'">
 							<br><br>
@@ -105,11 +109,11 @@ label.btn {
 						<z-probe-values></z-probe-values>
 						An umodulated Z-probe is used to determine the distance between nozzle and bed (without trigger signal)
 					</b-tab>
-					<b-tab title="Simple Modulated IR Probe" :disabled="template.firmware >= 3 && (!template.probe.input_pin || !template.probe.modulation_pin)" :title-link-class="{ 'font-weight-bold' : preset.probe.type === 'modulated' }" value="modulated">
+					<b-tab title="Simple Modulated IR Probe" :disabled="template.firmware >= 3 && (!template.probe.input_pin)" :title-link-class="{ 'font-weight-bold' : preset.probe.type === 'modulated' }" value="modulated">
 						<z-probe-values></z-probe-values>
 						A modulated Z-probe is used to determine the distance between nozzle and bed (with trigger signal)
 					</b-tab>
-					<b-tab title="Smart Effector or Piezo" :disabled="template.firmware >= 3 && (!template.probe.input_pin || !template.probe.modulation_pin)" :title-link-class="{ 'font-weight-bold' : preset.probe.type === 'effector' }" value="effector">
+					<b-tab title="Smart Effector or Piezo" :disabled="template.firmware >= 3 && (!template.probe.input_pin)" :title-link-class="{ 'font-weight-bold' : preset.probe.type === 'effector' }" value="effector">
 						<z-probe-values>
 							<b-col>
 								<b-form-group label="Recovery Time">

@@ -140,7 +140,6 @@ export default {
 				pwm_inverted: true,				// v1-2 only
 				pwm_pin: null,					// v3+
 				input_pin: null,			// v3+
-				modulation_pin: null	// v3+
 			},
 			bed_is_nozzle: false,
 			bed: {
@@ -227,7 +226,7 @@ export default {
 			},
 			network: {
 				enabled: false,
-				mac_address: '00:1F:11:02:04:20',
+				mac_address: '',
 				name: 'My Printer',
 				password: '',
 				ssid: '',
@@ -235,7 +234,7 @@ export default {
 				dhcp: true,
 				ip: '192.168.1.20',
 				netmask: '255.255.255.0',
-				gateway: '192.168.1.254',
+				gateway: '192.168.1.1',
 				protocols: {
 					http: true,
 					ftp: false,
@@ -243,7 +242,12 @@ export default {
 				},
 				espDataReadyPin: '0.28',
 				lpcTfrReadyPin: '1.30',
-				espResetPin: '1.31'
+				espResetPin: '1.31',
+				espRXTX: false,
+				serialRxPin: '0.3',
+				serialTxPin: '0.2',
+				serialRxPinalt: '4.29',
+				serialTxPinalt: '4.28',
 			},
 			fans: [
 				{
@@ -285,11 +289,10 @@ export default {
 			template.fans.some(fan => isSamePin(fan.output_pin, pin)) ||
 			template.heaters.some(heater => isSamePin(heater.output_pin, pin) || isSamePin(heater.sensor_pin, pin)) ||
 			isSamePin(template.probe.input_pin, pin) ||
-			isSamePin(template.probe.modulation_pin, pin) ||
 			isSamePin(template.probe.pwm_pin, pin));
 	},
 	getPins(template, board, name, selectedPin, mandatory, inputMode) {
-		const options = [], items = board[name];
+		const options = [], pins = board[name];
 		if (!mandatory) {
 			options.push({
 				text: '(not assigned)',
@@ -298,41 +301,53 @@ export default {
 			});
 		}
 
+		// Main board
 		let index = 0;
-		for (let i = 0; i < items.length; i++) {
-			if (inputMode == undefined || template.board !== 'duet3' || board.gpioPorts[i].indexOf(inputMode ? 'in' : 'out') !== -1) {
-				const disabled = !this.isSamePin(selectedPin, items[i]) && this.isPinBlocked(template, items[i]);
+		for (let i = 0; i < pins.length; i++) {
+			if ((!template.board.startsWith('duet3') || inputMode == undefined || pins[i].indexOf(inputMode ? 'in' : 'out') !== -1) &&
+				(name !== 'pwmPorts' || pins[i].indexOf('exp') === -1 || template.expansion_boards.length === 0)) {
+				const disabled = !this.isSamePin(selectedPin, pins[i]) && this.isPinBlocked(template, pins[i]);
 				options.push({
-					text: items[i],
-					value: items[i],
-					disabled
-				});
-				options.push({
-					text: items[i] + ' (inverted)',
-					value: '!' + items[i],
+					text: pins[i],
+					value: pins[i],
 					disabled
 				});
 				if (inputMode) {
 					options.push({
-						text: items[i] + ' (pull-up)',
-						value: '^' + items[i],
+						text: pins[i] + ' (active-low)',
+						value: '!' + pins[i],
 						disabled
 					});
 					options.push({
-						text: items[i] + ' (inverted, pull-up)',
-						value: '!^' + items[i],
+						text: pins[i] + ' (pull-up)',
+						value: '^' + pins[i],
+						disabled
+					});
+					options.push({
+						text: pins[i] + ' (active-low, pull-up)',
+						value: '!^' + pins[i],
+						disabled
+					});
+				} else if (name !== 'pwmPorts') {
+					options.push({
+						text: pins[i] + ' (inverted)',
+						value: '!' + pins[i],
 						disabled
 					});
 				}
 			}
 		}
+
+		// Expansion boards
+		let expIndex = 1, toolIndex = 121;
 		for (let i = 0; i < template.expansion_boards.length; i++) {
 			const expansionBoard = ExpansionBoards[template.expansion_boards[i]];
-			const expansionItems = expansionBoard[name];
-			for (let k = 0; k < expansionItems.length; k++) {
-				if (inputMode === undefined || template.board !== 'duet3' || expansionItems[k].indexOf(inputMode ? 'in' : 'out') !== -1) {
-					const text = (template.board === 'duet3') ? `Board ${i + 1} - ${expansionItems[k]}` : expansionItems[k];
-					const value = (template.board === 'duet3') ? `${i + 1}.${expansionItems[k]}` : expansionItems[k];
+			const canAddress = expansionBoard.isToolBoard ? toolIndex++ : expIndex++;
+			const expansionPins = expansionBoard[name];
+			for (let k = 0; k < expansionPins.length; k++) {
+				if (inputMode === undefined || !template.board.startsWith('duet3') || expansionPins[k].indexOf(inputMode ? 'in' : 'out') !== -1) {
+					const text = template.board.startsWith('duet3') ? `Board ${canAddress} - ${expansionPins[k]}` : expansionPins[k];
+					const value = template.board.startsWith('duet3') ? `${canAddress}.${expansionPins[k]}` : expansionPins[k];
 					const disabled = !this.isSamePin(selectedPin, value) && this.isPinBlocked(template, value);
 					options.push({
 						text,
@@ -340,7 +355,7 @@ export default {
 						disabled
 					});
 					options.push({
-						text: text + ' (inverted)',
+						text: text + ' (active-low)',
 						value: '!' + value,
 						disabled
 					});
@@ -351,7 +366,7 @@ export default {
 							disabled
 						});
 						options.push({
-							text: text + ' (inverted, pull-up)',
+							text: text + ' (active-low, pull-up)',
 							value: '!^' + value,
 							disabled
 						});
@@ -368,13 +383,15 @@ export default {
 		}
 
 		const board = Boards.getBoard(template.board);
-		if (Boards.isValidPin(board, pin, (template.board === 'duet3') ? 0 : undefined)) {
+		if (Boards.isValidPin(board, pin, template.board.startsWith('duet3') ? 0 : undefined)) {
 			return true;
 		}
 
+		let expIndex = 1, toolIndex = 121;
 		return template.expansion_boards.some(function(name, index) {
 			const expansionBoard = ExpansionBoards[name];
-			return Boards.isValidPin(expansionBoard, pin, (template.board === 'duet3') ? index + 1 : undefined);
+			const canAddress = expansionBoard.isToolBoard ? toolIndex++ : expIndex++;
+			return Boards.isValidPin(expansionBoard, pin, template.board.startsWith('duet3') ? canAddress : undefined);
 		});
 	},
 	validatePins(template) {
@@ -414,17 +431,12 @@ export default {
 			template.probe.input_pin = null;
 			isValid = false;
 		}
-		if (!isValidPin(template, template.probe.modulation_pin, template.probe.type !== 'modulated')) {
-			template.probe.modulation_pin = null;
-			isValid = false;
-		}
 		if (!isValidPin(template, template.probe.pwm_pin, template.probe.type !== 'bltouch')) {
 			template.probe.pwm_pin = null;
-			isValid = false;
+			isValid = true;
 		}
 
 		if ((template.probe.input_pin === null) ||
-			(template.probe.modulation_pin === null && template.probe.type === 'modulated') ||
 			(template.probe.pwm_pin === null && template.probe.type === 'bltouch')) {
 			template.probe.type = 'noprobe';
 			template.drives.forEach(function(drive) {
@@ -804,6 +816,15 @@ export default {
 			template.chamber.present = false;
 			this.fixNozzles(template);
 		}
+
+		template.tools.forEach(function(tool) {
+			tool.heaters = tool.heaters.filter(heater => {
+				if (heater >= 0 && heater < template.heaters.length) {
+					return template.heaters[heater] !== null;
+				}
+				return false;
+			});
+		});
 	},
 
 	// Recalculate probe points

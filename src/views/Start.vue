@@ -1,7 +1,7 @@
 <template>
 	<b-container>
 		<div class="text-center">
-			<h2 class="mb-4">Welcome to the RepRapFirmware Configuration Tool (for LPC1768/1769 based boards)</h2>
+			<h2 class="mb-4">Welcome to the RepRapFirmware Configuration Tool (for LPC1768/1769 and STM32 based boards)</h2>
 			<h4 class="text-muted mb-5">Please follow this wizard to obtain an individual configuration bundle for your printer</h4>
 		</div>
 

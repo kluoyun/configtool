@@ -58,7 +58,12 @@ export default {
                       spiChannel: 0,
                   },
                   diagnosticPin: "1.18",
-            }
+            },
+            drives: [
+				{
+                    diag: "NoPin",
+                }
+            ]
 		},
       {
           name: 'biquskr_1.1',
@@ -117,7 +122,12 @@ export default {
                     spiChannel: 2, //Software SPI
                 },
                 diagnosticPin: "NoPin",
-          }
+          },
+          drives: [
+            {
+                diag: "NoPin",
+            }
+        ]
       },
       {
           name: 'biquskr_1.3',
@@ -176,7 +186,24 @@ export default {
                     spiChannel: 2, //Software SPI
                 },
                 diagnosticPin: "NoPin",
-          }
+          },
+            drives: [
+				{
+                    diag: "1.29",
+                },
+                {
+                    diag: "1.28",
+                },
+                {
+                    diag: "1.27",
+                },
+                {
+                    diag: "1.26",
+                },
+                {
+                    diag: "1.25",
+                }
+            ]
       },
 	  {
           name: 'biquskr_1.4',
@@ -235,7 +262,24 @@ export default {
                     spiChannel: 2, //Software SPI
                 },
                 diagnosticPin: "NoPin",
-          }
+            },
+            drives: [
+				{
+                    diag: "1.29",
+                },
+                {
+                    diag: "1.28",
+                },
+                {
+                    diag: "1.27",
+                },
+                {
+                    diag: "1.26",
+                },
+                {
+                    diag: "1.25",
+                }
+            ]
       },
 	  {
           name: 'azsmz',
@@ -294,7 +338,12 @@ export default {
                     spiChannel: 2, //Software SPI
                 },
                 diagnosticPin: "1.18",
-          }
+            },
+            drives: [
+				{
+                    diag: "NoPin",
+                }
+            ]
       },
 	  {
           name: 'azteegX5_1.1',
@@ -353,7 +402,12 @@ export default {
                     spiChannel: 2, //Software SPI
                 },
                 diagnosticPin: "4.28",
-          }
+            },
+            drives: [
+				{
+                    diag: "NoPin",
+                }
+            ]
       },
       {
           name: 'rearm',
@@ -409,7 +463,12 @@ export default {
                     spiChannel: 0,
                 },
                 diagnosticPin: "4.28",
-          }
+            },
+            drives: [
+				{
+                    diag: "NoPin",
+                }
+            ]
       },
       {
           name: 'mkssbase_1.3',
@@ -465,7 +524,12 @@ export default {
                     spiChannel: 0,
                 },
                 diagnosticPin: "1.18",
-          }
+            },
+            drives: [
+				{
+                    diag: "NoPin",
+                }
+            ]
       },
       {
         name: 'mkssgenl_1.0',
@@ -524,7 +588,24 @@ export default {
                 spiChannel: 2, //Software SPI
             },
             diagnosticPin: "NoPin",
-        }
+        },
+        drives: [
+            {
+                diag: "1.29",
+            },
+            {
+                diag: "1.27",
+            },
+            {
+                diag: "1.25",
+            },
+            {
+                diag: "1.28",
+            },
+            {
+                diag: "1.26",
+            }
+        ]
     },
     {
         name: 'mkssgenl_2.0',
@@ -583,7 +664,24 @@ export default {
                 spiChannel: 2, //Software SPI
             },
             diagnosticPin: "NoPin",
-        }
+        },
+        drives: [
+            {
+                diag: "1.29",
+            },
+            {
+                diag: "1.27",
+            },
+            {
+                diag: "1.25",
+            },
+            {
+                diag: "1.28",
+            },
+            {
+                diag: "1.26",
+            }
+        ]
     },
     {
         name: 'biquskr_e3t',
@@ -642,7 +740,24 @@ export default {
                 spiChannel: 2, //Software SPI
             },
             diagnosticPin: "NoPin",
-        }
+        },
+        drives: [
+            {
+                diag: "1.29",
+            },
+            {
+                diag: "1.28",
+            },
+            {
+                diag: "1.27",
+            },
+            {
+                diag: "1.26",
+            },
+            {
+                diag: "1.25",
+            }
+        ]
     },
     {
         name: 'biquskrpro_1.1',
@@ -701,7 +816,27 @@ export default {
                 spiChannel: 2, //Software SPI
             },
             diagnosticPin: "NoPin",
-        }
+        },
+        drives: [
+            {
+                diag: "B.10",
+            },
+            {
+                diag: "E.12",
+            },
+            {
+                diag: "G.8",
+            },
+            {
+                diag: "E.15",
+            },
+            {
+                diag: "E.10",
+            },
+            {
+                diag: "G.5",
+            }
+        ]
     },
     {
         name: 'biqugtr_1.0',
@@ -760,7 +895,42 @@ export default {
                 spiChannel: 2, //Software SPI
             },
             diagnosticPin: "NoPin",
-        }
+        },
+        drives: [
+            {
+                diag: "F.2",
+            },
+            {
+                diag: "C.13",
+            },
+            {
+                diag: "E.0",
+            },
+            {
+                diag: "G.14",
+            },
+            {
+                diag: "G.9",
+            },
+            {
+                diag: "D.3",
+            },
+            {
+                diag: "I.4",
+            },
+            {
+                diag: "F.4",
+            },
+            {
+                diag: "F.6",
+            },
+            {
+                diag: "I.7",
+            },
+            {
+                diag: "F.12",
+            }
+        ]
     },
     {
         name: 'fly_cdy',
@@ -819,8 +989,189 @@ export default {
                 spiChannel: 2, //Software SPI
             },
             diagnosticPin: "NoPin",
-        }
+        },
+        drives: [
+            {
+                diag: "1.29",
+            },
+            {
+                diag: "1.28",
+            },
+            {
+                diag: "1.27",
+            },
+            {
+                diag: "1.25",
+            },
+            {
+                diag: "1.22",
+            },
+            {
+                diag: "1.19",
+            }
+        ]
     },
+    {
+        name: 'fly_F407ZG',
+        caption: 'Fly-F407ZG',
+        motorWarningCurrent: 1200,
+        motorLimitCurrent: 2000,
+        seriesResistor: 4700,
+        microstepping: true,
+        microsteppingInterpolation: true,
+        numDrives: 9,
+        heaterPorts: ['bed', 'e0heat', 'e1heat','e2heat','e3heat','e4heat','e5heat'],
+        fanPorts: ['fan0','fan1','fan2','fan3','fan4','fan5'],
+        pwmPorts: ['bed', 'e0heat', 'e1heat','e2heat','e3heat','e4heat','e5heat','fan0','fan1','fan2','fan3','fan4','fan5'],
+        gpioPorts: ['xstop','ystop','zstop', 'xstopmax','ystopmax','zstopmax','Z3','DLJC'],
+        analogPorts: ['bedtemp', 'e0temp', 'e1temp','e2temp','e3temp','e4temp','e5temp'],
+        blPorts: ['servo0'],
+        spiCsPorts: [],
+        hasEthernet: false,
+        hasWiFi: false,
+        hasESP: true,
+        hasPowerFailureDetection: false,
+        hasMotorLoadDetection: false,
+        supportsDisplay: true,
+        supports12864: false,
+        firmwareFile: 'firmware.bin',
+        iapFile: '',
+        expansionBoards: [],
+        maxExpansionBoards: 0,
+        stepperDriver: "",
+        stepperDriverTimings: "",
+        stepperDriverSmart: true,
+        serialRxPin:'A.10',
+        serialTxPin:'A.9',
+        espDataReadyPin:'E.15',
+        lpcTfrReadyPin:'B.10',
+        espResetPin:'B.2',
+        lpc: {
+            externalSDCard:{
+                csPin: "NoPin",
+                cardDetectPin: "NoPin",
+                spiFrequencyHz: 4000000,
+                spiChannel: 0,
+            },
+            internalSDCardSPIFrequencyHz: 25000000,
+            softwareSPI:{
+                pins: ["NoPin", "NoPin", "NoPin"],
+            },
+            lcd:{
+                lcdCSPin:       "NoPin",
+                lcdBeepPin:     "NoPin",
+                encoderPinA:    "NoPin",
+                encoderPinB:    "NoPin",
+                encoderPinSw:   "NoPin",
+                lcdDCPin:       "NoPin",
+                panelButtonPin: "NoPin",
+                spiChannel: 2, //Software SPI
+            },
+            diagnosticPin: "NoPin",
+        },
+        drives: [
+            {
+                diag: "NoPin",
+            },
+            {
+                diag: "NoPin",
+            },
+            {
+                diag: "NoPin",
+            },
+            {
+                diag: "NoPin",
+            },
+            {
+                diag: "NoPin",
+            },
+            {
+                diag: "NoPin",
+            },
+            {
+                 diag: "NoPin",
+            },
+            {
+                diag: "NoPin",
+            },
+            {
+                diag: "NoPin",
+            }
+            ]
+        },
+        {
+            name: 'fly_E3',
+            caption: 'Fly-E3',
+            motorWarningCurrent: 1200,
+            motorLimitCurrent: 2000,
+            seriesResistor: 4700,
+            microstepping: true,
+            microsteppingInterpolation: true,
+            numDrives: 4,
+            heaterPorts: ['bed', 'e0heat'],
+            fanPorts: ['fan0','fan1'],
+            pwmPorts: ['bed', 'e0heat','fan0','fan1'],
+            gpioPorts: ['xstop','ystop','zstop', 'probe'],
+            analogPorts: ['bedtemp', 'e0temp'],
+            blPorts: ['servo0'],
+            spiCsPorts: [],
+            hasEthernet: false,
+            hasWiFi: false,
+            hasESP: true,
+            hasPowerFailureDetection: false,
+            hasMotorLoadDetection: true,
+            supportsDisplay: true,
+            supports12864: false,
+            firmwareFile: 'firmware.bin',
+            iapFile: '',
+            expansionBoards: [],
+            maxExpansionBoards: 0,
+            stepperDriver: "",
+            stepperDriverTimings: "",
+            stepperDriverSmart: true,
+            serialRxPin:'D.9',
+            serialTxPin:'D.8',
+            espDataReadyPin:'E.13',
+            lpcTfrReadyPin:'E.14',
+            espResetPin:'E.15',
+            lpc: {
+                externalSDCard:{
+                    csPin: "NoPin",
+                    cardDetectPin: "NoPin",
+                    spiFrequencyHz: 4000000,
+                    spiChannel: 0,
+                },
+                internalSDCardSPIFrequencyHz: 25000000,
+                softwareSPI:{
+                    pins: ["NoPin", "NoPin", "NoPin"],
+                },
+                lcd:{
+                    lcdCSPin:       "NoPin",
+                    lcdBeepPin:     "NoPin",
+                    encoderPinA:    "NoPin",
+                    encoderPinB:    "NoPin",
+                    encoderPinSw:   "NoPin",
+                    lcdDCPin:       "NoPin",
+                    panelButtonPin: "NoPin",
+                    spiChannel: 2, //Software SPI
+                },
+                diagnosticPin: "NoPin",
+            },
+            drives: [
+                {
+                    diag: "E.6",
+                },
+                {
+                    diag: "E.2",
+                },
+                {
+                    diag: "D.5",
+                },
+                {
+                    diag: "D.7",
+                }
+            ]
+        },
 	],
 
 	getBoard(boardType) {

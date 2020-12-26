@@ -5,20 +5,22 @@
 				<b-col>
 					<b-form-group label="Board:">
 						<b-form-select :value="template.board" @change="setSelectedBoard($event)" v-preset="preset.board" title="Board on which the firmware runs">
-							<option value="smoothieboard">Smoothieboard</option>
-							<option value="biquskr_1.1">SKR v1.1</option>
-							<option value="biquskr_1.3">SKR v1.3</option>
-							<option value="biquskr_1.4">SKR v1.4</option>
 							<option value="azsmz">Azsmz Mini</option>
 							<option value="azteegX5_1.1">Azteeg X5 Mini v1.1</option>
+							<option value="fly_cdy">Fly-CDY</option>
+							<option value="fly_E3">Fly-E3</option>
+							<option value="fly_F407ZG">Fly-F407ZG</option>
 							<option value="mkssbase_1.3">MKS SBase 1.3</option>
 							<option value="mkssgenl_1.0">MKS SGen L v1.0</option>
 							<option value="mkssgenl_2.0">MKS SGen L v2.0</option>
 							<option value="rearm">ReArm</option>
-							<option value="biquskrpro_1.1">SKR Pro v1.1 and 1.2</option>
-							<option value="biqugtr_1.0">SKR GTR v1.0</option>
-							<option value="fly_cdy">Fly-CDY</option>
 							<option value="biquskr_e3t">SKR E3 Turbo</option>
+							<option value="biqugtr_1.0">SKR GTR v1.0</option>
+							<option value="biquskrpro_1.1">SKR Pro v1.1 and 1.2</option>
+							<option value="biquskr_1.1">SKR v1.1</option>
+							<option value="biquskr_1.3">SKR v1.3</option>
+							<option value="biquskr_1.4">SKR v1.4</option>
+							<option value="smoothieboard">Smoothieboard</option>
 							<!--option value="duet085">Duet 0.8.5</option>
 							<option value="duetwifi10">Duet 2 WiFi</option>
 							<option value="duetethernet10">Duet 2 Ethernet</option>
@@ -50,7 +52,7 @@
 			</b-form-row>
 
 			<!--b-form-checkbox v-if="template.board === 'duet3'" v-model="standalone" v-preset.left title="Run RepRapFirmware in stand-alone mode without an attached single-board computer">Run in standalone mode without SBC</b-form-checkbox-->
-			<b-form-checkbox v-if="template.board === 'biquskr_1.1' || template.board === 'biquskr_1.3' || template.board === 'biquskr_1.4' || template.board === 'mkssgenl_1.0' || template.board === 'mkssgenl_2.0' || template.board === 'biquskrpro_1.1' || template.board === 'biqugtr_1.0'" v-model="standalone" v-preset.left title="Run RepRapFirmware in stand-alone mode without an attached single-board computer">Run in standalone mode without SBC</b-form-checkbox>
+			<b-form-checkbox v-if="template.board === 'biquskr_1.1' || template.board === 'biquskr_1.3' || template.board === 'biquskr_1.4' || template.board === 'mkssgenl_1.0' || template.board === 'mkssgenl_2.0' || template.board === 'biquskrpro_1.1' || template.board === 'biqugtr_1.0' || template.board === 'fly_F407ZG'" v-model="standalone" v-preset.left title="Run RepRapFirmware in stand-alone mode without an attached single-board computer">Run in standalone mode without SBC</b-form-checkbox>
 			<b-form-checkbox v-model="nvram" v-preset.left title="Load saved configuration parameters on start-up (M501)">Read config-override.g file at end of startup process (provides similar functionality to the EEPROM option in Marlin)</b-form-checkbox>
 			<b-form-checkbox v-if="board.hasPowerFailureDetection" v-model="autoSaveEnabled" v-preset.left="preset.auto_save.enabled" title="Store the last valid print parameters on the SD card when a power failure occurs (M911)">Save print state on power failure</b-form-checkbox>
 			<div v-show="autoSaveEnabled" class="mt-3 pl-4">

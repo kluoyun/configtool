@@ -1,8 +1,8 @@
 <template>
 	<b-container>
 		<div class="text-center">
-			<h2 class="mb-4">Welcome to the RepRapFirmware Configuration Tool (for LPC1768/1769 and STM32 based boards)</h2>
-			<h4 class="text-muted mb-5">Please follow this wizard to obtain an individual configuration bundle for your printer</h4>
+			<h2 class="mb-4">{{$t('start.welcomeLPC')}}</h2>
+			<h4 class="text-muted mb-5">{{$t('start.instructions')}}</h4>
 		</div>
 
 		<b-card bg-variant="light" class="mb-3">
@@ -32,7 +32,7 @@
 					<b-form-radio value="wanhao-di3">Wanhao Duplicator i3</b-form-radio>
 				</b-form-radio-group-->
 
-				<p>You can create your own individual configuration by creating a new one from scratch or by loading an existing JSON template:</p>
+				<p>{{$t('start.alternative')}}</p>
 
 				<b-form-radio-group v-model="selectedMachine" name="machine" stacked>
 					<b-form-radio value="custom">{{$t('start.custom')}}</b-form-radio>
@@ -42,7 +42,7 @@
 		</b-card>
 
 		<div class="text-center mt-4">
-			<span class="text-muted">Note: If you encounter problems, please report your problems on <a href="https://github.com/jaysuk/configtool" target="_blank">GitHub</a>.
+			<span class="text-muted">{{$t('start.note')}}<a href="https://github.com/jaysuk/configtool" target="_blank">GitHub</a>.
 				<br>
 				{{$t('start.options')}}<a href="https://duet3d.dozuki.com" target="_blank">Duet3D wiki</a>.</span>
 			<br><br>

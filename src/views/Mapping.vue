@@ -207,7 +207,7 @@
 							</b-tr>
 							<b-tr>
 								<b-td>
-									PWM Control Channel (BLTouch only)
+									{{$t('mapping.pwmPin')}}
 								</b-td>
 								<b-td>
 									<b-select :value="template.probe.pwm_pin" @change="setProbePin({ pwmPin: $event })" :state="isValidPin(template.probe.pwm_pin, true) && undefined" size="sm" :options="getPins('blPorts', template.probe.pwm_pin, false)"></b-select>

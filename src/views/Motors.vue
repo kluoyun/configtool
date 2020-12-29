@@ -7,16 +7,16 @@
 			</template>
 			<table class="table mb-0">
 				<thead>
-					<th>Drive</th>
-					<th>Direction</th>
-					<th v-show="board.stepperDriver==''">Driver</th>
-					<th v-show="board.microstepping">Microstepping (interpolation)</th>
-					<th>Steps per mm</th>
-					<th>Max. Speed Change&nbsp;(mm/s)</th>
-					<th>Max. Speed (mm/s)</th>
-					<th>Acceleration (mm/s²)</th>
-					<th>Motor Current&nbsp;(mA)</th>
-					<th v-show="template.firmware < 3">Motor Driver</th>
+					<th>{{$tc('mapping.drives', 1)}}</th>
+					<th>{{$t('motors.direction')}}</th>
+					<th v-show="board.stepperDriver==''">{{$t('mapping.driver')}}</th>
+					<th v-show="board.microstepping">{{$t('motors.microstepping')}}</th>
+					<th>{{$t('motors.perMM')}}</th>
+					<th>{{$t('motors.maxSpeedChange')}}</th>
+					<th>{{$t('motors.maxSpeed')}}</th>
+					<th>{{$t('motors.acceleration')}}</th>
+					<th>{{$t('motors.current')}}</th>
+					<th v-show="template.firmware < 3">{{$t('motors.motorDriver')}}</th>
 				</thead>
 				<tbody>
 					<drive-row v-for="i in [0, 1, 2]" :key="i" :index="i" :drivers="drivers"></drive-row>
@@ -39,16 +39,16 @@
 
 			<table class="table mb-0">
 				<thead>
-					<th>Drive</th>
-					<th>Direction</th>
-					<th v-show="board.stepperDriver==''">Driver</th>
-					<th v-show="board.microstepping">Microstepping (interpolation)</th>
-					<th>Steps per mm</th>
-					<th>Max. Speed Change (mm/s)</th>
-					<th>Max. Speed (mm/s)</th>
-					<th>Acceleration (mm/s²)</th>
-					<th>Motor Current (mA)</th>
-					<th v-if="template.firmware < 3">Motor Driver</th>
+					<th>{{$tc('mapping.drives', 1)}}</th>
+					<th>{{$t('motors.direction')}}</th>
+					<th v-show="board.stepperDriver==''">{{$t('mapping.driver')}}</th>
+					<th v-show="board.microstepping">{{$t('motors.microstepping')}}</th>
+					<th>{{$t('motors.perMM')}}</th>
+					<th>{{$t('motors.maxSpeedChange')}}</th>
+					<th>{{$t('motors.maxSpeed')}}</th>
+					<th>{{$t('motors.acceleration')}}</th>
+					<th>{{$t('motors.current')}}</th>
+					<th v-show="template.firmware < 3">{{$t('motors.motorDriver')}}</th>
 				</thead>
 				<tbody>
 					<drive-row v-for="i in template.drives.length - 3" :key="i" :index="i + 2" :drivers="drivers"></drive-row>

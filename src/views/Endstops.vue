@@ -35,7 +35,7 @@ label.btn {
 								<b-form-radio :value="1" :disabled="template.firmware >= 3 && !template.drives[i].endstop_pin" class="w-100" v-b-tooltip.bottom :title="$t('endstops.switchDescription')">
 									{{ template.firmware >= 3 ? $t('endstops.switch') : $t('endstops.activeHigh') }}
 								</b-form-radio>
-								<b-form-radio v-show="template.firmware < 3" :value="2" class="w-100" v-b-tooltip.bottom title="Endstop switch pulls signal from +3.3V to GND when triggered (normally-open switch)">Active&nbsp;low&nbsp;(NO)</b-form-radio>
+								<b-form-radio v-show="template.firmware < 3" :value="2" class="w-100" v-b-tooltip.bottom :title="$t('endstops.endstopNoneDescription')">{{$t('endstops.endstopNone')}}</b-form-radio>
 								<b-form-radio :value="3" class="w-100" :disabled="template.probe.type === 'noprobe'" v-b-tooltip.bottom title="Z-Probe is used">Z-Probe</b-form-radio>
 								<b-form-radio :value="4" class="w-100" :disabled="!board.hasMotorLoadDetection || (template.drives[i].stepperDriver !== 'TMC2209' && template.drives[i].stepperDriver !== 'TMC2226' ) " v-b-tooltip.bottom title="Motor stall detection of the stepper drivers">Sensorless</b-form-radio>
 							</b-form-radio-group>
@@ -109,11 +109,11 @@ label.btn {
 						<z-probe-values></z-probe-values>
 						{{$t('endstops.unmodulatedDescription')}}
 					</b-tab>
-					<b-tab title="Simple Modulated IR Probe" :disabled="template.firmware >= 3 && (!template.probe.input_pin)" :title-link-class="{ 'font-weight-bold' : preset.probe.type === 'modulated' }" value="modulated">
+					<b-tab :title="$t('endstops.modulated')" :disabled="template.firmware >= 3 && (!template.probe.input_pin)" :title-link-class="{ 'font-weight-bold' : preset.probe.type === 'modulated' }" value="modulated">
 						<z-probe-values></z-probe-values>
 						{{$t('endstops.modulatedDescription')}}
 					</b-tab>
-					<b-tab title="Smart Effector or Piezo" :disabled="template.firmware >= 3 && (!template.probe.input_pin)" :title-link-class="{ 'font-weight-bold' : preset.probe.type === 'effector' }" value="effector">
+					<b-tab :title="$t('endstops.smartEffector')" :disabled="template.firmware >= 3 && (!template.probe.input_pin)" :title-link-class="{ 'font-weight-bold' : preset.probe.type === 'effector' }" value="effector">
 						<z-probe-values>
 							<b-col>
 								<b-form-group :label="$t('endstops.recoveryTime')">

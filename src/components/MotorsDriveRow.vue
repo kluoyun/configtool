@@ -42,16 +42,16 @@ tr > td:last-child > select {
 			</b-select>
 		</td>
 		<td v-show="board.stepperDriver==''">
-			<b-select v-model="driverOption" v-preset title="Stepper Driver">
+			<b-select v-model="driverOption" v-preset :title="$t('motors.row.stepperDriver')">
 				<option v-for="(value, name) in stepperDriverTimings" v-bind:key="name" v-bind:value="name">{{name}}</option>
 			</b-select> 
 			
-			<b-form-group label="Stepper Timings:" v-show="drive.stepperDriver == 'Custom'">
+			<b-form-group :label="$t('motors.row.stepperTiming')" v-show="drive.stepperDriver == 'Custom'">
 				<timing-input :drive="drive" :index="index"/>
 			</b-form-group>
 		</td>
 		<td :class="{ 'reduce-padding' : drive.microstepping_interpolation }" v-show="board.microstepping">
-			<b-select v-model="microsteppingOption" v-preset="presetMicrosteppingOption" title="Microstepping value (M350)" :disabled="!board.microstepping">
+			<b-select v-model="microsteppingOption" v-preset="presetMicrosteppingOption" :title="$t('motors.row.microstepping')" :disabled="!board.microstepping">
 				<option value="1">x1</option>
 				<option v-if="board.microsteppingInterpolation" value="1_i" class="hidden">x1 (on)</option>
 				<option value="2">x2</option>

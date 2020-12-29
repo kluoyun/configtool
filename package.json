@@ -1,6 +1,6 @@
 {
   "name": "configtool",
-  "version": "3.1.10+3-LPC",
+  "version": "3.1.10+4-LPC",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",

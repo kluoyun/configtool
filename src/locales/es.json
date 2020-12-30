@@ -1,6 +1,7 @@
 {
   "start": {
     "welcome": "Welcome to the RepRapFirmware Configuration Tool",
+    "welcomeLPC": "Welcome to the RepRapFirmware Configuration Tool (for LPC1768/1769 and STM32 based boards)",
     "instructions": "Please follow this wizard to obtain an individual configuration bundle for your printer",
     "original": "If you are using a printer that was originally shipped with RepRapFirmware, you can select a predefined template here:",
     "contributed": "The following machine templates were contributed by users and have not been throughly tested:",
@@ -130,7 +131,9 @@
       "current": "Motor current (M906)",
       "warning": "Warning!",
       "warningText": "Your specified motor current exceeds the safe range. You may have to use extra cooling to prevent damage of your stepper drivers!",
-      "driver": "Motor driver (M584)"
+      "driver": "Motor driver (M584)",
+      "stepperDriver": "Stepper Driver",
+      "stepperTiming": "Stepper Timings:"
     },
     "steps": {
       "steps": "Motor steps per mm (M92)",
@@ -369,9 +372,11 @@
     "settings": "Network Settings",
     "enable": "Enable Network",
     "enableDescription": "Check this to enable networking features (M552 S1)",
+    "enableDescriptionAlt": "Enable Network via Ethernet or ESP8266",
     "password": "Password for the web interface (HTTP), FTP, and Telnet:",
     "passwordDescription": "Optional password to protect your printer from others on your local network (M551)",
     "wifiName": "WiFi Access Point Name:",
+    "wifiNameAlt": "Your WiFi Network Name:",
     "wifiNameDescription": "Name of the SSID to connect to. Alternatively, you can connect manually via M587",
     "wifiPassword": "WiFi Password:",
     "wifiPasswordDescription": "Corresponding password of your SSID",
@@ -390,7 +395,18 @@
     "ftp": "Enable FTP",
     "ftpDescription": "Enable File Transmission Protocol. Be aware that RepRapFirmware only supports one concurrent connection!",
     "telnet": "Enable Telnet",
-    "telnetDescription": "Enable Telnet. Be aware that RepRapFirmware only supports one concurrent connection!"
+    "telnetDescription": "Enable Telnet. Be aware that RepRapFirmware only supports one concurrent connection!",
+    "espDataReadyPin": "espDataReadyPin:",
+    "espDataReadyPinDescription": "This is the pin to be used in board.txt for 8266wifi.espDataReadyPin",
+    "lpcTfrReadyPin": "lpcTfrReadyPin:",
+    "lpcTfrReadyPinDescription": "This is the pin to be used in board.txt for 8266wifi.lpcTfrReadyPin",
+    "espResetPin": "espResetPin:",
+    "espResetPinDescription": "This is the pin to be used in board.txt for 8266wifi.espResetPin",
+    "espRXTXDescription": "Use RX/TX to update ESP8266 via DWC",
+    "serialRxPin": "serialRxPin:",
+    "serialRxPinDescription": "This is the pin to be used in board.txt for 8266wifi.serialRxPin",
+    "serialTxPin": "serialTxPin:",
+    "serialTxPinDescription": "This is the pin to be used in board.txt for 8266wifi.serialTxPin"
   },
   "finish": {
     "title": "Finish",

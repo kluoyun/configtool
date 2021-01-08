@@ -141,7 +141,6 @@ label.btn {
 						</z-probe-values>
 						<span>{{$t('endstops.bltouchNote')}}<a href="https://duet3d.dozuki.com/Wiki/Connecting_a_Z_probe#Section_BLTouch" target="_blank">Duet3D wiki</a>)</span>
 						<br><br>
-						<span>{{$t('endstops.bltouchNote1')}}</span>
 					</b-tab>
 				</b-tabs>
 

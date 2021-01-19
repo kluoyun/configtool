@@ -96,14 +96,14 @@ label.btn {
 							{{$t('endstops.switchNote3')}}<router-link to="Mapping">{{$t('mapping.title')}}</router-link> {{$t('endstops.page')}}.
 						</template>
 
-						<template v-if="template.geometry.type === 'delta'">
+						<!--template v-if="template.geometry.type === 'delta' && template.firmware < 3">
 							<br><br>
 							<span>{{$t('endstops.deltaWarning')}}</span>
 						</template>
 						<template v-else>
 							<br><br>
 							<span>{{$t('endstops.deltaWarning3')}}<strong>{{$t('endstops.deltaWarning31')}}</strong>{{$t('endstops.deltaWarning32')}}</span>
-						</template>
+						</template-->
 					</b-tab>
 					<b-tab :title="$t('endstops.unmodulated')" :disabled="template.firmware >= 3 && !template.probe.input_pin" :title-link-class="{ 'font-weight-bold' : preset.probe.type === 'unmodulated' }" value="unmodulated">
 						<z-probe-values></z-probe-values>

@@ -129,6 +129,35 @@
 			</b-col>
 		</b-row>
 
+		<b-row>
+			<b-col>
+				<b-card :header="$t('display.serial')">
+					<b-form-row>
+						<b-col>
+							<b-checkbox v-model="panelDue" :disabled="isTft || isFly" class="mb-3">{{$t('finish.paneldue')}}</b-checkbox>
+							<b-checkbox v-model="tft" :disabled="isPanel || isFly" class="mb-3">{{$t('finish.tft')}}</b-checkbox>
+							<b-checkbox v-model="flyscreen" :disabled="isPanel || isTft" class="mb-3">{{$t('finish.flymaker')}}</b-checkbox>
+						</b-col>
+						<b-col v-show="isPanel || isFly || isTft" cols="auto">
+							<b-form-group :label="$t('display.auxRX')">
+								<b-form-input v-model.trim="auxRX" v-preset="preset.auxRX" v-b-tooltip.hover :title="$t('display.auxRX')" maxlength="5" type="text"> </b-form-input>
+							</b-form-group>
+						</b-col>
+						<b-col v-show="isPanel || isFly || isTft" cols="auto">
+							<b-form-group :label="$t('display.auxTX')">
+								<b-form-input v-model.trim="auxTX" v-preset="preset.auxTX" v-b-tooltip.hover :title="$t('display.auxTX')" maxlength="5" type="text"></b-form-input>
+							</b-form-group>
+						</b-col>
+					</b-form-row>
+					<b-form-row>
+						<b-col v-show="board.serialAmount == 1 && (isPanel || isFly || isTft)" cols="auto">
+							{{$t('display.warning')}}
+						</b-col>
+					</b-form-row>
+				</b-card>
+			</b-col>
+		</b-row>
+
 		<b-modal ref="modalAddMenu" title="Enter a Name" size="md" cancel-variant="danger" ok-variant="success" :ok-disabled="!canAddMenu" @ok="addMenu">
 			<form ref="formAddMenu" @submit.prevent="submitAddMenu">
 				<b-form-group :label="$t('display.menuName')">
@@ -159,7 +188,12 @@ export default {
 		...mapFields({
 			displayType: 'template.display.type',
 			encoderSteps: 'template.display.encoder_steps',
-			spiFrequency: 'template.display.spi_frequency'
+			spiFrequency: 'template.display.spi_frequency',
+			panelDue: 'template.panelDue',
+			tft: 'template.tft',
+			flyscreen: 'template.flyscreen',
+			auxRX: 'board.auxRX',
+			auxTX: 'board.auxTX'
 		}),
 		...mapMultiRowFields({
 			menus: 'template.display.menus',
@@ -175,6 +209,15 @@ export default {
 		},
 		canAddMenu() {
 			return this.menuToAdd.trim() !== '';
+		},
+		isPanel: function(){
+			return this.panelDue;
+		},
+		isFly: function(){
+			return this.flyscreen;
+		},
+		isTft: function(){
+			return this.tft;
 		}
 	},
 	data() {

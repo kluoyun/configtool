@@ -32,11 +32,11 @@
 					<b-form-radio value="wanhao-di3">Wanhao Duplicator i3</b-form-radio>
 				</b-form-radio-group-->
 
-				<p>{{$t('start.alternative')}}</p>
+				<!--p>{{$t('start.alternative')}}</p-->
 
 				<b-form-radio-group v-model="selectedMachine" name="machine" stacked>
 					<b-form-radio value="custom">{{$t('start.custom')}}</b-form-radio>
-					<b-form-radio value="existing">{{$t('start.existing')}}</b-form-radio>
+					<!--b-form-radio value="existing">{{$t('start.existing')}}</b-form-radio-->
 				</b-form-radio-group>
 			</b-form-group>
 		</b-card>

@@ -345,7 +345,7 @@
   },
   "display": {
     "title": "Display",
-    "direct": "Direct-Connect Display",
+    "direct": "12864 Display",
     "12864": "12864 Display present",
     "12864Description": "Check this to enable support for an external 12864 display",
     "encoder": "Encoder Steps:",
@@ -365,7 +365,13 @@
     "add": "Add",
     "menuEditor": "Menu Editor",
     "supported": "List of Supported Commands",
-    "menuName": "Please enter the Name for the new Menu:"
+    "menuName": "Please enter the Name for the new Menu:",
+    "serial": "Serial connected display",
+    "auxRX": "Serial RX Pin",
+    "auxRXDescription": "This is the pin to be used in board.txt for serial.aux.rxTxPins",
+    "auxTX": "Serial TX Pin",
+    "auxTXDescription": "This is the pin to be used in board.txt for serial.aux.rxTxPins",
+    "warning": "Warning!: A screen can’t be used in conjunction with upgrading the WiFi adapter via DWC as there is only one serial connection available."
   },
   "network": {
     "title": "Network",
@@ -416,7 +422,9 @@
     "misc": "Miscellaneous",
     "paneldue": "Enable support for PanelDue",
     "custom": "Custom Settings for config.g:",
-    "gcodes": "Full list of all available G-codes"
+    "gcodes": "Full list of all available G-codes",
+    "tft": "Enable support for BTT TFT",
+    "flymaker": "Enable support for Fly 4.3/7 inch screens"
   },
   "app": {
     "back": "Back",

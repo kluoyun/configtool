@@ -7,7 +7,7 @@ export default {
 	// Returns a copy of the default config template
 	getDefaultTemplate() {
 		return {
-			board: 'smoothieboard',
+			board: 'biquskr_1.4',
 			expansion_boards: [],
 			firmware: 3.00,
 			standalone: true,
@@ -261,7 +261,13 @@ export default {
 					output_pin: 'fan0'			// v3+
 				},
 			],
-			custom_settings: ''
+			custom_settings: '',
+			panelDue: false,
+			flyscreen: false,
+			tft: false,
+			auxRX: 'NoPin',
+			auxTX: 'NoPin',
+			csPin: 'NoPin'
 		}
 	},
 

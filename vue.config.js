@@ -1,5 +1,5 @@
 module.exports = {
-	publicPath: process.env.NODE_ENV === 'production' ? '/LPCConfigurator/' : '/',
+	publicPath: process.env.NODE_ENV === 'production' ? '/Configurator/' : '/',
 	chainWebpack: config => {
 		config
 			.plugin('copy')

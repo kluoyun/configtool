@@ -42,7 +42,7 @@
 		</b-card>
 
 		<div class="text-center mt-4">
-			<span class="text-muted">{{$t('start.note')}}<a href="https://github.com/jaysuk/configtool" target="_blank">GitHub</a>.
+			<span class="text-muted">{{$t('start.note')}}<a href="https://github.com/TeamGloomy/configtool" target="_blank">GitHub</a>.
 				<br>
 				{{$t('start.options')}}<a href="https://duet3d.dozuki.com" target="_blank">Duet3D wiki</a>.</span>
 			<br><br>

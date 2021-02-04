@@ -61,7 +61,7 @@ export default {
 					endstop_type: 1,
 					endstop_location: 1,
                     stepperDriver: "",
-                    stepperDriverTimings: "",
+                    stepperDriverTimings: ""
 				},
 				{
 					direction: 1,
@@ -77,8 +77,8 @@ export default {
 					endstop_pin: 'ystop',		// v3+
 					endstop_type: 1,
 					endstop_location: 1,
-                     stepperDriver: "",
-                    stepperDriverTimings: "",
+                    stepperDriver: "",
+                    stepperDriverTimings: ""
 
 				},
 				{
@@ -96,8 +96,8 @@ export default {
 					endstop: null,
 					endstop_type: 3,
 					endstop_location: 1,
-                     stepperDriver: "",
-                    stepperDriverTimings: "",
+                    stepperDriver: "",
+                    stepperDriverTimings: ""
 
 				},
 				{
@@ -112,7 +112,7 @@ export default {
 					driver: 3,					// v1-2 only
 					driver_v3: '0.3',			// v3+
                     stepperDriver: "",
-                    stepperDriverTimings: "",
+                    stepperDriverTimings: ""
 
 				}
 			],
@@ -158,7 +158,7 @@ export default {
 					scale_factor: 100,
 					series: 4700,
 					thermistor: 100000,
-					beta: 4138,
+					beta: 4092,
 					a: 0.0005717725,
 					b: 0.0002416626,
 					c: 0,
@@ -173,7 +173,7 @@ export default {
 					scale_factor: 100,
 					series: 4700,
 					thermistor: 100000,
-					beta: 4138,
+					beta: 4092,
 					a: 0.0005717725,
 					b: 0.0002416626,
 					c: 0,
@@ -247,7 +247,7 @@ export default {
 				serialRxPin: '0.3',
 				serialTxPin: '0.2',
 				serialRxPinalt: '4.29',
-				serialTxPinalt: '4.28',
+				serialTxPinalt: '4.28'
 			},
 			fans: [
 				{

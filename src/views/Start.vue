@@ -17,13 +17,13 @@
 					<b-form-radio value="ormerod1">RepRapPro Ormerod 1</b-form-radio>
 					<b-form-radio value="ormerod2">RepRapPro Ormerod 2</b-form-radio>
 					<b-form-radio value="fisher">RepRapPro Fisher</b-form-radio>
-				</b-form-radio-group>
+				</b-form-radio-group-->
 
 				<b-form-radio-group v-model="selectedMachine" name="machine" stacked class="mb-3">
-					<b-form-radio value="ender3pro">Creality Ender 3 Pro</b-form-radio>
+					<b-form-radio value="ender3">Creality Ender 3 - Fly-E3</b-form-radio>
 				</b-form-radio-group>
 
-				<p>{{$t('start.contributed')}}</p>
+				<!--p>{{$t('start.contributed')}}</p>
 
 				<b-form-radio-group v-model="selectedMachine" name="machine" stacked class="mb-3">
 					<b-form-radio value="anet-a8">Anet A8</b-form-radio>
@@ -32,7 +32,7 @@
 					<b-form-radio value="wanhao-di3">Wanhao Duplicator i3</b-form-radio>
 				</b-form-radio-group-->
 
-				<!--p>{{$t('start.alternative')}}</p-->
+				<p>{{$t('start.alternative')}}</p>
 
 				<b-form-radio-group v-model="selectedMachine" name="machine" stacked>
 					<b-form-radio value="custom">{{$t('start.custom')}}</b-form-radio>

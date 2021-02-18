@@ -8,6 +8,7 @@
 							<option value="azsmz">Azsmz Mini</option>
 							<option value="azteegX5_1.1">Azteeg X5 Mini v1.1</option>
 							<option value="fly_cdy">Fly-CDY</option>
+							<option value="fly_cdyv2">Fly-CDYv2</option>
 							<option value="fly_E3">Fly-E3</option>
 							<option value="fly_F407ZG">Fly-F407ZG</option>
 							<option value="mkssbase_1.3">MKS SBase 1.3</option>

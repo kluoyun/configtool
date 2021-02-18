@@ -620,7 +620,7 @@ export default {
                     panelButtonPin: "NoPin",
                     spiChannel: 2, //Software SPI
                 },
-                diagnosticPin: "NoPin",
+                diagnosticPin: "1.18",
             },
             drives: [
                 {
@@ -700,7 +700,7 @@ export default {
                     panelButtonPin: "NoPin",
                     spiChannel: 2, //Software SPI
                 },
-                diagnosticPin: "NoPin",
+                diagnosticPin: "1.18",
             },
             drives: [
                 {
@@ -860,7 +860,7 @@ export default {
                     panelButtonPin: "NoPin",
                     spiChannel: 2, //Software SPI
                 },
-                diagnosticPin: "NoPin",
+                diagnosticPin: "PA.7",
             },
             drives: [
                 {
@@ -943,7 +943,7 @@ export default {
                     panelButtonPin: "NoPin",
                     spiChannel: 2, //Software SPI
                 },
-                diagnosticPin: "NoPin",
+                diagnosticPin: "PA.0",
             },
             drives: [
                 {
@@ -1216,7 +1216,7 @@ export default {
                     panelButtonPin: "NoPin",
                     spiChannel: 2, //Software SPI
                 },
-                diagnosticPin: "NoPin",
+                diagnosticPin: "PA.8",
             },
             drives: [
                 {
@@ -1234,6 +1234,89 @@ export default {
             ],
             auxRX:'PA.10',
             auxTX:'PA.9',
+            serialAmount:'2',
+            wifi8266CSPin: 'NoPin'
+        },
+        {
+            name: 'fly_cdyv2',
+            caption: 'Fly-CDYv2',
+            motorWarningCurrent: 1200,
+            motorLimitCurrent: 2000,
+            seriesResistor: 4700,
+            microstepping: true,
+            microsteppingInterpolation: true,
+            numDrives: 6,
+            heaterPorts: ['bed', 'e0heat', 'e1heat', 'e2heat'],
+            fanPorts: ['fan0','fan1','fan2','laser'],
+            pwmPorts: ['bed', 'e0heat', 'e1heat', 'e2heat','fan0','fan1','fan2','laser'],
+            gpioPorts: ['xstop','xstopmax','ystop',,'ystopmax','zstop','zstopmax', 'probe'],
+            analogPorts: ['bedtemp', 'e0temp','e1temp','e2temp'],
+            blPorts: ['servo0'],
+            spiCsPorts: [],
+            hasEthernet: false,
+            hasWiFi: false,
+            hasESP: true,
+            hasPowerFailureDetection: true,
+            hasMotorLoadDetection: true,
+            supportsDisplay: true,
+            supports12864: false,
+            firmwareFile: 'firmware.bin',
+            iapFile: '',
+            expansionBoards: [],
+            maxExpansionBoards: 0,
+            stepperDriver: "",
+            stepperDriverTimings: "",
+            stepperDriverSmart: true,
+            serialRxPin:'PA.10',
+            serialTxPin:'PA.9',
+            espDataReadyPin:'PE.10',
+            lpcTfrReadyPin:'PE.12',
+            espResetPin:'PE.11',
+            lpc: {
+                externalSDCard:{
+                    csPin: "NoPin",
+                    cardDetectPin: "NoPin",
+                    spiFrequencyHz: 4000000,
+                    spiChannel: 0,
+                },
+                internalSDCardSPIFrequencyHz: 25000000,
+                softwareSPI:{
+                    pins: ["NoPin", "NoPin", "NoPin"],
+                },
+                lcd:{
+                    lcdCSPin:       "NoPin",
+                    lcdBeepPin:     "NoPin",
+                    encoderPinA:    "NoPin",
+                    encoderPinB:    "NoPin",
+                    encoderPinSw:   "NoPin",
+                    lcdDCPin:       "NoPin",
+                    panelButtonPin: "NoPin",
+                    spiChannel: 2, //Software SPI
+                },
+                diagnosticPin: "NoPin",
+            },
+            drives: [
+                {
+                    diag: "PC.7",
+                },
+                {
+                    diag: "PC.6",
+                },
+                {
+                    diag: "PD.11",
+                },
+                {
+                    diag: "PD.10",
+                },
+                {
+                    diag: "PB.10",
+                },
+                {
+                    diag: "PB.11",
+                }
+            ],
+            auxRX:'PD.9',
+            auxTX:'PD.8',
             serialAmount:'2',
             wifi8266CSPin: 'NoPin'
         },

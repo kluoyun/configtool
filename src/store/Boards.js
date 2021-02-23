@@ -1267,8 +1267,8 @@ export default {
             stepperDriver: "",
             stepperDriverTimings: "",
             stepperDriverSmart: true,
-            serialRxPin:'PA.10',
-            serialTxPin:'PA.9',
+            serialRxPin:'PD.9',
+            serialTxPin:'PD.8',
             espDataReadyPin:'PE.10',
             lpcTfrReadyPin:'PE.12',
             espResetPin:'PE.11',
@@ -1315,8 +1315,8 @@ export default {
                     diag: "PB.11",
                 }
             ],
-            auxRX:'PD.9',
-            auxTX:'PD.8',
+            auxRX:'PA.10',
+            auxTX:'PA.9',
             serialAmount:'2',
             wifi8266CSPin: 'NoPin'
         },

@@ -53,7 +53,7 @@
 			</b-form-row>
 
 			<!--b-form-checkbox v-if="template.board === 'duet3'" v-model="standalone" v-preset.left title="Run RepRapFirmware in stand-alone mode without an attached single-board computer">Run in standalone mode without SBC</b-form-checkbox-->
-			<b-form-checkbox v-if="template.board === 'biquskr_1.1' || template.board === 'biquskr_1.3' || template.board === 'biquskr_1.4' || template.board === 'mkssgenl_1.0' || template.board === 'mkssgenl_2.0' || template.board === 'biquskrpro_1.1' || template.board === 'biqugtr_1.0' || template.board === 'fly_F407ZG'" v-model="standalone" v-preset.left :title="$t('general.sbcDescription')">{{$t('general.sbc')}}</b-form-checkbox>
+			<b-form-checkbox v-if="board.hasSBC" v-model="standalone" v-preset.left :title="$t('general.sbcDescription')">{{$t('general.sbc')}}</b-form-checkbox>
 			<b-form-checkbox v-model="nvram" v-preset.left :title="$t('general.M501Description')">{{$t('general.M501')}}</b-form-checkbox>
 			<b-form-checkbox v-if="board.hasPowerFailureDetection" v-model="autoSaveEnabled" v-preset.left="preset.auto_save.enabled" :title="$t('general.M911Description')">{{$t('general.M911')}}</b-form-checkbox>
 			<div v-show="autoSaveEnabled" class="mt-3 pl-4">

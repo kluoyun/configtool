@@ -88,7 +88,7 @@ input::-webkit-inner-spin-button {
 						</li>
 						<li v-show="wifiLink">
 							<a :href="wifiLink" target="_blank">
-								ESP Firmware {{ wifiVersion }}
+								ESP8266 Firmware {{ wifiVersion }}
 							</a>
 						</li>
 						<li v-show="dwcLink">
@@ -378,7 +378,7 @@ export default {
 
 							let wifiLink = null;
 							try {
-								if (item.name.indexOf(board.type) !== -1) {
+								if (item.name === this.board.firmwareWifiFile) {
 									wifiLink = item.browser_download_url;
 									this.wifiVersion = latestRelease.tag_name;
 									this.wifiFile = await Compiler.downloadFile(`assets/DuetWiFiSocketServer-${latestRelease.tag_name}.zip`, 'blob', 'application/octet-stream');

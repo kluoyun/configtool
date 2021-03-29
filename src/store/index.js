@@ -18,7 +18,8 @@ export default new Vuex.Store({
 		customTemplate: Template.getDefaultTemplate(),					// Properties of the custom config template (if machine is not 'custom')
 		template: Template.getDefaultTemplate(),						// Properties of the template being edited
 		addRRF: true,
-		addDWC: true
+		addDWC: true,
+		addWiFi: true
 	},
 	getters: {
 		getField,

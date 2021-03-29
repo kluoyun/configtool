@@ -12,6 +12,7 @@ textarea {
 		<b-card v-show="standalone" :header="$t('finish.files')" class="mt-3">
 			<b-checkbox v-model="addDWC">{{$t('finish.dwc')}}</b-checkbox>
 			<b-checkbox v-model="addRRF">{{$t('finish.reprap')}}</b-checkbox>
+			<b-checkbox v-model="addWiFi">{{$t('finish.wifi')}}</b-checkbox>
 		</b-card>
 
 		<b-card :header="$t('finish.misc')" class="mt-3">
@@ -33,6 +34,7 @@ export default {
 	computed: mapFields({
 		addDWC: 'addDWC',
 		addRRF: 'addRRF',
+		addWiFi: 'addWiFi',
 		panelDue: 'template.panelDue',
 		customSettings: 'template.custom_settings',
 		standalone: 'template.standalone'

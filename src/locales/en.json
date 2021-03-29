@@ -424,7 +424,8 @@
     "custom": "Custom Settings for config.g:",
     "gcodes": "Full list of all available G-codes",
     "tft": "Enable support for BTT TFT",
-    "flymaker": "Enable support for Fly 4.3/7 inch screens"
+    "flymaker": "Enable support for Fly 4.3/7 inch screens",
+    "wifi": "Get the latest stable ESP Firmware version"
   },
   "app": {
     "back": "Back",

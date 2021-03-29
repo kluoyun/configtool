@@ -72,7 +72,7 @@ input::-webkit-inner-spin-button {
 		</b-modal>
 
 		<b-modal ref="finishModal" size="lg" :title="$t('app.configReady')" @show="finishShow">
-			<template v-if="dwcLink || iapLink || rrfLink">
+			<template v-if="dwcLink || iapLink || rrfLink || wifiLink">
 				<p>{{$t('app.configInstructions')}}</p>
 				<b-card bg-variant="light" class="mb-3">
 					<ul class="pl-4 mb-0">
@@ -84,6 +84,11 @@ input::-webkit-inner-spin-button {
 						<li v-show="rrfLink">
 							<a :href="rrfLink" target="_blank">
 								RepRapFirmware {{ rrfVersion }}
+							</a>
+						</li>
+						<li v-show="wifiLink">
+							<a :href="wifiLink" target="_blank">
+								ESP Firmware {{ wifiVersion }}
 							</a>
 						</li>
 						<li v-show="dwcLink">
@@ -137,7 +142,7 @@ import LocaleSwitcher from "@/components/LocaleSwitcher"
 export default {
 	components: { LocaleSwitcher },
 	computed: {
-		...mapState(['board', 'template', 'addDWC', 'addRRF']),
+		...mapState(['board', 'template', 'addDWC', 'addRRF', 'addWiFi']),
 		isFirstPage() { return this.$route.path === '/Start'; },
 		isLastPage() { return this.$route.path === '/Finish'; }
 	},
@@ -150,6 +155,9 @@ export default {
 			rrfVersion: null,
 			rrfLink: null,
 			rrfFile: null,
+			wifiVersion: null,
+			wifiLink: null,
+			wifiFile: null,
 			iapLink: null,
 			iapFile: null,
 			dwcVersion: null,
@@ -202,6 +210,7 @@ export default {
 			this.rrfVersion = this.rrfLink = this.rrfFile = null;
 			this.iapLink = this.iapFile = null;
 			this.dwcVersion = this.dwcLink = this.dwcFile = null;
+			this.wifiVersion = this.wifiLink = this.wifiFile = null;
 
 			this.message = 'Loading...';
 			this.files = [];
@@ -211,7 +220,7 @@ export default {
 			if (this.addRRF && this.template.standalone) {
 				try {
 					// Get GitHub list of releases and assets. Do NOT get drafts and prereleases
-					const releaseInfo = await Compiler.downloadFile('https://api.github.com/repos/dc42/RepRapFirmware/releases', 'json');
+					const releaseInfo = await Compiler.downloadFile('https://api.github.com/repos/gloomyandy/RepRapFirmware/releases', 'json');
 					const firmware = this.template.firmware;
 					let latestRelease = null;
 					releaseInfo.forEach(function(item) {
@@ -225,11 +234,12 @@ export default {
 					});
 
 					// Attempt to download the required files (IAP+RRF)
+					let latestReleaseNew = latestRelease.tag_name.substring(1);
 					if (latestRelease) {
 						// Try to download RRF from our own assets
 						try {
-							this.rrfFile = await Compiler.downloadFile(`assets/RepRapFirmware-${latestRelease.tag_name}/${this.board.firmwareFile}`, 'blob', 'application/octet-stream');
-							this.rrfFile.name = this.board.firmwareFile;
+							this.rrfFile = await Compiler.downloadFile(`assets/RepRapFirmware-${latestRelease.tag_name}/${this.board.firmwareStandaloneFile+'-'+latestReleaseNew+'.bin'}`, 'blob', 'application/octet-stream');
+							this.rrfFile.name = this.board.firmwareStandaloneFile;
 						} catch {
 							this.rrfFile = null;
 						}
@@ -250,7 +260,7 @@ export default {
 							const item = latestRelease.assets[i];
 							let rrfLink = null, iapLink = null;
 							try {
-								if (this.rrfFile === null && item.name === this.board.firmwareFile) {
+								if (this.rrfFile === null && item.name === this.board.firmwareStandaloneFile+'-'+latestReleaseNew+'.bin') {
 									rrfLink = item.browser_download_url;
 									this.rrfVersion = latestRelease.tag_name;
 									this.rrfFile = await Compiler.downloadFile(`assets/RepRapFirmware-${latestRelease.tag_name}/${item.name}`, 'blob', 'application/octet-stream');
@@ -275,6 +285,112 @@ export default {
 					}
 				} catch (e) {
 					console.warn(`Failed to load RRF: ${e}`);
+				}
+			}
+
+			if (this.addRRF && !this.template.standalone) {
+				try {
+					// Get GitHub list of releases and assets. Do NOT get drafts and prereleases
+					const releaseInfo = await Compiler.downloadFile('https://api.github.com/repos/gloomyandy/RepRapFirmware/releases', 'json');
+					const firmware = this.template.firmware;
+					let latestRelease = null;
+					releaseInfo.forEach(function(item) {
+						if (!item.draft && !item.prerelease && (!latestRelease || item.created_at > latestRelease.created_at)) {
+							if ((firmware < 2 && item.name.indexOf('1.') !== -1) ||
+								(firmware >= 2 && firmware < 3 && item.name.indexOf('2.') !== -1) ||
+								(firmware >= 3 && item.name.indexOf('3.') !== -1)) {
+								latestRelease = item;
+							}
+						}
+					});
+
+					// Attempt to download the required files (IAP+RRF)
+					let latestReleaseNew = latestRelease.tag_name.substring(1);
+					if (latestRelease) {
+						// Try to download RRF from our own assets
+						try {
+							this.rrfFile = await Compiler.downloadFile(`assets/RepRapFirmware-${latestRelease.tag_name}/${this.board.firmwareStandaloneFile+'-'+latestReleaseNew+'.bin'}`, 'blob', 'application/octet-stream');
+							this.rrfFile.name = this.board.firmwareStandaloneFile;
+						} catch {
+							this.rrfFile = null;
+						}
+
+						// TODO Add tool/expansion board files
+
+						// Try to download IAP from our own assets
+						const iapFile = (!this.template.board.startsWith('duet3') || this.template.standalone) ? this.board.iapFile : null;
+						try {
+							this.iapFile = await Compiler.downloadFile(`assets/RepRapFirmware-${latestRelease.tag_name}/${iapFile}`, 'blob', 'application/octet-stream');
+							this.iapFile.name = iapFile;
+						} catch {
+							this.iapFile = null;
+						}
+
+						// Fall back to GitHub (although this probably won't work due to their odd CORS restrictions)
+						for (let i = 0; i < latestRelease.assets.length; i++) {
+							const item = latestRelease.assets[i];
+							let rrfLink = null, iapLink = null;
+							try {
+								if (this.rrfFile === null && item.name === this.board.firmwareSBCFile+'-'+latestReleaseNew+'.bin') {
+									rrfLink = item.browser_download_url;
+									this.rrfVersion = latestRelease.tag_name;
+									this.rrfFile = await Compiler.downloadFile(`assets/RepRapFirmware-${latestRelease.tag_name}/${item.name}`, 'blob', 'application/octet-stream');
+									this.rrfFile.name = item.name;
+								}
+								else if (this.iapFile === null && item.name === iapFile) {
+									iapLink = item.browser_download_url;
+									this.iapFile = await Compiler.downloadFile(`assets/RepRapFirmware-${latestRelease.tag_name}/${item.name}`, 'blob', 'application/octet-stream');
+									this.iapFile.name = item.name;
+								}
+							} catch (e) {
+								if (rrfLink && this.rrfFile === null) {
+									this.rrfLink = rrfLink;
+								}
+								if (iapLink && this.iapFile === null) {
+									this.iapLink = iapLink;
+								}
+							}
+						}
+					} else {
+						throw 'Could not find suitable RepRapFirmware version on GitHub';
+					}
+				} catch (e) {
+					console.warn(`Failed to load RRF: ${e}`);
+				}
+			}
+
+			// Load DWC from the server
+			if (this.addWiFi && this.template.standalone) {
+				try {
+					// Get GitHub list of releases and assets. Do NOT get drafts and prereleases
+					const releaseInfo = await Compiler.downloadFile('https://api.github.com/repos/gloomyandy/DuetWiFiSocketServer/releases', 'json');
+					let latestRelease = null;
+					releaseInfo.forEach(function(item) {
+						if (!item.draft && !item.prerelease && (!latestRelease || item.created_at > latestRelease.created_at)) {
+							latestRelease = item;
+						}
+					});
+
+					// Attempt to download the required files (IAP+RRF)
+					if (latestRelease) {
+						for (let i = 0; i < latestRelease.assets.length; i++) {
+							const item = latestRelease.assets[i];
+
+							let wifiLink = null;
+							try {
+								if (item.name.indexOf(board.type) !== -1) {
+									wifiLink = item.browser_download_url;
+									this.wifiVersion = latestRelease.tag_name;
+									this.wifiFile = await Compiler.downloadFile(`assets/DuetWiFiSocketServer-${latestRelease.tag_name}.zip`, 'blob', 'application/octet-stream');
+									break;
+								}
+							} catch (e) {
+								this.wifiLink = wifiLink;
+							}
+						}
+					}
+				} catch (e) {
+					console.warn(`Failed to load ESP: ${e}`);
 				}
 			}
 

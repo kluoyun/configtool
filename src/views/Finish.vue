@@ -37,7 +37,8 @@ export default {
 		addWiFi: 'addWiFi',
 		panelDue: 'template.panelDue',
 		customSettings: 'template.custom_settings',
-		standalone: 'template.standalone'
+		standalone: 'template.standalone',
+		requiresBeta: 'template.requiresBeta'
 	}),
 	methods: {
 		onTextareaTab(e) {

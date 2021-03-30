@@ -116,7 +116,7 @@ export default {
 			espDataReadyPin: 'board.espDataReadyPin',
 			lpcTfrReadyPin: 'board.lpcTfrReadyPin',
 			espResetPin: 'board.espResetPin',
-			espRXTX: 'template.network.espRXTX',
+			espRXTX: 'board.hasESPUpdate',
 			serialRxPin: 'board.serialRxPin',
 			serialTxPin: 'board.serialTxPin'
 		})

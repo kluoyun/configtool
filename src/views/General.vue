@@ -10,6 +10,7 @@
 							<option value="fly_cdy">Fly-CDY</option>
 							<option value="fly_cdyv2">Fly-CDYv2</option>
 							<option value="fly_E3">Fly-E3</option>
+							<option value="fly_e3_pro">Fly-E3-Pro</option>
 							<option value="fly_F407ZG">Fly-F407ZG</option>
 							<option value="mkssbase_1.3">MKS SBase 1.3</option>
 							<option value="mkssgenl_1.0">MKS SGen L v1.0</option>
@@ -18,6 +19,7 @@
 							<option value="biquskr_e3t">SKR E3 Turbo</option>
 							<option value="biqugtr_1.0">SKR GTR v1.0</option>
 							<option value="biquskrpro_1.1">SKR Pro v1.1 and 1.2</option>
+							<option value="biquskr_rrf_e3_1.1">SKR RRF E3 v1.1</option>
 							<option value="biquskr_1.1">SKR v1.1</option>
 							<option value="biquskr_1.3">SKR v1.3</option>
 							<option value="biquskr_1.4">SKR v1.4</option>

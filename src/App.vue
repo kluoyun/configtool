@@ -142,7 +142,7 @@ import LocaleSwitcher from "@/components/LocaleSwitcher"
 export default {
 	components: { LocaleSwitcher },
 	computed: {
-		...mapState(['board', 'template', 'addDWC', 'addRRF', 'addWiFi']),
+		...mapState(['board', 'template', 'addDWC', 'addRRF', 'addWiFi', 'requiresBeta']),
 		isFirstPage() { return this.$route.path === '/Start'; },
 		isLastPage() { return this.$route.path === '/Finish'; }
 	},
@@ -217,7 +217,7 @@ export default {
 			this.configLink = 'data:text/plain;charset=utf-8,' + encodeURIComponent(JSON.stringify(this.template));
 
 			// Load latest stable RRF version from GitHub
-			if (this.addRRF && this.template.standalone) {
+			if (this.addRRF && this.template.standalone && !this.template.requiresBeta) {
 				try {
 					// Get GitHub list of releases and assets. Do NOT get drafts and prereleases
 					const releaseInfo = await Compiler.downloadFile('https://api.github.com/repos/gloomyandy/RepRapFirmware/releases', 'json');
@@ -225,6 +225,78 @@ export default {
 					let latestRelease = null;
 					releaseInfo.forEach(function(item) {
 						if (!item.draft && !item.prerelease && (!latestRelease || item.created_at > latestRelease.created_at)) {
+							if ((firmware < 2 && item.name.indexOf('1.') !== -1) ||
+								(firmware >= 2 && firmware < 3 && item.name.indexOf('2.') !== -1) ||
+								(firmware >= 3 && item.name.indexOf('3.') !== -1)) {
+								latestRelease = item;
+							}
+						}
+					});
+
+					// Attempt to download the required files (IAP+RRF)
+					let latestReleaseNew = latestRelease.tag_name.substring(1);
+					if (latestRelease) {
+						// Try to download RRF from our own assets
+						try {
+							this.rrfFile = await Compiler.downloadFile(`assets/RepRapFirmware-${latestRelease.tag_name}/${this.board.firmwareStandaloneFile+'-'+latestReleaseNew+'.bin'}`, 'blob', 'application/octet-stream');
+							this.rrfFile.name = this.board.firmwareStandaloneFile;
+						} catch {
+							this.rrfFile = null;
+						}
+
+						// TODO Add tool/expansion board files
+
+						// Try to download IAP from our own assets
+						const iapFile = (!this.template.board.startsWith('duet3') || this.template.standalone) ? this.board.iapFile : null;
+						try {
+							this.iapFile = await Compiler.downloadFile(`assets/RepRapFirmware-${latestRelease.tag_name}/${iapFile}`, 'blob', 'application/octet-stream');
+							this.iapFile.name = iapFile;
+						} catch {
+							this.iapFile = null;
+						}
+
+						// Fall back to GitHub (although this probably won't work due to their odd CORS restrictions)
+						for (let i = 0; i < latestRelease.assets.length; i++) {
+							const item = latestRelease.assets[i];
+							let rrfLink = null, iapLink = null;
+							try {
+								if (this.rrfFile === null && item.name === this.board.firmwareStandaloneFile+'-'+latestReleaseNew+'.bin') {
+									rrfLink = item.browser_download_url;
+									this.rrfVersion = latestRelease.tag_name;
+									this.rrfFile = await Compiler.downloadFile(`assets/RepRapFirmware-${latestRelease.tag_name}/${item.name}`, 'blob', 'application/octet-stream');
+									this.rrfFile.name = item.name;
+								}
+								else if (this.iapFile === null && item.name === iapFile) {
+									iapLink = item.browser_download_url;
+									this.iapFile = await Compiler.downloadFile(`assets/RepRapFirmware-${latestRelease.tag_name}/${item.name}`, 'blob', 'application/octet-stream');
+									this.iapFile.name = item.name;
+								}
+							} catch (e) {
+								if (rrfLink && this.rrfFile === null) {
+									this.rrfLink = rrfLink;
+								}
+								if (iapLink && this.iapFile === null) {
+									this.iapLink = iapLink;
+								}
+							}
+						}
+					} else {
+						throw 'Could not find suitable RepRapFirmware version on GitHub';
+					}
+				} catch (e) {
+					console.warn(`Failed to load RRF: ${e}`);
+				}
+			}
+
+			// Load latest stable RRF version from GitHub
+			if (this.addRRF && this.template.standalone && this.template.requiresBeta) {
+				try {
+					// Get GitHub list of releases and assets. Do NOT get drafts and prereleases
+					const releaseInfo = await Compiler.downloadFile('https://api.github.com/repos/gloomyandy/RepRapFirmware/releases', 'json');
+					const firmware = this.template.firmware;
+					let latestRelease = null;
+					releaseInfo.forEach(function(item) {
+						if (!item.draft && item.prerelease && (!latestRelease || item.created_at > latestRelease.created_at)) {
 							if ((firmware < 2 && item.name.indexOf('1.') !== -1) ||
 								(firmware >= 2 && firmware < 3 && item.name.indexOf('2.') !== -1) ||
 								(firmware >= 3 && item.name.indexOf('3.') !== -1)) {

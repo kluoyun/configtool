@@ -11,6 +11,7 @@ export default {
 			expansion_boards: [],
 			firmware: 3.00,
 			standalone: true,
+			requiresBeta: false,
 			nvram: false,
 			auto_save: {
 				enabled: false,

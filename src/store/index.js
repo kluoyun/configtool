@@ -19,7 +19,7 @@ export default new Vuex.Store({
 		template: Template.getDefaultTemplate(),						// Properties of the template being edited
 		addRRF: true,
 		addDWC: true,
-		addWiFi: true
+		addWiFi: true,
 	},
 	getters: {
 		getField,
@@ -106,6 +106,8 @@ export default new Vuex.Store({
 					}
 				});
 			}
+
+			state.template.requiresBeta = newBoard.requiresBeta;
 
 			// Update series resistors
 			state.preset.heaters.forEach(function(heater) {

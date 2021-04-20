@@ -47,7 +47,19 @@ export default {
 		pwmPorts: [],
 		spiCsPorts: [],
 		blPorts: [],
-		maxRtdBoards: 2
+		maxRtdBoards: 0
+	},
+	'BTT E3 RRF IDEX': {
+		isToolBoard: false,
+		numDrives: 2,
+		heaterPorts: ['e1heat'],
+		fanPorts: ['fan2','fan3'],
+		gpioPorts: ['e1heat','x2stop','IO'],
+		analogPorts: ['e1temp','PT100'],
+		pwmPorts: ['e1heat','fan2','fan3'],
+		spiCsPorts: [],
+		blPorts: [],
+		maxRtdBoards: 0
 	},
 	'EXP3HC': {
 		isToolBoard: false,

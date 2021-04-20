@@ -437,7 +437,7 @@
     "configError": "Your configuration contains errors.",
     "configErrorFix": "Check the I/O Mapping page before you continue.",
     "configReady": "Configuration Ready",
-    "configInstructions": "Put the RepRapFirmware files in the /sys directory and extract Duet Web Control bundle to the /www directory of your SD card. If you are using Duet Web Control, upload those files on the Settings page.",
+    "configInstructions": "Put the RepRapFirmware files in the root of the SD card and the wifi firmware in the /sys directory and extract Duet Web Control bundle to the /www directory of your SD card. If you are using Duet Web Control, upload those files on the Settings page.",
     "individual": "The following system files will be generated:",
     "dwc": "If you are using Duet Web Control, you can upload the ZIP file(s) ",
     "dwc1": "without extracting",

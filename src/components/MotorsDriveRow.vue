@@ -17,14 +17,17 @@ tr > td:nth-child(2) > select {
 	width: 8.5rem;
 }
 tr > td:nth-child(3) > select {
+	width: 8.5rem;
+}
+tr > td:nth-child(4) > select {
 	width: 8rem;
 }
-tr > td:nth-child(4) > div,
+tr > td:nth-child(5) > div,
 tr > td:nth-child(6) > input,
-tr > td:nth-child(8) > input {
+tr > td:nth-child(9) > input {
 	width: 5.5rem;
 }
-tr > td:nth-child(5) > input {
+tr > td:nth-child(6) > input {
 	width: 7rem;
 }
 tr > td:last-child > select {
@@ -41,9 +44,18 @@ tr > td:last-child > select {
 				<option :value="true">{{$t('motors.row.forwards')}}</option>
 			</b-select>
 		</td>
-		<td v-show="board.stepperDriver==''">
+		<td v-show="board.stepperDriver=='' && board.type=='LPC'">
 			<b-select v-model="driverOption" v-preset :title="$t('motors.row.stepperDriver')">
 				<option v-for="(value, name) in stepperDriverTimings" v-bind:key="name" v-bind:value="name">{{name}}</option>
+			</b-select> 
+			
+			<b-form-group :label="$t('motors.row.stepperTiming')" v-show="drive.stepperDriver == 'Custom'">
+				<timing-input :drive="drive" :index="index"/>
+			</b-form-group>
+		</td>
+		<td v-show="board.stepperDriver=='' && board.type=='STM32F4'">
+			<b-select v-model="driverOption" v-preset :title="$t('motors.row.stepperDriver')">
+				<option v-for="(value, name) in stepperDriverTimingsSTM32F4" v-bind:key="name" v-bind:value="name">{{name}}</option>
 			</b-select> 
 			
 			<b-form-group :label="$t('motors.row.stepperTiming')" v-show="drive.stepperDriver == 'Custom'">
@@ -113,11 +125,25 @@ export default {
 				"A4988": "1.0:1.0:0.2:0.2",
 				"A4982": "1.0:1.0:0.2:0.2",
 				"A5984": "1.0:1.0:0.4:0.4",
+				"THB6128": "0.5:0.5:0.5:0.5",
 				"TMC2208": "",
 				"TMC2209": "",
 				"TMC2225": "",
 				"TMC2226": "",
+				"LV8729" : "0.5:0.5:0.5:0.5",
+				"Custom": "1.0:1.0:0.4:0.4",
+			},
+			stepperDriverTimingsSTM32F4: {
+				"DRV8825": "1.9:1.9:0.65:0.65",
+				"A4988": "1.0:1.0:0.2:0.2",
+				"A4982": "1.0:1.0:0.2:0.2",
+				"A5984": "1.0:1.0:0.4:0.4",
 				"THB6128": "0.5:0.5:0.5:0.5",
+				"TMC2208": "",
+				"TMC2209": "",
+				"TMC2225": "",
+				"TMC2226": "",
+				"TMC5160": "",
 				"LV8729" : "0.5:0.5:0.5:0.5",
 				"Custom": "1.0:1.0:0.4:0.4",
 			},

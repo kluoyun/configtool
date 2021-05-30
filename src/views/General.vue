@@ -23,6 +23,7 @@
 							<option value="biquskr_1.1">SKR v1.1</option>
 							<option value="biquskr_1.3">SKR v1.3</option>
 							<option value="biquskr_1.4">SKR v1.4</option>
+							<option value="biquskr_2">SKR v2.0</option>
 							<option value="smoothieboard">Smoothieboard</option>
 							<!--option value="duet085">Duet 0.8.5</option>
 							<option value="duetwifi10">Duet 2 WiFi</option>

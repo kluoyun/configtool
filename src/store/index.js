@@ -107,6 +107,14 @@ export default new Vuex.Store({
 				});
 			}
 
+			state.template.drives.forEach(function(drive) {	
+				if ((newBoard.name == "biquskr_rrf_e3_1.1") || (newBoard.name == "fly_e3_pro")) {
+					drive.stepperDriver = newBoard.stepperDriver
+				} else {
+					drive.stepperDriver = ''
+				}
+			});
+
 			state.template.requiresBeta = newBoard.requiresBeta;
 			state.template.network.enabled = newBoard.hasESPOnboard;
 			state.template.network.espRXTX = newBoard.hasESPOnboard;

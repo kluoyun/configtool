@@ -116,6 +116,8 @@ export default new Vuex.Store({
 			});
 
 			state.template.requiresBeta = newBoard.requiresBeta;
+			state.requiresBeta = newBoard.requiresBeta;
+			state.board.requiresBeta = newBoard.requiresBeta;
 			state.template.network.enabled = newBoard.hasESPOnboard;
 			state.template.network.espRXTX = newBoard.hasESPOnboard;
 

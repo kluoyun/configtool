@@ -77,6 +77,16 @@ serial.aux.rxTxPins = {NoPin, NoPin};
 //TMC Smart Drivers
 stepper.numSmartDrivers = <%- numSmartDrivers -%>;
 <% } -%>
+<% if (board.stepperDriverSmart && board.type === 'STM32F4') { -%>
+	<% let num5160Drivers = 0; -%>
+	<% for (let i = 0; i < template.drives.length; ++i) { -%>
+		<% if (template.drives[i].stepperDriver === 'TMC5160') { -%>
+			<% ++num5160Drivers; -%>
+		<% }  else { } -%>
+	<% } -%>
+//TMC 5160 Drivers
+stepper.num5160Drivers = <%- num5160Drivers -%>;
+<% } -%>
 <% if (!template.standalone) { -%>
 //SBC Settings
 sbc.TfrReadyPin = <%- board.espResetPin -%>;
@@ -155,10 +165,11 @@ serial.aux.rxTxPins = {<%- board.auxRX %>, <%- board.auxTX %>};
 		<% diag10 = board.drives[10].diag; -%>
 	<% } -%>
 <% } -%>
-// Diag Pins
 <%if (board.type === 'LPC') { -%>
+// Diag Pins
 stepper.TmcDiagPins = { <%- diag0 -%> , <%- diag1 -%>, <%- diag2 -%>, <%- diag3 -%>, <%- diag4 -%>};
 <% } -%>
 <%if (board.type === 'STM32F4') { -%>
+// Diag Pins
 stepper.TmcDiagPins = { <%- diag0 -%> , <%- diag1 -%>, <%- diag2 -%>, <%- diag3 -%>, <%- diag4 -%>, <%- diag5 -%>, <%- diag6 -%>, <%- diag7 -%>, <%- diag8 -%>, <%- diag9 -%>, <%- diag10 -%>};
 <% } -%>

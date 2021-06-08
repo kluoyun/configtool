@@ -44,7 +44,7 @@ tr > td:last-child > select {
 				<option :value="true">{{$t('motors.row.forwards')}}</option>
 			</b-select>
 		</td>
-		<td v-show="board.stepperDriver=='' && board.type=='LPC'">
+		<td v-show="board.stepperDriver=='' && (board.type=='LPC' || board.name == 'fly_F407ZG')">
 			<b-select v-model="driverOption" v-preset :title="$t('motors.row.stepperDriver')">
 				<option v-for="(value, name) in stepperDriverTimings" v-bind:key="name" v-bind:value="name">{{name}}</option>
 			</b-select> 
@@ -53,7 +53,7 @@ tr > td:last-child > select {
 				<timing-input :drive="drive" :index="index"/>
 			</b-form-group>
 		</td>
-		<td v-show="board.stepperDriver=='' && board.type=='STM32F4'">
+		<td v-show="board.stepperDriver=='' && (board.type=='STM32F4' && board.name != 'fly_F407ZG')">
 			<b-select v-model="driverOption" v-preset :title="$t('motors.row.stepperDriver')">
 				<option v-for="(value, name) in stepperDriverTimingsSTM32F4" v-bind:key="name" v-bind:value="name">{{name}}</option>
 			</b-select> 

@@ -37,7 +37,7 @@ label.btn {
 								</b-form-radio>
 								<b-form-radio v-show="template.firmware < 3" :value="2" class="w-100" v-b-tooltip.bottom :title="$t('endstops.endstopNoneDescription')">{{$t('endstops.endstopNone')}}</b-form-radio>
 								<b-form-radio :value="3" class="w-100" :disabled="template.probe.type === 'noprobe'" v-b-tooltip.bottom title="Z-Probe is used">Z-Probe</b-form-radio>
-								<b-form-radio :value="4" class="w-100" :disabled="!board.hasMotorLoadDetection || (template.drives[i].stepperDriver !== 'TMC2209' && template.drives[i].stepperDriver !== 'TMC2226' && board.stepperDriver !== 'TMC2209'  ) " v-b-tooltip.bottom title="Motor stall detection of the stepper drivers">Sensorless</b-form-radio>
+								<b-form-radio :value="4" class="w-100" :disabled="!board.hasMotorLoadDetection || (template.drives[i].stepperDriver !== 'TMC2209' && template.drives[i].stepperDriver !== 'TMC2226' && template.drives[i].stepperDriver !== 'TMC5160') " v-b-tooltip.bottom title="Motor stall detection of the stepper drivers">Sensorless</b-form-radio>
 							</b-form-radio-group>
 						</td>
 						<td>

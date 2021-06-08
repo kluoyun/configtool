@@ -985,11 +985,11 @@ export default {
                     diag: "G.12",
                 }
             ],
-            serialRxPin:'PD.9',
-            serialTxPin:'PD.8',
-            espDataReadyPin:'PA.8',
-            lpcTfrReadyPin:'PG.4',
-            espResetPin:'PF.12',
+            serialRxPin:'D.9',
+            serialTxPin:'D.8',
+            espDataReadyPin:'A.8',
+            lpcTfrReadyPin:'G.4',
+            espResetPin:'F.12',
             lpc: {
                 externalSDCard:{
                     csPin: "NoPin",
@@ -1011,30 +1011,30 @@ export default {
                     panelButtonPin: "NoPin",
                     spiChannel: 2, //Software SPI
                 },
-                diagnosticPin: "PA.7",
+                diagnosticPin: "A.7",
             },
             drives: [
                 {
-                diag: "PB.10",
+                diag: "B.10",
                 },
                 {
-                diag: "PE.12",
+                diag: "E.12",
                 },
                 {
-                diag: "PG.8",
+                diag: "G.8",
                 },
                 {
-                diag: "PE.15",
+                diag: "E.15",
                 },
                 {
-                diag: "PE.10",
+                diag: "E.10",
                 },
                 {
-                diag: "PG.5",
+                diag: "G.5",
                 }
             ],
-            auxRX:'PA.10',
-            auxTX:'PA.9',
+            auxRX:'A.10',
+            auxTX:'A.9',
             serialAmount:'3',
             wifi8266CSPin: 'NoPin'
         },
@@ -1079,11 +1079,11 @@ export default {
             stepperDriver5160SPI: '5',
             stepperDriver5160Pins: '{B.3, B.6, G.15}',
             stepperDriver5160CS: [],
-            serialRxPin:'P.C7',
-            serialTxPin:'P.C6',
-            espDataReadyPin:'PA.15',
-            lpcTfrReadyPin:'PC.11',
-            espResetPin:'PB.10',
+            serialRxPin:'C.7',
+            serialTxPin:'C.6',
+            espDataReadyPin:'A.15',
+            lpcTfrReadyPin:'C.11',
+            espResetPin:'B.10',
             lpc: {
                 externalSDCard:{
                     csPin: "NoPin",
@@ -1105,45 +1105,45 @@ export default {
                     panelButtonPin: "NoPin",
                     spiChannel: 2, //Software SPI
                 },
-                diagnosticPin: "PA.0",
+                diagnosticPin: "A.0",
             },
             drives: [
                 {
-                diag: "PF.2",
+                diag: "F.2",
                 },
                 {
-                diag: "PC.13",
+                diag: "C.13",
                 },
                 {
-                diag: "PE.0",
+                diag: "E.0",
                 },
                 {
-                diag: "PG.14",
+                diag: "G.14",
                 },
                 {
-                diag: "PG.9",
+                diag: "G.9",
                 },
                 {
-                diag: "PD.3",
+                diag: "D.3",
                 },
                 {
-                diag: "PI.4",
+                diag: "I.4",
                 },
                 {
-                diag: "PF.4",
+                diag: "F.4",
                 },
                 {
-                diag: "PF.6",
+                diag: "F.6",
                 },
                 {
-                diag: "PI.7",
+                diag: "I.7",
                 },
                 {
-                diag: "PF.12",
+                diag: "F.12",
                 }
             ],
-            auxRX:'PD.9',
-            auxTX:'PD.8',
+            auxRX:'D.9',
+            auxTX:'D.8',
             serialAmount:'3',
             wifi8266CSPin: 'NoPin'
         },
@@ -1339,10 +1339,10 @@ export default {
                 diag: "NoPin",
                 }
             ],
-            auxRX:'PA.10',
-            auxTX:'PA.9',
+            auxRX:'A.10',
+            auxTX:'A.9',
             serialAmount:'1',
-            wifi8266CSPin: 'PF.11'
+            wifi8266CSPin: 'F.11'
         },
         {
             name: 'fly_E3',
@@ -1385,11 +1385,11 @@ export default {
             stepperDriver5160SPI: '2',
             stepperDriver5160Pins: 'N/A',
             stepperDriver5160CS: [],
-            serialRxPin:'PD.9',
-            serialTxPin:'PD.8',
-            espDataReadyPin:'PE.13',
-            lpcTfrReadyPin:'PE.14',
-            espResetPin:'PE.15',
+            serialRxPin:'D.9',
+            serialTxPin:'D.8',
+            espDataReadyPin:'E.13',
+            lpcTfrReadyPin:'E.14',
+            espResetPin:'E.15',
             lpc: {
                 externalSDCard:{
                     csPin: "NoPin",
@@ -1411,24 +1411,24 @@ export default {
                     panelButtonPin: "NoPin",
                     spiChannel: 2, //Software SPI
                 },
-                diagnosticPin: "PA.8",
+                diagnosticPin: "A.8",
             },
             drives: [
                 {
-                    diag: "PE.6",
+                    diag: "E.6",
                 },
                 {
-                    diag: "PE.2",
+                    diag: "E.2",
                 },
                 {
-                    diag: "PD.5",
+                    diag: "D.5",
                 },
                 {
-                    diag: "PD.7",
+                    diag: "D.7",
                 }
             ],
-            auxRX:'PA.10',
-            auxTX:'PA.9',
+            auxRX:'A.10',
+            auxTX:'A.9',
             serialAmount:'2',
             wifi8266CSPin: 'NoPin'
         },
@@ -1473,11 +1473,11 @@ export default {
             stepperDriver5160SPI: '2',
             stepperDriver5160Pins: 'N/A',
             stepperDriver5160CS: [],
-            serialRxPin:'PD.9',
-            serialTxPin:'PD.8',
-            espDataReadyPin:'PE.10',
-            lpcTfrReadyPin:'PE.12',
-            espResetPin:'PE.11',
+            serialRxPin:'D.9',
+            serialTxPin:'D.8',
+            espDataReadyPin:'E.10',
+            lpcTfrReadyPin:'E.12',
+            espResetPin:'E.11',
             lpc: {
                 externalSDCard:{
                     csPin: "NoPin",
@@ -1503,26 +1503,26 @@ export default {
             },
             drives: [
                 {
-                    diag: "PC.7",
+                    diag: "C.7",
                 },
                 {
-                    diag: "PC.6",
+                    diag: "C.6",
                 },
                 {
-                    diag: "PD.11",
+                    diag: "D.11",
                 },
                 {
-                    diag: "PD.10",
+                    diag: "D.10",
                 },
                 {
-                    diag: "PB.10",
+                    diag: "B.10",
                 },
                 {
-                    diag: "PB.11",
+                    diag: "B.11",
                 }
             ],
-            auxRX:'PA.10',
-            auxTX:'PA.9',
+            auxRX:'A.10',
+            auxTX:'A.9',
             serialAmount:'2',
             wifi8266CSPin: 'NoPin'
         },
@@ -1567,11 +1567,11 @@ export default {
             stepperDriver5160SPI: 'N/A',
             stepperDriver5160Pins: 'N/A',
             stepperDriver5160CS: [],
-            serialRxPin:'PD.9',
-            serialTxPin:'PD.8',
-            espDataReadyPin:'PA.6',
-            lpcTfrReadyPin:'PA.7',
-            espResetPin:'PA.4',
+            serialRxPin:'D.9',
+            serialTxPin:'D.8',
+            espDataReadyPin:'A.6',
+            lpcTfrReadyPin:'A.7',
+            espResetPin:'A.4',
             lpc: {
                 externalSDCard:{
                     csPin: "NoPin",
@@ -1593,24 +1593,24 @@ export default {
                     panelButtonPin: "NoPin",
                     spiChannel: 2, //Software SPI
                 },
-                diagnosticPin: "PE.2",
+                diagnosticPin: "E.2",
             },
             drives: [
                 {
-                    diag: "PC.0",
+                    diag: "C.0",
                 },
                 {
-                    diag: "PC.1",
+                    diag: "C.1",
                 },
                 {
-                    diag: "PC.2",
+                    diag: "C.2",
                 },
                 {
-                    diag: "PC.3",
+                    diag: "C.3",
                 }
             ],
-            auxRX:'PA.10',
-            auxTX:'PA.9',
+            auxRX:'A.10',
+            auxTX:'A.9',
             serialAmount:'2',
             wifi8266CSPin: 'NoPin'
         },
@@ -1655,11 +1655,11 @@ export default {
             stepperDriver5160SPI: 'N/A',
             stepperDriver5160Pins: 'N/A',
             stepperDriver5160CS: [],
-            serialRxPin:'PD.9',
-            serialTxPin:'PD.8',
-            espDataReadyPin:'PE.13',
-            lpcTfrReadyPin:'PE.14',
-            espResetPin:'PE.15',
+            serialRxPin:'D.9',
+            serialTxPin:'D.8',
+            espDataReadyPin:'E.13',
+            lpcTfrReadyPin:'E.14',
+            espResetPin:'E.15',
             lpc: {
                 externalSDCard:{
                     csPin: "NoPin",
@@ -1681,27 +1681,27 @@ export default {
                     panelButtonPin: "NoPin",
                     spiChannel: 2, //Software SPI
                 },
-                diagnosticPin: "PA.8",
+                diagnosticPin: "A.8",
             },
             drives: [
                 {
-                    diag: "PA.2",
+                    diag: "A.2",
                 },
                 {
-                    diag: "PB.10",
+                    diag: "B.10",
                 },
                 {
-                    diag: "PC.4",
+                    diag: "C.4",
                 },
                 {
-                    diag: "PD.0",
+                    diag: "D.0",
                 },
                 {
-                    diag: "PD.1",
+                    diag: "D.1",
                 }
             ],
-            auxRX:'PA.10',
-            auxTX:'PA.9',
+            auxRX:'A.10',
+            auxTX:'A.9',
             serialAmount:'2',
             wifi8266CSPin: 'NoPin'
         },
@@ -1746,11 +1746,11 @@ export default {
             stepperDriver5160SPI: 'N/A',
             stepperDriver5160Pins: 'N/A',
             stepperDriver5160CS: [],
-            serialRxPin:'PD.9',
-            serialTxPin:'PD.8',
-            espDataReadyPin:'PB.10',
-            lpcTfrReadyPin:'PB.11',
-            espResetPin:'PE.14',
+            serialRxPin:'D.9',
+            serialTxPin:'D.8',
+            espDataReadyPin:'B.10',
+            lpcTfrReadyPin:'B.11',
+            espResetPin:'E.14',
             lpc: {
                 externalSDCard:{
                     csPin: "NoPin",
@@ -1763,36 +1763,36 @@ export default {
                     pins: ["NoPin", "NoPin", "NoPin"],
                 },
                 lcd:{
-                    lcdCSPin:       "PE.9",
-                    lcdBeepPin:     "PC.5",
-                    encoderPinA:    "PE.7",
-                    encoderPinB:    "PB.2",
-                    encoderPinSw:   "PB.1",
+                    lcdCSPin:       "E.9",
+                    lcdBeepPin:     "C.5",
+                    encoderPinA:    "E.7",
+                    encoderPinB:    "B.2",
+                    encoderPinSw:   "B.1",
                     lcdDCPin:       "NoPin",
                     panelButtonPin: "NoPin",
                     spiChannel: 4, //Software SPI
                 },
-                diagnosticPin: "PA.13",
+                diagnosticPin: "A.13",
             },
             drives: [
                 {
-                    diag: "PE.0",
+                    diag: "E.0",
                 },
                 {
-                    diag: "PD.3",
+                    diag: "D.3",
                 },
                 {
-                    diag: "PD.0",
+                    diag: "D.0",
                 },
                 {
-                    diag: "PC.6",
+                    diag: "C.6",
                 },
                 {
-                    diag: "PD.12",
+                    diag: "D.12",
                 }
             ],
-            auxRX:'PA.10',
-            auxTX:'PA.9',
+            auxRX:'A.10',
+            auxTX:'A.9',
             serialAmount:'2',
             wifi8266CSPin: 'NoPin'
         },

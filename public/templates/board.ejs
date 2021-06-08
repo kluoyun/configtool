@@ -89,3 +89,76 @@ sbc.csPin = F.11
 // External Display settings
 serial.aux.rxTxPins = {<%- board.auxRX %>, <%- board.auxTX %>};
 <% } -%>
+<% let diag0 = 'NoPin'; -%>
+<% let diag1 = 'NoPin'; -%>
+<% let diag2 = 'NoPin'; -%>
+<% let diag3 = 'NoPin'; -%>
+<% let diag4 = 'NoPin'; -%>
+<% let diag5 = 'NoPin'; -%>
+<% let diag6 = 'NoPin'; -%>
+<% let diag7 = 'NoPin'; -%>
+<% let diag8 = 'NoPin'; -%>
+<% let diag9 = 'NoPin'; -%>
+<% let diag10 = 'NoPin'; -%>
+<%if (template.drives[0]?.endstop_type ) { -%>
+	<%if (template.drives[0].endstop_type === 4) { -%>
+		<% diag0 = board.drives[0].diag; -%>
+	<% } -%>
+<% } -%>
+<%if (template.drives[1]?.endstop_type ) { -%>
+	<%if (template.drives[1].endstop_type === 4) { -%>
+		<% diag1 = board.drives[1].diag; -%>
+	<% } -%>
+<% } -%>
+<%if (template.drives[2]?.endstop_type ) { -%>
+	<%if (template.drives[2].endstop_type === 4) { -%>
+		<% diag2 = board.drives[2].diag; -%>
+	<% } -%>
+<% } -%>
+<%if (template.drives[3]?.endstop_type ) { -%>
+	<%if (template.drives[3].endstop_type === 4) { -%>
+		<% diag3 = board.drives[3].diag; -%>
+	<% } -%>
+<% } -%>
+<%if (template.drives[4]?.endstop_type ) { -%>
+	<%if (template.drives[4].endstop_type === 4) { -%>
+		<% diag4 = board.drives[4].diag; -%>
+	<% } -%>
+<% } -%>
+<%if (template.drives[5]?.endstop_type ) { -%>
+	<%if (template.drives[5].endstop_type === 4) { -%>
+		<% diag5 = board.drives[5].diag; -%>
+	<% } -%>
+<% } -%>
+<%if (template.drives[6]?.endstop_type ) { -%>
+	<%if (template.drives[6].endstop_type === 4) { -%>
+		<% diag6 = board.drives[6].diag; -%>
+	<% } -%>
+<% } -%>
+<%if (template.drives[7]?.endstop_type ) { -%>
+	<%if (template.drives[7].endstop_type === 4) { -%>
+		<% diag7 = board.drives[7].diag; -%>
+	<% } -%>
+<% } -%>
+<%if (template.drives[8]?.endstop_type ) { -%>
+	<%if (template.drives[8].endstop_type === 4) { -%>
+		<% diag8 = board.drives[8].diag; -%>
+	<% } -%>
+<% } -%>
+<%if (template.drives[9]?.endstop_type ) { -%>
+	<%if (template.drives[9].endstop_type === 4) { -%>
+		<% diag9 = board.drives[9].diag; -%>
+	<% } -%>
+<% } -%>
+<%if (template.drives[10]?.endstop_type ) { -%>
+	<%if (template.drives[10].endstop_type === 4) { -%>
+		<% diag10 = board.drives[10].diag; -%>
+	<% } -%>
+<% } -%>
+// Diag Pins
+<%if (board.type === 'LPC') { -%>
+stepper.TmcDiagPins = { <%- diag0 -%> , <%- diag1 -%>, <%- diag2 -%>, <%- diag3 -%>, <%- diag4 -%>};
+<% } -%>
+<%if (board.type === 'STM32F4') { -%>
+stepper.TmcDiagPins = { <%- diag0 -%> , <%- diag1 -%>, <%- diag2 -%>, <%- diag3 -%>, <%- diag4 -%>, <%- diag5 -%>, <%- diag6 -%>, <%- diag7 -%>, <%- diag8 -%>, <%- diag9 -%>, <%- diag10 -%>};
+<% } -%>

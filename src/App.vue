@@ -86,9 +86,14 @@ input::-webkit-inner-spin-button {
 								RepRapFirmware {{ rrfVersion }}
 							</a>
 						</li>
-						<li v-show="wifiLink">
+						<li v-if="this.template.network.enabled" v-show="wifiLink">
 							<a :href="wifiLink" target="_blank">
 								ESP8266 Firmware {{ wifiVersion }}
+							</a>
+						</li>
+						<li v-if="this.template.network.enabled32" v-show="wifiLink">
+							<a :href="wifiLink" target="_blank">
+								ESP32 Firmware {{ wifiVersion }}
 							</a>
 						</li>
 						<li v-show="dwcLink">
@@ -456,6 +461,7 @@ export default {
 					});
 
 					// Attempt to download the required files (IAP+RRF)
+					let latestReleaseNew = latestRelease.tag_name.substring(1);
 					if (latestRelease) {
 						for (let i = 0; i < latestRelease.assets.length; i++) {
 							const item = latestRelease.assets[i];
@@ -465,7 +471,7 @@ export default {
 								if (item.name === this.board.firmwareWifiFile+'-'+latestReleaseNew+'.bin') {
 									wifiLink = item.browser_download_url;
 									this.wifiVersion = latestRelease.tag_name;
-									this.wifiFile = await Compiler.downloadFile(`assets/DuetWiFiSocketServer-${latestRelease.tag_name}.zip`, 'blob', 'application/octet-stream');
+									this.wifiFile = await Compiler.downloadFile(`assets/DuetWiFiSocketServer-${latestRelease.tag_name}/${item.name}`, 'blob', 'application/octet-stream');
 									break;
 								}
 							} catch (e) {
@@ -491,6 +497,7 @@ export default {
 					});
 
 					// Attempt to download the required files (IAP+RRF)
+					let latestReleaseNew = latestRelease.tag_name.substring(1);
 					if (latestRelease) {
 						for (let i = 0; i < latestRelease.assets.length; i++) {
 							const item = latestRelease.assets[i];
@@ -500,7 +507,7 @@ export default {
 								if (item.name === this.board.firmwareWifiFile+'-'+latestReleaseNew+'.bin') {
 									wifiLink = item.browser_download_url;
 									this.wifiVersion = latestRelease.tag_name;
-									this.wifiFile = await Compiler.downloadFile(`assets/DuetWiFiSocketServer-${latestRelease.tag_name}.zip`, 'blob', 'application/octet-stream');
+									this.wifiFile = await Compiler.downloadFile(`assets/DuetWiFiSocketServer-${latestRelease.tag_name}/${item.name}`, 'blob', 'application/octet-stream');
 									break;
 								}
 							} catch (e) {
@@ -526,6 +533,7 @@ export default {
 					});
 
 					// Attempt to download the required files (IAP+RRF)
+					let latestReleaseNew = latestRelease.tag_name.substring(1);
 					if (latestRelease) {
 						for (let i = 0; i < latestRelease.assets.length; i++) {
 							const item = latestRelease.assets[i];
@@ -535,7 +543,7 @@ export default {
 								if (item.name === this.board.firmwareWifi32File+'-'+latestReleaseNew+'.bin') {
 									wifiLink = item.browser_download_url;
 									this.wifiVersion = latestRelease.tag_name;
-									this.wifiFile = await Compiler.downloadFile(`assets/DuetWiFiSocketServer-${latestRelease.tag_name}.zip`, 'blob', 'application/octet-stream');
+									this.wifiFile = await Compiler.downloadFile(`assets/DuetWiFiSocketServer-${latestRelease.tag_name}/${item.name}`, 'blob', 'application/octet-stream');
 									break;
 								}
 							} catch (e) {
@@ -561,6 +569,7 @@ export default {
 					});
 
 					// Attempt to download the required files (IAP+RRF)
+					let latestReleaseNew = latestRelease.tag_name.substring(1);
 					if (latestRelease) {
 						for (let i = 0; i < latestRelease.assets.length; i++) {
 							const item = latestRelease.assets[i];
@@ -570,7 +579,7 @@ export default {
 								if (item.name === this.board.firmwareWifi32File+'-'+latestReleaseNew+'.bin') {
 									wifiLink = item.browser_download_url;
 									this.wifiVersion = latestRelease.tag_name;
-									this.wifiFile = await Compiler.downloadFile(`assets/DuetWiFiSocketServer-${latestRelease.tag_name}.zip`, 'blob', 'application/octet-stream');
+									this.wifiFile = await Compiler.downloadFile(`assets/DuetWiFiSocketServer-${latestRelease.tag_name}/${item.name}`, 'blob', 'application/octet-stream');
 									break;
 								}
 							} catch (e) {

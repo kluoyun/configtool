@@ -443,8 +443,8 @@ export default {
 				}
 			}
 
-			// Load ESP stable from the server
-			if (this.addWiFi && this.template.standalone && !this.template.requiresBeta) {
+			// Load ESP8266 stable from the server
+			if (this.addWiFi && this.template.standalone && this.template.network.enabled && !this.template.requiresBeta) {
 				try {
 					// Get GitHub list of releases and assets. Do NOT get drafts and prereleases
 					const releaseInfo = await Compiler.downloadFile('https://api.github.com/repos/gloomyandy/DuetWiFiSocketServer/releases', 'json');
@@ -462,7 +462,7 @@ export default {
 
 							let wifiLink = null;
 							try {
-								if (item.name === this.board.firmwareWifiFile) {
+								if (item.name === this.board.firmwareWifiFile+'-'+latestReleaseNew+'.bin') {
 									wifiLink = item.browser_download_url;
 									this.wifiVersion = latestRelease.tag_name;
 									this.wifiFile = await Compiler.downloadFile(`assets/DuetWiFiSocketServer-${latestRelease.tag_name}.zip`, 'blob', 'application/octet-stream');
@@ -478,8 +478,8 @@ export default {
 				}
 			}
 
-			// Load ESP unstable from the server
-			if (this.addWiFi && this.template.standalone && this.template.requiresBeta) {
+			// Load ESP8266 unstable from the server
+			if (this.addWiFi && this.template.standalone && this.template.network.enabled && this.template.requiresBeta) {
 				try {
 					// Get GitHub list of releases and assets. Do NOT get drafts and prereleases
 					const releaseInfo = await Compiler.downloadFile('https://api.github.com/repos/gloomyandy/DuetWiFiSocketServer/releases', 'json');
@@ -497,7 +497,77 @@ export default {
 
 							let wifiLink = null;
 							try {
-								if (item.name === this.board.firmwareWifiFile) {
+								if (item.name === this.board.firmwareWifiFile+'-'+latestReleaseNew+'.bin') {
+									wifiLink = item.browser_download_url;
+									this.wifiVersion = latestRelease.tag_name;
+									this.wifiFile = await Compiler.downloadFile(`assets/DuetWiFiSocketServer-${latestRelease.tag_name}.zip`, 'blob', 'application/octet-stream');
+									break;
+								}
+							} catch (e) {
+								this.wifiLink = wifiLink;
+							}
+						}
+					}
+				} catch (e) {
+					console.warn(`Failed to load ESP: ${e}`);
+				}
+			}
+
+			// Load ESP32 stable from the server
+			if (this.addWiFi && this.template.standalone && this.template.network.enabled32 && !this.template.requiresBeta) {
+				try {
+					// Get GitHub list of releases and assets. Do NOT get drafts and prereleases
+					const releaseInfo = await Compiler.downloadFile('https://api.github.com/repos/gloomyandy/DuetWiFiSocketServer/releases', 'json');
+					let latestRelease = null;
+					releaseInfo.forEach(function(item) {
+						if (!item.draft && !item.prerelease && (!latestRelease || item.created_at > latestRelease.created_at)) {
+							latestRelease = item;
+						}
+					});
+
+					// Attempt to download the required files (IAP+RRF)
+					if (latestRelease) {
+						for (let i = 0; i < latestRelease.assets.length; i++) {
+							const item = latestRelease.assets[i];
+
+							let wifiLink = null;
+							try {
+								if (item.name === this.board.firmwareWifi32File+'-'+latestReleaseNew+'.bin') {
+									wifiLink = item.browser_download_url;
+									this.wifiVersion = latestRelease.tag_name;
+									this.wifiFile = await Compiler.downloadFile(`assets/DuetWiFiSocketServer-${latestRelease.tag_name}.zip`, 'blob', 'application/octet-stream');
+									break;
+								}
+							} catch (e) {
+								this.wifiLink = wifiLink;
+							}
+						}
+					}
+				} catch (e) {
+					console.warn(`Failed to load ESP: ${e}`);
+				}
+			}
+
+			// Load ESP32 unstable from the server
+			if (this.addWiFi && this.template.standalone && this.template.network.enabled32 && this.template.requiresBeta) {
+				try {
+					// Get GitHub list of releases and assets. Do NOT get drafts and prereleases
+					const releaseInfo = await Compiler.downloadFile('https://api.github.com/repos/gloomyandy/DuetWiFiSocketServer/releases', 'json');
+					let latestRelease = null;
+					releaseInfo.forEach(function(item) {
+						if (!item.draft && item.prerelease && (!latestRelease || item.created_at > latestRelease.created_at)) {
+							latestRelease = item;
+						}
+					});
+
+					// Attempt to download the required files (IAP+RRF)
+					if (latestRelease) {
+						for (let i = 0; i < latestRelease.assets.length; i++) {
+							const item = latestRelease.assets[i];
+
+							let wifiLink = null;
+							try {
+								if (item.name === this.board.firmwareWifi32File+'-'+latestReleaseNew+'.bin') {
 									wifiLink = item.browser_download_url;
 									this.wifiVersion = latestRelease.tag_name;
 									this.wifiFile = await Compiler.downloadFile(`assets/DuetWiFiSocketServer-${latestRelease.tag_name}.zip`, 'blob', 'application/octet-stream');

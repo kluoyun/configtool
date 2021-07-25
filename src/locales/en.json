@@ -287,7 +287,7 @@
     "offsets": "XYZ Offsets",
     "error": "Error:",
     "errorText": " Tool numbers must be unique",
-    "mixing": {
+    "mixing1": {
       "set": "Set Mix Ratio",
       "setMix": "Set Mix"
     },
@@ -375,10 +375,12 @@
   },
   "network": {
     "title": "Network",
-    "settings": "Network Settings",
+    "settings": "Network Settings - ESP8266",
+    "settings32": "Network Settings - ESP32",
     "enable": "Enable Network",
     "enableDescription": "Check this to enable networking features (M552 S1)",
-    "enableDescriptionAlt": "Enable Network via Ethernet or ESP8266",
+    "enableDescriptionAlt": "Enable Network via ESP8266",
+    "enableDescriptionAlt32": "Enable Network via ESP32",
     "password": "Password for the web interface (HTTP), FTP, and Telnet:",
     "passwordDescription": "Optional password to protect your printer from others on your local network (M551)",
     "wifiName": "WiFi Access Point Name:",
@@ -408,6 +410,8 @@
     "lpcTfrReadyPinDescription": "This is the pin to be used in board.txt for 8266wifi.lpcTfrReadyPin",
     "espResetPin": "espResetPin:",
     "espResetPinDescription": "This is the pin to be used in board.txt for 8266wifi.espResetPin",
+    "csPin": "csPin:",
+    "csPinDescription": "This is the pin to be used in board.txt for 8266wifi.csPin",
     "espRXTXDescription": "Use RX/TX to update ESP8266 via DWC",
     "serialRxPin": "serialRxPin:",
     "serialRxPinDescription": "This is the pin to be used in board.txt for 8266wifi.serialRxPin",
@@ -425,7 +429,7 @@
     "gcodes": "Full list of all available G-codes",
     "tft": "Enable support for BTT TFT",
     "flymaker": "Enable support for Fly 4.3/7 inch screens",
-    "wifi": "Get the latest stable ESP8266 Firmware version"
+    "wifi": "Get the latest stable ESP Firmware version"
   },
   "app": {
     "back": "Back",

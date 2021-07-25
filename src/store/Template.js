@@ -227,6 +227,7 @@ export default {
 			},
 			network: {
 				enabled: false,
+				enabled32: false,
 				mac_address: '',
 				name: 'My Printer',
 				password: '',
@@ -244,6 +245,10 @@ export default {
 				espDataReadyPin: '0.28',
 				lpcTfrReadyPin: '1.30',
 				espResetPin: '1.31',
+				wifi8266CSPin32: '',
+				espDataReadyPin32: '0.28',
+				lpcTfrReadyPin32: '1.30',
+				espResetPin32: '1.31',
 				espRXTX: false,
 				serialRxPin: '0.3',
 				serialTxPin: '0.2',

@@ -31,9 +31,10 @@ export default {
 			hasMotorLoadDetection: false,
 			supportsDisplay: true,
 			supports12864: true, 
-			firmwareStandaloneFile: 'firmware-lpc-esp8266wifi',
+			firmwareStandaloneFile: 'firmware-lpc-wifi',
             firmwareSBCFile: 'firmware-lpc-sbc',
-            firmwareWifiFile: 'DuetWiFiServer-lpc-el.bin',
+            firmwareWifiFile: 'duetwifiserver-esp8266-lpc',
+            firmwareWifi32File: 'N/A',
             requiresBeta: false,
 			iapFile: '',
 			expansionBoards: [],
@@ -78,7 +79,14 @@ export default {
             auxRX:'',
             auxTX:'',
             serialAmount:'1',
-            wifi8266CSPin: 'NoPin'
+            wifi8266CSPin: 'NoPin',
+            esp32: {
+                esp32Supported: false,
+                espDataReadyPin:'N/A',
+                lpcTfrReadyPin:'N/A',
+                espResetPin:'N/A',
+                wifi8266CSPin: 'N/A'
+            }
 
 		},
         {
@@ -108,9 +116,10 @@ export default {
             hasMotorLoadDetection: false,
             supportsDisplay: true,
             supports12864: false,
-            firmwareStandaloneFile: 'firmware-lpc-esp8266wifi',
+            firmwareStandaloneFile: 'firmware-lpc-wifi',
             firmwareSBCFile: 'firmware-lpc-sbc',
-            firmwareWifiFile: 'DuetWiFiServer-lpc-el.bin',
+            firmwareWifiFile: 'duetwifiserver-esp8266-lpc',
+            firmwareWifi32File: 'N/A',
             requiresBeta: false,
             iapFile: '',
             expansionBoards: [],
@@ -158,7 +167,14 @@ export default {
             auxRX:'0.3',
             auxTX:'0.2',
             serialAmount:'1',
-            wifi8266CSPin: 'NoPin'
+            wifi8266CSPin: 'NoPin',
+            esp32: {
+                esp32Supported: false,
+                espDataReadyPin:'N/A',
+                lpcTfrReadyPin:'N/A',
+                espResetPin:'N/A',
+                wifi8266CSPin: 'N/A'
+            }
         },
         {
             name: 'biquskr_1.3',
@@ -187,9 +203,10 @@ export default {
             hasMotorLoadDetection: true,
             supportsDisplay: true,
             supports12864: false,
-            firmwareStandaloneFile: 'firmware-lpc-esp8266wifi',
+            firmwareStandaloneFile: 'firmware-lpc-wifi',
             firmwareSBCFile: 'firmware-lpc-sbc',
-            firmwareWifiFile: 'DuetWiFiServer-lpc-el.bin',
+            firmwareWifiFile: 'duetwifiserver-esp8266-lpc',
+            firmwareWifi32File: 'N/A',
             requiresBeta: false,
             iapFile: '',
             expansionBoards: ['BTT EXP-MOT'],
@@ -249,7 +266,14 @@ export default {
             auxRX:'0.3',
             auxTX:'0.2',
             serialAmount:'1',
-            wifi8266CSPin: 'NoPin'
+            wifi8266CSPin: 'NoPin',
+            esp32: {
+                esp32Supported: false,
+                espDataReadyPin:'N/A',
+                lpcTfrReadyPin:'N/A',
+                espResetPin:'N/A',
+                wifi8266CSPin: 'N/A'
+            }
         },
 	    {
             name: 'biquskr_1.4',
@@ -278,9 +302,10 @@ export default {
             hasMotorLoadDetection: true,
             supportsDisplay: true,
             supports12864: false,
-            firmwareStandaloneFile: 'firmware-lpc-esp8266wifi',
+            firmwareStandaloneFile: 'firmware-lpc-wifi',
             firmwareSBCFile: 'firmware-lpc-sbc',
-            firmwareWifiFile: 'DuetWiFiServer-lpc-el.bin',
+            firmwareWifiFile: 'duetwifiserver-esp8266-lpc',
+            firmwareWifi32File: 'N/A',
             requiresBeta: false,
             iapFile: '',
             expansionBoards: ['BTT EXP-MOT'],
@@ -340,7 +365,14 @@ export default {
             auxRX:'0.3',
             auxTX:'0.2',
             serialAmount:'2',
-            wifi8266CSPin: 'NoPin'
+            wifi8266CSPin: 'NoPin',
+            esp32: {
+                esp32Supported: false,
+                espDataReadyPin:'N/A',
+                lpcTfrReadyPin:'N/A',
+                espResetPin:'N/A',
+                wifi8266CSPin: 'N/A'
+            }
         },
 	    {
             name: 'azsmz',
@@ -369,9 +401,10 @@ export default {
             hasMotorLoadDetection: false,
             supportsDisplay: true,
             supports12864: false,
-            firmwareStandaloneFile: 'firmware-lpc-esp8266wifi',
+            firmwareStandaloneFile: 'firmware-lpc-wifi',
             firmwareSBCFile: 'firmware-lpc-sbc',
-            firmwareWifiFile: 'DuetWiFiServer-lpc-el.bin',
+            firmwareWifiFile: 'duetwifiserver-esp8266-lpc',
+            firmwareWifi32File: 'N/A',
             requiresBeta: false,
             iapFile: '',
             expansionBoards: [],
@@ -419,7 +452,14 @@ export default {
             auxRX:'',
             auxTX:'',
             serialAmount:'1',
-            wifi8266CSPin: 'NoPin'
+            wifi8266CSPin: 'NoPin',
+            esp32: {
+                esp32Supported: false,
+                espDataReadyPin:'N/A',
+                lpcTfrReadyPin:'N/A',
+                espResetPin:'N/A',
+                wifi8266CSPin: 'N/A'
+            }
         },
 	    {
             name: 'azteegX5_1.1',
@@ -448,9 +488,10 @@ export default {
             hasMotorLoadDetection: false,
             supportsDisplay: true,
             supports12864: false,
-            firmwareStandaloneFile: 'firmware-lpc-esp8266wifi',
+            firmwareStandaloneFile: 'firmware-lpc-wifi',
             firmwareSBCFile: 'firmware-lpc-sbc',
-            firmwareWifiFile: 'DuetWiFiServer-lpc-el.bin',
+            firmwareWifiFile: 'duetwifiserver-esp8266-lpc',
+            firmwareWifi32File: 'N/A',
             requiresBeta: false,
             iapFile: '',
             expansionBoards: [],
@@ -498,7 +539,14 @@ export default {
             auxRX:'',
             auxTX:'',
             serialAmount:'1',
-            wifi8266CSPin: 'NoPin'
+            wifi8266CSPin: 'NoPin',
+            esp32: {
+                esp32Supported: false,
+                espDataReadyPin:'N/A',
+                lpcTfrReadyPin:'N/A',
+                espResetPin:'N/A',
+                wifi8266CSPin: 'N/A'
+            }
         },
         {
             name: 'rearm',
@@ -527,9 +575,10 @@ export default {
             hasMotorLoadDetection: false,
             supportsDisplay: true,
             supports12864: false,
-            firmwareStandaloneFile: 'firmware-lpc-esp8266wifi',
+            firmwareStandaloneFile: 'firmware-lpc-wifi',
             firmwareSBCFile: 'firmware-lpc-sbc',
-            firmwareWifiFile: 'DuetWiFiServer-lpc-el.bin',
+            firmwareWifiFile: 'duetwifiserver-esp8266-lpc',
+            firmwareWifi32File: 'N/A',
             requiresBeta: false,
             iapFile: '',
             expansionBoards: [],
@@ -574,7 +623,14 @@ export default {
             auxRX:'',
             auxTX:'',
             serialAmount:'1',
-            wifi8266CSPin: 'NoPin'
+            wifi8266CSPin: 'NoPin',
+            esp32: {
+                esp32Supported: false,
+                espDataReadyPin:'N/A',
+                lpcTfrReadyPin:'N/A',
+                espResetPin:'N/A',
+                wifi8266CSPin: 'N/A'
+            }
         },
         {
             name: 'mkssbase_1.3',
@@ -603,9 +659,10 @@ export default {
             hasMotorLoadDetection: false,
             supportsDisplay: true,
             supports12864: false,
-            firmwareStandaloneFile: 'firmware-lpc-esp8266wifi',
+            firmwareStandaloneFile: 'firmware-lpc-wifi',
             firmwareSBCFile: 'firmware-lpc-sbc',
-            firmwareWifiFile: 'DuetWiFiServer-lpc-el.bin',
+            firmwareWifiFile: 'duetwifiserver-esp8266-lpc',
+            firmwareWifi32File: 'N/A',
             requiresBeta: false,
             iapFile: '',
             expansionBoards: [],
@@ -650,7 +707,14 @@ export default {
             auxRX:'0.3',
             auxTX:'0.2',
             serialAmount:'1',
-            wifi8266CSPin: 'NoPin'
+            wifi8266CSPin: 'NoPin',
+            esp32: {
+                esp32Supported: false,
+                espDataReadyPin:'N/A',
+                lpcTfrReadyPin:'N/A',
+                espResetPin:'N/A',
+                wifi8266CSPin: 'N/A'
+            }
         },
         {
             name: 'mkssgenl_1.0',
@@ -679,9 +743,10 @@ export default {
             hasMotorLoadDetection: true,
             supportsDisplay: true,
             supports12864: false,
-            firmwareStandaloneFile: 'firmware-lpc-esp8266wifi',
+            firmwareStandaloneFile: 'firmware-lpc-wifi',
             firmwareSBCFile: 'firmware-lpc-sbc',
-            firmwareWifiFile: 'DuetWiFiServer-lpc-el.bin',
+            firmwareWifiFile: 'duetwifiserver-esp8266-lpc',
+            firmwareWifi32File: 'N/A',
             requiresBeta: false,
             iapFile: '',
             expansionBoards: [],
@@ -741,7 +806,14 @@ export default {
             auxRX:'0.3',
             auxTX:'0.2',
             serialAmount:'1',
-            wifi8266CSPin: 'NoPin'
+            wifi8266CSPin: 'NoPin',
+            esp32: {
+                esp32Supported: false,
+                espDataReadyPin:'N/A',
+                lpcTfrReadyPin:'N/A',
+                espResetPin:'N/A',
+                wifi8266CSPin: 'N/A'
+            }
         },
         {
             name: 'mkssgenl_2.0',
@@ -770,9 +842,10 @@ export default {
             hasMotorLoadDetection: true,
             supportsDisplay: true,
             supports12864: false,
-            firmwareStandaloneFile: 'firmware-lpc-esp8266wifi',
+            firmwareStandaloneFile: 'firmware-lpc-wifi',
             firmwareSBCFile: 'firmware-lpc-sbc',
-            firmwareWifiFile: 'DuetWiFiServer-lpc-el.bin',
+            firmwareWifiFile: 'duetwifiserver-esp8266-lpc',
+            firmwareWifi32File: 'N/A',
             requiresBeta: false,
             iapFile: '',
             expansionBoards: [],
@@ -832,7 +905,14 @@ export default {
             auxRX:'0.3',
             auxTX:'0.2',
             serialAmount:'2',
-            wifi8266CSPin: 'NoPin'
+            wifi8266CSPin: 'NoPin',
+            esp32: {
+                esp32Supported: false,
+                espDataReadyPin:'N/A',
+                lpcTfrReadyPin:'N/A',
+                espResetPin:'N/A',
+                wifi8266CSPin: 'N/A'
+            }
         },
         {
             name: 'biquskr_e3t',
@@ -861,9 +941,10 @@ export default {
             hasMotorLoadDetection: true,
             supportsDisplay: true,
             supports12864: false,
-            firmwareStandaloneFile: 'firmware-lpc-esp8266wifi',
+            firmwareStandaloneFile: 'firmware-lpc-wifi',
             firmwareSBCFile: 'firmware-lpc-sbc',
-            firmwareWifiFile: 'DuetWiFiServer-lpc-el.bin',
+            firmwareWifiFile: 'duetwifiserver-esp8266-lpc',
+            firmwareWifi32File: 'N/A',
             requiresBeta: false,
             iapFile: '',
             expansionBoards: [],
@@ -923,7 +1004,14 @@ export default {
             auxRX:'0.3',
             auxTX:'0.2',
             serialAmount:'1',
-            wifi8266CSPin: 'NoPin'
+            wifi8266CSPin: 'NoPin',
+            esp32: {
+                esp32Supported: false,
+                espDataReadyPin:'N/A',
+                lpcTfrReadyPin:'N/A',
+                espResetPin:'N/A',
+                wifi8266CSPin: 'N/A'
+            }
         },
         {
             name: 'biquskrpro_1.1',
@@ -952,9 +1040,10 @@ export default {
             hasMotorLoadDetection: true,
             supportsDisplay: true,
             supports12864: false,
-            firmwareStandaloneFile: 'firmware-stm32f4-esp8266wifi',
+            firmwareStandaloneFile: 'firmware-stm32f4-wifi',
             firmwareSBCFile: 'firmware-stm32f4-sbc',
-            firmwareWifiFile: 'DuetWiFiServer-stm32f4.bin',
+            firmwareWifiFile: 'duetwifiserver-esp8266-stm32f4',
+            firmwareWifi32File: 'duetwifiserver-esp32-stm32f4',
             requiresBeta: false,
             iapFile: '',
             expansionBoards: ['BTT EXP-MOT'],
@@ -1036,7 +1125,14 @@ export default {
             auxRX:'A.10',
             auxTX:'A.9',
             serialAmount:'3',
-            wifi8266CSPin: 'NoPin'
+            wifi8266CSPin: 'NoPin',
+            esp32: {
+                esp32Supported: true,
+                espDataReadyPin:'G.10',
+                lpcTfrReadyPin:'F.11',
+                espResetPin:'F.12',
+                wifi8266CSPin: 'B.12'
+            }
         },
         {
             name: 'biqugtr_1.0',
@@ -1065,9 +1161,10 @@ export default {
             hasMotorLoadDetection: true,
             supportsDisplay: true,
             supports12864: false,
-            firmwareStandaloneFile: 'firmware-stm32f4-esp8266wifi',
+            firmwareStandaloneFile: 'firmware-stm32f4-wifi',
             firmwareSBCFile: 'firmware-stm32f4-sbc',
-            firmwareWifiFile: 'DuetWiFiServer-stm32f4.bin',
+            firmwareWifiFile: 'duetwifiserver-esp8266-stm32f4',
+            firmwareWifi32File: 'duetwifiserver-esp32-stm32f4',
             requiresBeta: false,
             iapFile: '',
             expansionBoards: ['M5'],
@@ -1145,7 +1242,14 @@ export default {
             auxRX:'D.9',
             auxTX:'D.8',
             serialAmount:'3',
-            wifi8266CSPin: 'NoPin'
+            wifi8266CSPin: 'NoPin',
+            esp32: {
+                esp32Supported: true,
+                espDataReadyPin:'D.10',
+                lpcTfrReadyPin:'H.10',
+                espResetPin:'B.10',
+                wifi8266CSPin: 'B.12'
+            }
         },
         {
             name: 'fly_cdy',
@@ -1174,9 +1278,10 @@ export default {
             hasMotorLoadDetection: true,
             supportsDisplay: true,
             supports12864: false,
-            firmwareStandaloneFile: 'firmware-lpc-esp8266wifi',
+            firmwareStandaloneFile: 'firmware-lpc-wifi',
             firmwareSBCFile: 'firmware-lpc-sbc',
-            firmwareWifiFile: 'DuetWiFiServer-lpc-el.bin',
+            firmwareWifiFile: 'duetwifiserver-esp8266-lpc',
+            firmwareWifi32File: 'N/A',
             requiresBeta: false,
             iapFile: '',
             expansionBoards: [],
@@ -1239,7 +1344,14 @@ export default {
             auxRX:'0.3',
             auxTX:'0.2',
             serialAmount:'2',
-            wifi8266CSPin: 'NoPin'
+            wifi8266CSPin: 'NoPin',
+            esp32: {
+                esp32Supported: false,
+                espDataReadyPin:'N/A',
+                lpcTfrReadyPin:'N/A',
+                espResetPin:'N/A',
+                wifi8266CSPin: 'N/A'
+            }
         },
         {
             name: 'fly_F407ZG',
@@ -1268,9 +1380,10 @@ export default {
             hasMotorLoadDetection: false,
             supportsDisplay: true,
             supports12864: false,
-            firmwareStandaloneFile: 'firmware-stm32f4-esp8266wifi',
+            firmwareStandaloneFile: 'firmware-stm32f4-wifi',
             firmwareSBCFile: 'firmware-stm32f4-sbc',
-            firmwareWifiFile: 'DuetWiFiServer-stm32f4.bin',
+            firmwareWifiFile: 'duetwifiserver-esp8266-stm32f4',
+            firmwareWifi32File: 'duetwifiserver-esp32-stm32f4',
             requiresBeta: false,
             iapFile: '',
             expansionBoards: [],
@@ -1342,7 +1455,14 @@ export default {
             auxRX:'A.10',
             auxTX:'A.9',
             serialAmount:'1',
-            wifi8266CSPin: 'F.11'
+            wifi8266CSPin: 'F.11',
+            esp32: {
+                esp32Supported: true,
+                espDataReadyPin:'C.5',
+                lpcTfrReadyPin:'C.4',
+                espResetPin:'B.2',
+                wifi8266CSPin: 'F.11'
+            }
         },
         {
             name: 'fly_E3',
@@ -1371,9 +1491,10 @@ export default {
             hasMotorLoadDetection: true,
             supportsDisplay: true,
             supports12864: false,
-            firmwareStandaloneFile: 'firmware-stm32f4-esp8266wifi',
+            firmwareStandaloneFile: 'firmware-stm32f4-wifi',
             firmwareSBCFile: 'firmware-stm32f4-sbc',
-            firmwareWifiFile: 'DuetWiFiServer-stm32f4.bin',
+            firmwareWifiFile: 'duetwifiserver-esp8266-stm32f4',
+            firmwareWifi32File: 'N/A',
             requiresBeta: false,
             iapFile: '',
             expansionBoards: [],
@@ -1430,7 +1551,14 @@ export default {
             auxRX:'A.10',
             auxTX:'A.9',
             serialAmount:'2',
-            wifi8266CSPin: 'NoPin'
+            wifi8266CSPin: 'NoPin',
+            esp32: {
+                esp32Supported: false,
+                espDataReadyPin:'N/A',
+                lpcTfrReadyPin:'N/A',
+                espResetPin:'N/A',
+                wifi8266CSPin: 'N/A'
+            }
         },
         {
             name: 'fly_cdyv2',
@@ -1459,9 +1587,10 @@ export default {
             hasMotorLoadDetection: true,
             supportsDisplay: true,
             supports12864: false,
-            firmwareStandaloneFile: 'firmware-stm32f4-esp8266wifi',
+            firmwareStandaloneFile: 'firmware-stm32f4-wifi',
             firmwareSBCFile: 'firmware-stm32f4-sbc',
-            firmwareWifiFile: 'DuetWiFiServer-stm32f4.bin',
+            firmwareWifiFile: 'duetwifiserver-esp8266-stm32f4',
+            firmwareWifi32File: 'N/A',
             requiresBeta: false,
             iapFile: '',
             expansionBoards: [],
@@ -1524,7 +1653,14 @@ export default {
             auxRX:'A.10',
             auxTX:'A.9',
             serialAmount:'2',
-            wifi8266CSPin: 'NoPin'
+            wifi8266CSPin: 'NoPin',
+            esp32: {
+                esp32Supported: false,
+                espDataReadyPin:'N/A',
+                lpcTfrReadyPin:'N/A',
+                espResetPin:'N/A',
+                wifi8266CSPin: 'N/A'
+            }
         },
         {
             name: 'biquskr_rrf_e3_1.1',
@@ -1553,10 +1689,11 @@ export default {
             hasMotorLoadDetection: true,
             supportsDisplay: true,
             supports12864: false,
-            firmwareStandaloneFile: 'firmware-stm32f4-esp8266wifi',
+            firmwareStandaloneFile: 'firmware-stm32f4-wifi',
             firmwareSBCFile: 'firmware-stm32f4-sbc',
-            firmwareWifiFile: 'DuetWiFiServer-stm32f4.bin',
-            requiresBeta: true,
+            firmwareWifiFile: 'duetwifiserver-esp8266-stm32f4',
+            firmwareWifi32File: 'N/A',
+            requiresBeta: false,
             iapFile: '',
             expansionBoards: ['BTT E3 RRF IDEX'],
             maxExpansionBoards: 1,
@@ -1612,7 +1749,14 @@ export default {
             auxRX:'A.10',
             auxTX:'A.9',
             serialAmount:'2',
-            wifi8266CSPin: 'NoPin'
+            wifi8266CSPin: 'NoPin',
+            esp32: {
+                esp32Supported: false,
+                espDataReadyPin:'N/A',
+                lpcTfrReadyPin:'N/A',
+                espResetPin:'N/A',
+                wifi8266CSPin: 'N/A'
+            }
         },
         {
             name: 'fly_e3_pro',
@@ -1641,10 +1785,11 @@ export default {
             hasMotorLoadDetection: true,
             supportsDisplay: true,
             supports12864: false,
-            firmwareStandaloneFile: 'firmware-stm32f4-esp8266wifi',
+            firmwareStandaloneFile: 'firmware-stm32f4-wifi',
             firmwareSBCFile: 'firmware-stm32f4-sbc',
-            firmwareWifiFile: 'DuetWiFiServer-stm32f4.bin',
-            requiresBeta: true,
+            firmwareWifiFile: 'duetwifiserver-esp8266-stm32f4',
+            firmwareWifi32File: 'N/A',
+            requiresBeta: false,
             iapFile: '',
             expansionBoards: [],
             maxExpansionBoards: 0,
@@ -1703,7 +1848,14 @@ export default {
             auxRX:'A.10',
             auxTX:'A.9',
             serialAmount:'2',
-            wifi8266CSPin: 'NoPin'
+            wifi8266CSPin: 'NoPin',
+            esp32: {
+                esp32Supported: false,
+                espDataReadyPin:'N/A',
+                lpcTfrReadyPin:'N/A',
+                espResetPin:'N/A',
+                wifi8266CSPin: 'NoPin'
+            }
         },
         {
             name: 'biquskr_2',
@@ -1732,10 +1884,11 @@ export default {
             hasMotorLoadDetection: true,
             supportsDisplay: true,
             supports12864: false,
-            firmwareStandaloneFile: 'firmware-stm32f4-esp8266wifi',
+            firmwareStandaloneFile: 'firmware-stm32f4-wifi',
             firmwareSBCFile: 'firmware-stm32f4-sbc',
-            firmwareWifiFile: 'DuetWiFiServer-stm32f4.bin',
-            requiresBeta: true,
+            firmwareWifiFile: 'duetwifiserver-esp8266-stm32f4',
+            firmwareWifi32File: 'duetwifiserver-esp32-stm32f4',
+            requiresBeta: false,
             iapFile: '',
             expansionBoards: ['BTT EXP-MOT'],
             maxExpansionBoards: 1,
@@ -1743,8 +1896,8 @@ export default {
             stepperDriverTimings: "",
             stepperDriverSmart: true,
             stepperDriver5160: true,
-            stepperDriver5160SPI: 'N/A',
-            stepperDriver5160Pins: 'N/A',
+            stepperDriver5160SPI: '3',
+            stepperDriver5160Pins: '{ E.15, A.14, E.14 }',
             stepperDriver5160CS: [],
             serialRxPin:'D.9',
             serialTxPin:'D.8',
@@ -1794,7 +1947,14 @@ export default {
             auxRX:'A.10',
             auxTX:'A.9',
             serialAmount:'2',
-            wifi8266CSPin: 'NoPin'
+            wifi8266CSPin: 'NoPin',
+            esp32: {
+                esp32Supported: true,
+                espDataReadyPin:'E.13',
+                lpcTfrReadyPin:'E.14',
+                espResetPin:'E.15',
+                wifi8266CSPin: 'NoPin'
+            }
         },
 	],
 

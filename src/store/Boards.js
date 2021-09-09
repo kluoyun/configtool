@@ -86,7 +86,8 @@ export default {
                 lpcTfrReadyPin:'N/A',
                 espResetPin:'N/A',
                 wifi8266CSPin: 'N/A'
-            }
+            },
+            neopixel :'NoPin'
 
 		},
         {
@@ -174,7 +175,8 @@ export default {
                 lpcTfrReadyPin:'N/A',
                 espResetPin:'N/A',
                 wifi8266CSPin: 'N/A'
-            }
+            },
+            neopixel :'NoPin'
         },
         {
             name: 'biquskr_1.3',
@@ -273,7 +275,8 @@ export default {
                 lpcTfrReadyPin:'N/A',
                 espResetPin:'N/A',
                 wifi8266CSPin: 'N/A'
-            }
+            },
+            neopixel :'NoPin'
         },
 	    {
             name: 'biquskr_1.4',
@@ -372,7 +375,8 @@ export default {
                 lpcTfrReadyPin:'N/A',
                 espResetPin:'N/A',
                 wifi8266CSPin: 'N/A'
-            }
+            },
+            neopixel :'1.24'
         },
 	    {
             name: 'azsmz',
@@ -459,7 +463,8 @@ export default {
                 lpcTfrReadyPin:'N/A',
                 espResetPin:'N/A',
                 wifi8266CSPin: 'N/A'
-            }
+            },
+            neopixel :'NoPin'
         },
 	    {
             name: 'azteegX5_1.1',
@@ -546,7 +551,8 @@ export default {
                 lpcTfrReadyPin:'N/A',
                 espResetPin:'N/A',
                 wifi8266CSPin: 'N/A'
-            }
+            },
+            neopixel :'NoPin'
         },
         {
             name: 'rearm',
@@ -630,7 +636,8 @@ export default {
                 lpcTfrReadyPin:'N/A',
                 espResetPin:'N/A',
                 wifi8266CSPin: 'N/A'
-            }
+            },
+            neopixel :'NoPin'
         },
         {
             name: 'mkssbase_1.3',
@@ -714,7 +721,8 @@ export default {
                 lpcTfrReadyPin:'N/A',
                 espResetPin:'N/A',
                 wifi8266CSPin: 'N/A'
-            }
+            },
+            neopixel :'NoPin'
         },
         {
             name: 'mkssgenl_1.0',
@@ -813,7 +821,8 @@ export default {
                 lpcTfrReadyPin:'N/A',
                 espResetPin:'N/A',
                 wifi8266CSPin: 'N/A'
-            }
+            },
+            neopixel :'NoPin'
         },
         {
             name: 'mkssgenl_2.0',
@@ -912,7 +921,8 @@ export default {
                 lpcTfrReadyPin:'N/A',
                 espResetPin:'N/A',
                 wifi8266CSPin: 'N/A'
-            }
+            },
+            neopixel :'NoPin'
         },
         {
             name: 'biquskr_e3t',
@@ -1011,7 +1021,8 @@ export default {
                 lpcTfrReadyPin:'N/A',
                 espResetPin:'N/A',
                 wifi8266CSPin: 'N/A'
-            }
+            },
+            neopixel :'1.24'
         },
         {
             name: 'biquskrpro_1.1',
@@ -1132,7 +1143,8 @@ export default {
                 lpcTfrReadyPin:'F.11',
                 espResetPin:'F.12',
                 wifi8266CSPin: 'B.12'
-            }
+            },
+            neopixel :'NoPin'
         },
         {
             name: 'biqugtr_1.0',
@@ -1249,7 +1261,8 @@ export default {
                 lpcTfrReadyPin:'H.10',
                 espResetPin:'B.10',
                 wifi8266CSPin: 'B.12'
-            }
+            },
+            neopixel :'F.13'
         },
         {
             name: 'fly_cdy',
@@ -1351,7 +1364,8 @@ export default {
                 lpcTfrReadyPin:'N/A',
                 espResetPin:'N/A',
                 wifi8266CSPin: 'N/A'
-            }
+            },
+            neopixel :'NoPin'
         },
         {
             name: 'fly_F407ZG',
@@ -1462,7 +1476,8 @@ export default {
                 lpcTfrReadyPin:'C.4',
                 espResetPin:'B.2',
                 wifi8266CSPin: 'F.11'
-            }
+            },
+            neopixel :'NoPin'
         },
         {
             name: 'fly_E3',
@@ -1536,16 +1551,16 @@ export default {
             },
             drives: [
                 {
-                    diag: "E.6",
+                    diag: "A.2",
                 },
                 {
-                    diag: "E.2",
+                    diag: "A.1",
                 },
                 {
-                    diag: "D.5",
+                    diag: "C.5",
                 },
                 {
-                    diag: "D.7",
+                    diag: "",
                 }
             ],
             auxRX:'A.10',
@@ -1558,7 +1573,8 @@ export default {
                 lpcTfrReadyPin:'N/A',
                 espResetPin:'N/A',
                 wifi8266CSPin: 'N/A'
-            }
+            },
+            neopixel :'NoPin'
         },
         {
             name: 'fly_cdyv2',
@@ -1660,7 +1676,8 @@ export default {
                 lpcTfrReadyPin:'N/A',
                 espResetPin:'N/A',
                 wifi8266CSPin: 'N/A'
-            }
+            },
+            neopixel :'D.15'
         },
         {
             name: 'biquskr_rrf_e3_1.1',
@@ -1756,7 +1773,8 @@ export default {
                 lpcTfrReadyPin:'N/A',
                 espResetPin:'N/A',
                 wifi8266CSPin: 'N/A'
-            }
+            },
+            neopixel :'B.7'
         },
         {
             name: 'fly_e3_pro',
@@ -1855,7 +1873,8 @@ export default {
                 lpcTfrReadyPin:'N/A',
                 espResetPin:'N/A',
                 wifi8266CSPin: 'NoPin'
-            }
+            },
+            neopixel :'B.11'
         },
         {
             name: 'biquskr_2',
@@ -1929,19 +1948,19 @@ export default {
             },
             drives: [
                 {
-                    diag: "E.0",
+                    diag: "C.1",
                 },
                 {
-                    diag: "D.3",
+                    diag: "C.3",
                 },
                 {
-                    diag: "D.0",
+                    diag: "C.0",
                 },
                 {
-                    diag: "C.6",
+                    diag: "C.2",
                 },
                 {
-                    diag: "D.12",
+                    diag: "A.0",
                 }
             ],
             auxRX:'A.10',
@@ -1954,7 +1973,221 @@ export default {
                 lpcTfrReadyPin:'E.14',
                 espResetPin:'E.15',
                 wifi8266CSPin: 'NoPin'
-            }
+            },
+            neopixel :'E.6'
+        },
+        {
+            name: 'fysetc_spider',
+            type: 'STM32F4',
+            caption: 'Fysetc Spider 407 Version',
+            motorWarningCurrent: 1200,
+            motorLimitCurrent: 2000,
+            seriesResistor: 4700,
+            microstepping: true,
+            microsteppingInterpolation: true,
+            numDrives: 8,
+            heaterPorts: ['bed', 'e0heat', 'e1heat','e1heat'],
+            fanPorts: ['fan0','fan1', 'fan2'],
+            pwmPorts: ['bed', 'e0heat', 'e1heat','e1heat','fan0','fan1', 'fan2'],
+            gpioPorts: ['xstop','ystop','zstop','probe','pson','e0stop', 'e1stop','pwrdet'],
+            analogPorts: ['bedtemp', 'e0temp', 'e1temp','e2temp'],
+            blPorts: ['servo0'],
+            spiCsPorts: [],
+            hasEthernet: false,
+            hasWiFi: false,
+            hasESP: false,
+            hasESPUpdate: true,
+            hasESPOnboard: false,
+            hasSBC: true,
+            hasPowerFailureDetection: false,
+            hasMotorLoadDetection: true,
+            supportsDisplay: true,
+            supports12864: false,
+            firmwareStandaloneFile: 'firmware-stm32f4-wifi',
+            firmwareSBCFile: 'firmware-stm32f4-sbc',
+            firmwareWifiFile: 'DuetWiFiServer-esp8266-stm32f4',
+            firmwareWifi32File: 'DuetWiFiServer-esp32-stm32f4',
+            requiresBeta: false,
+            iapFile: '',
+            expansionBoards: [],
+            maxExpansionBoards: 0,
+            stepperDriver: "",
+            stepperDriverTimings: "",
+            stepperDriverSmart: true,
+            stepperDriver5160: true,
+            stepperDriver5160SPI: '3',
+            stepperDriver5160Pins: '',
+            stepperDriver5160CS: [],
+            serialRxPin:'C.7',
+            serialTxPin:'C.6',
+            espDataReadyPin:'D.0',
+            lpcTfrReadyPin:'D.1',
+            espResetPin:'A.8',
+            lpc: {
+                externalSDCard:{
+                    csPin: "NoPin",
+                    cardDetectPin: "NoPin",
+                    spiFrequencyHz: 4000000,
+                    spiChannel: 0,
+                },
+                internalSDCardSPIFrequencyHz: 25000000,
+                softwareSPI:{
+                    pins: ["NoPin", "NoPin", "NoPin"],
+                },
+                lcd:{
+                    lcdCSPin:       "E.9",
+                    lcdBeepPin:     "C.5",
+                    encoderPinA:    "E.7",
+                    encoderPinB:    "B.2",
+                    encoderPinSw:   "B.1",
+                    lcdDCPin:       "NoPin",
+                    panelButtonPin: "NoPin",
+                    spiChannel: 4, //Software SPI
+                },
+                diagnosticPin: "NoPin",
+            },
+            drives: [
+                {
+                    diag: "B.14",
+                },
+                {
+                    diag: "B.13",
+                },
+                {
+                    diag: "A.0",
+                },
+                {
+                    diag: "A.3",
+                },
+                {
+                    diag: "A.2",
+                },
+                {
+                    diag: "A.1",
+                }
+            ],
+            auxRX:'A.10',
+            auxTX:'A.9',
+            serialAmount:'2',
+            wifi8266CSPin: 'C.9',
+            esp32: {
+                esp32Supported: true,
+                espDataReadyPin:'D.0',
+                lpcTfrReadyPin:'D.1',
+                espResetPin:'A.8',
+                wifi8266CSPin: 'C.9'
+            },
+            neopixel :'NoPin'
+        },
+        {
+            name: 'fly_super8',
+            type: 'STM32F4',
+            caption: 'Flu Super8',
+            motorWarningCurrent: 1800,
+            motorLimitCurrent: 2000,
+            seriesResistor: 4700,
+            microstepping: true,
+            microsteppingInterpolation: true,
+            numDrives: 8,
+            heaterPorts: ['bed', 'heat0','heat1','heat2','heat3','heat4'],
+            fanPorts: ['fan0','fan1', 'fan2','fan3','fan4','fan5','fan6','fan7','fan8','fan9'],
+            pwmPorts: ['bed', 'heat0','heat1','heat2','heat3','heat4','fan0','fan1', 'fan2','fan3','fan4','fan5','fan6','fan7','fan8','fan9'],
+            gpioPorts: ['io1','io1','io2','io3','io4','io5','io6','io7','hvin','probe'],
+            analogPorts: ['bedtemp', 'e0temp', 'e1temp','e2temp'],
+            blPorts: ['servo0'],
+            spiCsPorts: [],
+            hasEthernet: false,
+            hasWiFi: false,
+            hasESP: true,
+            hasESPUpdate: true,
+            hasESPOnboard: false,
+            hasESP32Onboard: true,
+            hasSBC: false,
+            hasPowerFailureDetection: false,
+            hasMotorLoadDetection: true,
+            supportsDisplay: true,
+            supports12864: false,
+            firmwareStandaloneFile: 'firmware-stm32f4-wifi',
+            firmwareSBCFile: 'firmware-stm32f4-sbc',
+            firmwareWifiFile: 'DuetWiFiServer-esp32-stm32f4',
+            firmwareWifi32File: 'DuetWiFiServer-esp32-stm32f4',
+            requiresBeta: false,
+            iapFile: '',
+            expansionBoards: [],
+            maxExpansionBoards: 0,
+            stepperDriver: "",
+            stepperDriverTimings: "",
+            stepperDriverSmart: true,
+            stepperDriver5160: true,
+            stepperDriver5160SPI: '3',
+            stepperDriver5160Pins: '',
+            stepperDriver5160CS: [],
+            serialRxPin:'D.9',
+            serialTxPin:'D.8',
+            espDataReadyPin:'D.13',
+            lpcTfrReadyPin:'D.11',
+            espResetPin:'D.10',
+            lpc: {
+                externalSDCard:{
+                    csPin: "NoPin",
+                    cardDetectPin: "NoPin",
+                    spiFrequencyHz: 4000000,
+                    spiChannel: 0,
+                },
+                internalSDCardSPIFrequencyHz: 25000000,
+                softwareSPI:{
+                    pins: ["NoPin", "NoPin", "NoPin"],
+                },
+                lcd:{
+                    lcdCSPin:       "E.9",
+                    lcdBeepPin:     "C.5",
+                    encoderPinA:    "E.7",
+                    encoderPinB:    "B.2",
+                    encoderPinSw:   "B.1",
+                    lcdDCPin:       "NoPin",
+                    panelButtonPin: "NoPin",
+                    spiChannel: 4, //Software SPI
+                },
+                diagnosticPin: "NoPin",
+            },
+            drives: [
+                {
+                    diag: "G.12",
+                },
+                {
+                    diag: "G.11",
+                },
+                {
+                    diag: "G.10",
+                },
+                {
+                    diag: "G.9",
+                },
+                {
+                    diag: "D.7",
+                },
+                {
+                    diag: "D.6",
+                },
+                {
+                    diag: "A.8",
+                },
+                {
+                    diag: "F.8",
+                }
+            ],
+            auxRX:'A.10',
+            auxTX:'A.9',
+            serialAmount:'2',
+            wifi8266CSPin: 'NoPin',
+            esp32: {
+                esp32Supported: true,
+                espDataReadyPin:'D.13',
+                lpcTfrReadyPin:'D.11',
+                espResetPin:'D.10',
+                wifi8266CSPin: 'NoPin'
+            },
+            neopixel :'NoPin'
         },
 	],
 

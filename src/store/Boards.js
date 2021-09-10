@@ -2093,7 +2093,7 @@ export default {
             fanPorts: ['fan0','fan1', 'fan2','fan3','fan4','fan5','fan6','fan7','fan8','fan9'],
             pwmPorts: ['bed', 'heat0','heat1','heat2','heat3','heat4','fan0','fan1', 'fan2','fan3','fan4','fan5','fan6','fan7','fan8','fan9'],
             gpioPorts: ['io1','io1','io2','io3','io4','io5','io6','io7','hvin','probe'],
-            analogPorts: ['bedtemp', 'e0temp', 'e1temp','e2temp'],
+            analogPorts: ['ADC_0','ADC_1','ADC_2','ADC_3','ADC_4','ADC_5'],
             blPorts: ['servo0'],
             spiCsPorts: [],
             hasEthernet: false,

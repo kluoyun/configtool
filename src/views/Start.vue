@@ -1,6 +1,9 @@
 <template>
 	<b-container>
 		<div class="text-center">
+		        <li class="page-item">
+				<b-link class="page-link" href="https://jq.qq.com/?_wv=1027&k=h12iKRbe">加入QQ群</b-link>
+			</li>
 			<h2 class="mb-4">{{$t('start.welcomeLPC')}}</h2>
 			<h4 class="text-muted mb-5">{{$t('start.instructions')}}</h4>
 		</div>

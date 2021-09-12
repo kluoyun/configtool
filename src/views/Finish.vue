@@ -16,7 +16,7 @@ textarea {
 		</b-card>
 
 		<b-card :header="$t('finish.misc')" class="mt-3">
-			<!--b-checkbox v-model="panelDue" class="mb-3">{{$t('finish.paneldue')}}</b-checkbox-->
+			<b-checkbox v-model="panelDue" class="mb-3">{{$t('finish.paneldue')}}</b-checkbox>
 			<label for="custom_settings">{{$t('finish.custom')}}</label>
 			<label class="float-right"><a href="https://duet3d.com/wiki/G-code" target="_blank">{{$t('finish.gcodes')}}</a></label>
 			<b-form-textarea id="custom_settings" v-model="customSettings" rows="4" max-rows="8" @keydown.tab.exact.prevent="onTextareaTab"></b-form-textarea>

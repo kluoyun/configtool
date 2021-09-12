@@ -9,7 +9,7 @@
 			<p>{{$t('start.instructions')}}</p>
 
 			<b-form-group>
-				<!--b-form-radio-group v-model="selectedMachine" name="machine" stacked class="mb-2">
+				<b-form-radio-group v-model="selectedMachine" name="machine" stacked class="mb-2">
 					<b-form-radio value="minikossel">T3P3 Mini Kossel</b-form-radio>
 				</b-form-radio-group>
 
@@ -17,7 +17,7 @@
 					<b-form-radio value="ormerod1">RepRapPro Ormerod 1</b-form-radio>
 					<b-form-radio value="ormerod2">RepRapPro Ormerod 2</b-form-radio>
 					<b-form-radio value="fisher">RepRapPro Fisher</b-form-radio>
-				</b-form-radio-group-->
+				</b-form-radio-group>
 
 				<b-form-radio-group v-model="selectedMachine" name="machine" stacked class="mb-3">
 					<b-form-radio value="ender3">Creality Ender 3 - Fly-E3</b-form-radio>
@@ -36,7 +36,7 @@
 
 				<b-form-radio-group v-model="selectedMachine" name="machine" stacked>
 					<b-form-radio value="custom">{{$t('start.custom')}}</b-form-radio>
-					<!--b-form-radio value="existing">{{$t('start.existing')}}</b-form-radio-->
+					<b-form-radio value="existing">{{$t('start.existing')}}</b-form-radio>
 				</b-form-radio-group>
 			</b-form-group>
 		</b-card>

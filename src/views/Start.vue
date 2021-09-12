@@ -23,14 +23,14 @@
 					<b-form-radio value="ender3">Creality Ender 3 - Fly-E3</b-form-radio>
 				</b-form-radio-group>
 
-				<!--p>{{$t('start.contributed')}}</p>
+				<p>{{$t('start.contributed')}}</p>
 
 				<b-form-radio-group v-model="selectedMachine" name="machine" stacked class="mb-3">
 					<b-form-radio value="anet-a8">Anet A8</b-form-radio>
 					<b-form-radio value="distech-prometheus-system">Distech Prometheus System</b-form-radio>
 					<b-form-radio value="reach3d">Reach3D Printer</b-form-radio>
 					<b-form-radio value="wanhao-di3">Wanhao Duplicator i3</b-form-radio>
-				</b-form-radio-group-->
+				</b-form-radio-group>
 
 				<p>{{$t('start.alternative')}}</p>
 

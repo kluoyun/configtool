@@ -674,7 +674,7 @@ export default {
 			this.generatingZIP = true;
 
 			try {
-				const zip = await Compiler.compileZIP(this.files, this.template, this.board, this.rrfFile, this.iapFile, this.dwcFile);
+				const zip = await Compiler.compileZIP(this.files, this.template, this.board, this.rrfFile, this.iapFile, '/' + this.dwcFile);
 				if (Compiler.canDownloadFiles) {
 					saveAs(zip, 'config.zip');
 				} else {

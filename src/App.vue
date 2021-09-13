@@ -676,9 +676,9 @@ export default {
 			try {
                                 
 				const zip = await Compiler.compileZIP(this.files, this.template, this.board, this.rrfFile, this.iapFile, this.dwcFile);
-				alert('DEBUG\n0x01');
+				
                                 if (Compiler.canDownloadFiles) {
-					saveAs(zip, '/public/config.zip');
+					saveAs(zip, 'config.zip');
                                         
 				} else {
 					alert('Error: This browser does not support blobs! Save your configuration template and try another one.');

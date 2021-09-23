@@ -1,6 +1,6 @@
 <template>
 	<b-container>
-		<b-card v-if="template.standalone" class="mb-3" :header="$t('network.settings')">
+		<b-card v-if="template.standalone" v-show="!board.hasESP32Onboard" class="mb-3" :header="$t('network.settings')">
 			<b-form-checkbox v-model="networkEnabled" :disabled="isESP32" v-preset.left="preset.network.enabled" :title="$t('network.enableDescription')">{{$t('network.enableDescriptionAlt')}}</b-form-checkbox>
 			<div v-show="networkEnabled" class="pl-4">
 				<b-form-row class="mt-3">
@@ -63,7 +63,7 @@
 					</b-col>
 				
 
-				<b-checkbox v-model="dhcp" v-preset.left="preset.network.dhcp" :title="$t('network.dhcpDescription')">{{$t('network.dhcp')}}</b-checkbox>
+				<b-checkbox v-model="dhcp" v-show="board.hasEthernet" v-preset.left="preset.network.dhcp" :title="$t('network.dhcpDescription')">{{$t('network.dhcp')}}</b-checkbox>
 				<b-form-row v-show="!dhcp" class="pl-4 mt-3">
 					<b-col>
 						<b-form-group :label="$t('network.ip')">
@@ -89,7 +89,7 @@
 			</div>
 		</b-card>
 
-		<b-card v-if="template.standalone && board.esp32.esp32Supported" :header="$t('network.settings32')">
+		<b-card v-if="template.standalone && (board.hasESP32Onboard || board.esp32.esp32Supported)" :header="$t('network.settings32')">
 			<b-form-checkbox v-model="networkEnabled32" :disabled="isESP8266" :title="$t('network.enableDescription')">{{$t('network.enableDescriptionAlt32')}}</b-form-checkbox>
 			<div v-show="networkEnabled32" class="pl-4">
 				<b-form-row class="mt-3">
@@ -136,8 +136,8 @@
 						</b-col>
 					</template>
 				</b-form-row>
-				<b-checkbox v-if="board.hasESP && template.firmware" v-model="espRXTX" v-preset.left="preset.network.espRXTX" :title="$t('network.espRXTXDescription')">{{$t('network.espRXTXDescription')}}</b-checkbox>
-				<b-form-row v-if="espRXTX" class="mt-3">
+				<b-checkbox v-if="board.hasESP && template.firmware" v-model="esp32RXTX" v-preset.left="preset.network.espRXTX" :title="$t('network.espRXTXDescription')">{{$t('network.espRXTXDescription')}}</b-checkbox>
+				<b-form-row v-if="esp32RXTX" class="mt-3">
 					<b-col cols="auto">
 						<b-form-group :label="$t('network.serialRxPin')">
 							<b-form-input v-model.trim="serialRxPin" v-preset="preset.network.serialRxPin" v-b-tooltip.hover :title="$t('network.serialRxPinDescription')" maxlength="4" type="text" required></b-form-input>
@@ -157,7 +157,7 @@
 					</b-col>
 				
 
-				<b-checkbox v-model="dhcp" v-preset.left="preset.network.dhcp" :title="$t('network.dhcpDescription')">{{$t('network.dhcp')}}</b-checkbox>
+				<b-checkbox v-model="dhcp" v-show="board.hasEthernet" v-preset.left="preset.network.dhcp" :title="$t('network.dhcpDescription')">{{$t('network.dhcp')}}</b-checkbox>
 				<b-form-row v-show="!dhcp" class="pl-4 mt-3">
 					<b-col>
 						<b-form-group :label="$t('network.ip')">
@@ -216,6 +216,7 @@ export default {
 			espResetPin32: 'board.esp32.espResetPin',
 			wifi8266CSPin32: 'board.esp32.wifi8266CSPin',
 			espRXTX: 'template.network.espRXTX',
+			esp32RXTX: 'template.network.esp32RXTX',
 			serialRxPin: 'board.serialRxPin',
 			serialTxPin: 'board.serialTxPin'
 		}),

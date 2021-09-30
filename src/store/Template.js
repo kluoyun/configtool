@@ -250,6 +250,7 @@ export default {
 				lpcTfrReadyPin32: '1.30',
 				espResetPin32: '1.31',
 				espRXTX: false,
+				esp32RXTX: false,
 				serialRxPin: '0.3',
 				serialTxPin: '0.2',
 				serialRxPinalt: '4.29',
